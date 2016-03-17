@@ -6,15 +6,17 @@
         <meta name="viewport" content="initial-scale=1" />
     </head>
     <body layout="column" ng-controller="AppCtrl">
+        <a name="home"></a>
 
         <div layout="row" flex>
             <div layout="column" flex id="content">
 
                 <md-toolbar class="global-header">
                     <div class="md-toolbar-tools">
-                        <h2>
-                            <span>Sharon Regan Art</span>
-                        </h2>
+                        <a href="#home">
+                            <h2 hide show-gt-xs>Sharon Regan Art</h2>
+                            <h2 hide-gt-xs>SRA</h2>
+                        </a>
                         <span flex></span>
                         <div class="global-header-links">
                             <md-button href="#gallery" class="global-header-link">Gallery</md-button>
