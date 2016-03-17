@@ -2,7 +2,7 @@
 
 .global-header .md-toolbar-tools .global-header-links { margin-right: -16px; margin-bottom: -6px; }
 
-.global-header .md-toolbar-tools .global-header-links .global-header-link { color: black; padding: 0; height: 100%; line-height: 70px; margin: -3px; width: 120px; border-radius: 0; }
+.global-header .md-toolbar-tools .global-header-links .global-header-link { color: black; padding: 16px 0; margin: -3px; width: 120px; border-radius: 0; }
 
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) { background: #FFF; color: #000; box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.084); }
 
@@ -22,7 +22,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .primary-strip p { color: #FFF; }
 
-.page-content { padding-top: 64px; }
+.page-content { padding-top: 44px; }
 
 form { margin-top: -95px; }
 

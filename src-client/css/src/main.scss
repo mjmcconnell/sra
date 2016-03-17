@@ -8,9 +8,7 @@
 
             .global-header-link {
                 color: black;
-                padding: 0;
-                height: 100%;
-                line-height: 70px;
+                padding: 16px 0;
                 margin: -3px;
                 width: 120px;
                 border-radius: 0;
@@ -69,7 +67,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 
 .page-content {
-    padding-top: 64px;
+    padding-top: 44px;
 }
 
 form {
