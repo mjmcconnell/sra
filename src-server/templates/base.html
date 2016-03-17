@@ -7,7 +7,43 @@
     </head>
     <body layout="column" ng-controller="AppCtrl">
 
-        {% block content %}{% endblock %}
+        <div layout="row" flex>
+            <div layout="column" flex id="content">
+
+                <md-toolbar class="global-header">
+                    <div class="md-toolbar-tools">
+                        <h2>
+                            <span>Sharon Regan Art</span>
+                        </h2>
+                        <span flex></span>
+                        <div class="global-header-links">
+                            <md-button href="#gallery" class="global-header-link">Gallery</md-button>
+                            <md-button href="#contact" class="global-header-link">Contact</md-button>
+                        </div>
+                    </div>
+                </md-toolbar>
+
+                <div class="page-content">
+                    {% block content %}{% endblock %}
+                </div>
+
+                <footer flex="none">
+                    <div class="strip default-strip">
+                        <div class="strip-content">
+                        <span>Share:</span>
+                            <a href="http://www.facebook.com/sharer/sharer.php?u=sharonreganart.com" target="_blank">
+                                <img src="/static/img/fb.png" alt="Facebook">
+                            </a>
+
+                            <a href="https://twitter.com/share?url=https://sharonreganart.com&amp;text=Check out some of the fantastic work by Sharon Regan Art" target="_blank">
+                                <img src="/static/img/twitter.png" alt="Twitter">
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
 
         <!-- Angular Material Dependencies -->
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>

@@ -1,3 +1,25 @@
+.global-header {
+    position: fixed;
+
+    .md-toolbar-tools {
+         .global-header-links {
+            margin-right: -16px;
+            margin-bottom: -6px;
+
+            .global-header-link {
+                color: black;
+                padding: 0;
+                height: 100%;
+                line-height: 70px;
+                margin: -3px;
+                width: 120px;
+                border-radius: 0;
+            }
+
+        }
+    }
+}
+
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
     background: #FFF;
     color: #000;
@@ -6,7 +28,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .hero {
     width: 100%;
-    min-height: 640px;
+    min-height: 600px;
     background-image: url("/static/img/home.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,6 +41,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
     .strip-content {
         max-width: 822px;
+        min-height: 60px;
         margin: 0 auto;
     }
 }
@@ -42,5 +65,60 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
     p {
         color: #FFF;
+    }
+}
+
+.page-content {
+    padding-top: 64px;
+}
+
+form {
+    margin-top: -95px;
+
+    .contact-form-header-copy {
+        text-align: left;
+        color: #000 !important;
+        padding-bottom: 20px;
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    .md-input-message-animation {
+        text-align: right;
+    }
+    .contact-form-btn {
+        float: right;
+        color: #4054B2;
+        font-weight: bold;
+    }
+}
+
+footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .strip {
+        .strip-content {
+            text-align: left;
+            min-height: 0;
+
+            span {
+                font-weight: 600;
+                color: rgba(0,0,0,0.54);
+            }
+
+            a {
+                display: inline-block;
+                height: 0;
+                margin-left: 2.5rem;
+                position: relative;
+                top: 0.5rem;
+
+                img {
+                    display: block;
+                    position: relative;
+                    top: -30px;
+                    height: 30px;
+                }
+            }
+        }
     }
 }
