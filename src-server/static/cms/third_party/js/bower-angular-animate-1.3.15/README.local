@@ -1,0 +1,12 @@
+URL: https://github.com/angular/bower-angular-animate/archive/v1.3.15.zip
+
+License: MIT
+License File: LICENSE
+
+Description:
+"Provides support for CSS-based animations (keyframes and transitions) as well
+as JavaScript-based animations via callback hooks"
+
+Local Modifications:
+Repo doesn't have LICENSE file.
+Created file and copied license from README.md into LICENSE.

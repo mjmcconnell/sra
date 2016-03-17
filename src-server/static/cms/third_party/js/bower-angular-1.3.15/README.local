@@ -1,0 +1,12 @@
+URL: https://github.com/angular/bower-angular/archive/v1.3.15.zip
+
+License: MIT
+License File: LICENSE
+
+Description:
+"HTML enhanced for web apps!"
+A JavaScript application framework to handle templating, eventing and more.
+
+Local Modifications:
+Repo doesn't have LICENSE file.
+Created file and copied license from README.md into LICENSE.
