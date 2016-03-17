@@ -1,16 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<md-card>
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Large</span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-    </md-card-content>
-</md-card>
+<div layout="row" flex>
+    <div layout="column" flex id="content">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span>Sharon Regan Art</span>
+                </h2>
+                <span flex></span>
+                <a href="#">
+                    Gallery
+                </a>
+                <a href="#">
+                    Contact
+                </a>
+
+            </div>
+        </md-toolbar>
+
+        <div class="hero"></div>
+
+        <div class="strip primary-strip">
+            <div class="strip-content">
+                <h1 class="md-headline">Welcome to sharon regan art</h1>
+                <p class="md-subhead">Although creating artwork in many different mediums, ceramic is my primary language. I create sculptural forms which reflect my fascination with the duality of strength and fragility found within human existence and nature.</p>
+            </div>
+        </div>
+
+        <div class="strip default-strip">
+            <div class="strip-content">
+                <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
+                    <md-grid-tile ng-repeat="tile in colorTiles" ng-style="{'background': tile.color}" md-colspan-gt-sm="{[tile.colspan]}"
+          md-rowspan-gt-sm="{[tile.rowspan]}"></md-grid-tile>
+                </md-grid-list>
+              </md-content>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
