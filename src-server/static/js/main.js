@@ -60,24 +60,34 @@
 	    $scope.colorTiles = function () {
 	        var tiles = [];
 	        for (var i = 0; i < 30; i++) {
+	            var props = randomImage();
+	            console.log(props);
 	            tiles.push({
 	                color: "grey",
-	                colspan: randomSpan(),
-	                rowspan: randomSpan()
+	                colspan: 1,
+	                rowspan: props[0],
+	                'imgSrc': '/static/img/' + props[1]
 	            });
 	        }
 	        return tiles;
 	    }();
 	
-	    function randomSpan() {
+	    function randomImage() {
+	        var rowSpan = 1;
+	        var imgSrc = '';
+	
+	        var srcs = {
+	            'square': 'seal.jpg',
+	            'tall': ['fox.jpg', 'horse.jpg', 'hare_side.jpg', 'hare_fr.jpg', 'hare_side.jpg']
+	        };
 	        var r = Math.random();
-	        if (r < 0.8) {
-	            return 1;
-	        } else if (r < 0.9) {
-	            return 2;
+	        if (r < 0.6) {
+	            imgSrc = srcs['square'];
 	        } else {
-	            return 3;
+	            rowSpan = 2;
+	            imgSrc = srcs['tall'][Math.floor(Math.random() * srcs['tall'].length)];
 	        }
+	        return [rowSpan, imgSrc];
 	    }
 	});
 

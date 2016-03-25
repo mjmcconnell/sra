@@ -8,7 +8,7 @@
 <div class="strip primary-strip">
     <div class="strip-content">
         <h1 class="md-headline">Welcome to sharon regan art</h1>
-        <p class="md-subhead">Although creating artwork in many different mediums, ceramic is my primary language. I create sculptural forms which reflect my fascination with the duality of strength and fragility found within human existence and nature.</p>
+        <p class="md-subhead">I often find my inspiration whilst out walking the dogs or exploring country lanes on horseback, I love to catch sight of hares, foxes and other wildlife or watching the horses play in the field, it feels like a wonderful gift, a special moment. I aim to capture that moment and bring the outdoors indoors. Watching my subjects gives me pleasure, creating the sculptures from clay brings me pleasure, I hope my sculptures bring you pleasure too.</p>
     </div>
 </div>
 
@@ -17,8 +17,9 @@
 <div class="strip default-strip">
     <div class="strip-content">
         <h1 class="md-display-1">Gallery</h1>
+        <p class="md-subhead">My sculptures reflect my fascination with the duality of strength and fragility found within human existence and nature.</p>
         <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
-            <md-grid-tile ng-repeat="tile in colorTiles" ng-style="{'background': tile.color}" md-colspan-gt-sm="{[tile.colspan]}"
+            <md-grid-tile class="thumbnail" ng-repeat="tile in colorTiles" ng-style="{'background-image':'url({[tile.imgSrc]})'}" md-colspan-gt-sm="{[tile.colspan]}"
   md-rowspan-gt-sm="{[tile.rowspan]}"></md-grid-tile>
         </md-grid-list>
       </md-content>

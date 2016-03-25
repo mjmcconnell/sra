@@ -1,3 +1,5 @@
+$primary-color: #79d3c6;
+
 .global-header {
     position: fixed;
 
@@ -20,7 +22,7 @@
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
     background: #FFF;
     color: #000;
-    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.14),0px 2px 2px 0px rgba(0,0,0,0.098),0px 1px 5px 0px rgba(0,0,0,0.084);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.26),0px 2px 10px 0px rgba(0,0,0,0.16);
 }
 
 .hero {
@@ -45,7 +47,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .default-strip {
     h1 {
-        color: #4054B2;
+        color: $primary-color;
     }
 
     p {
@@ -54,7 +56,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 
 .primary-strip {
-    background: #4054B2;
+    background: $primary-color;
 
     h1 {
         color: #FFF;
@@ -67,6 +69,12 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .page-content {
     padding-top: 44px;
+}
+
+.thumbnail {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 form {
@@ -84,7 +92,7 @@ form {
     }
     .contact-form-btn {
         float: right;
-        color: #4054B2;
+        color: $primary-color;
         font-weight: bold;
     }
 }
