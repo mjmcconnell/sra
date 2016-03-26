@@ -101,3 +101,5 @@ CONFIG = {
         'secret_key': session_key,
     },
 }
+
+EMAIL_TO = 'mjmcconnell.dev@gmail.com'

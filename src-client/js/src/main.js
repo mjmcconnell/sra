@@ -101,4 +101,44 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog) {
             $mdDialog.hide(answer);
         };
     };
+
+    $scope.submitForm = function(){
+        $scope.toastMessage = false;
+        var uploadUrl = '/api' + window.location.pathname;
+
+        // Create an empty FormData object to store all form fields
+        var fd = new FormData();
+
+        // Loop through all other fields, and append them to the FormData object
+        for (var key in $scope.formData) {
+            if ($scope.formData[key]) {
+                fd.append(key, $scope.formData[key]);
+            }
+        }
+
+        // Send the data of to the api, to be stored by the server
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(result){
+            if (result['data'] == false) {
+                $scope.toastMessage = ['Message Sent', 'success'];
+            } else {
+                window.location.href = result['data'];
+            }
+        })
+        .error(function(error, status){
+            var error_message = 'Something went wrong, please check your form.'
+            if (error['message']) {
+                error_message = error['message'];
+            } else if (error['error']) {
+                error_message = error['error'];
+            }
+            $scope.toastMessage = [error_message, 'warning'];
+            for (var key in error['data']) {
+                $scope.serverErrors[key] = error['data'][key];
+            }
+        });
+    };
 });

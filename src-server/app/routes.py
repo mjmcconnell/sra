@@ -24,9 +24,10 @@ _UNAUTHENTICATED_AJAX_ROUTES = MultiPrefixRoute(
     handler_pfx='app.handlers.apis.',
     name_pfx='api-',
     path_pfx='/api',
-    routes=[]
+    routes=[
+        Route(r'/contact', 'mail.ContactHandler', name='contact'),
+    ]
 ).routes
-
 # These should all inherit from base.handlers.AuthenticatedHandler
 _USER_ROUTES = []
 
