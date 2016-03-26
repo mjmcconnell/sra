@@ -55,15 +55,13 @@
 	});
 	
 	// List controller
-	app.controller('AppCtrl', function ($scope) {
+	app.controller('AppCtrl', function ($scope, $mdMedia, $mdDialog) {
 	
 	    $scope.colorTiles = function () {
 	        var tiles = [];
 	        for (var i = 0; i < 30; i++) {
 	            var props = randomImage();
-	            console.log(props);
 	            tiles.push({
-	                color: "grey",
 	                colspan: 1,
 	                rowspan: props[0],
 	                'imgSrc': '/static/img/' + props[1]
@@ -89,6 +87,34 @@
 	        }
 	        return [rowSpan, imgSrc];
 	    }
+	
+	    $scope.showDialog = function (event, index) {
+	        $scope.activeEl = $scope.colorTiles[index];
+	        $mdDialog.show({
+	            controller: DialogController,
+	            template: '\n                <md-dialog id="imageDialog" aria-label="Image Details" ng-cloak>\n                    <form>\n                        <md-toolbar>\n                            <div class="md-toolbar-tools">\n                                <h2>Toolbar title</h2>\n                                <span flex></span>\n                                <md-button class="md-icon-button" ng-click="cancel()">\n                                    <md-icon md-svg-src="/static/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>\n                                </md-button>\n                            </div>\n                        </md-toolbar>\n                        <md-dialog-content>\n                            <div class="md-dialog-content">\n                                <h2>Image Title</h2>\n                                <p>\n                                    The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit.\n                                </p>\n                                <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.imgSrc ]}">\n                            </div>\n                        </md-dialog-content>\n                        <md-dialog-actions layout="row">\n                            <span flex></span>\n                            <md-button ng-click="cancel()">\n                                Close\n                            </md-button>\n                        </md-dialog-actions>\n                    </form>\n                </md-dialog>',
+	            parent: angular.element(document.body),
+	            scope: $scope,
+	            preserveScope: true,
+	            targetEvent: event,
+	            clickOutsideToClose: true
+	        }).then(function (answer) {
+	            // User chose an answer
+	        }, function () {
+	            // Dialog was closed
+	        });
+	    };
+	    function DialogController($scope, $mdDialog) {
+	        $scope.hide = function () {
+	            $mdDialog.hide();
+	        };
+	        $scope.cancel = function () {
+	            $mdDialog.cancel();
+	        };
+	        $scope.answer = function (answer) {
+	            $mdDialog.hide(answer);
+	        };
+	    };
 	});
 
 /***/ }
