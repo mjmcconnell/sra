@@ -137,7 +137,7 @@
 	            transformRequest: angular.identity,
 	            headers: { 'Content-Type': undefined }
 	        }).success(function (result) {
-	            $scope.showSimpleToast('Message Sent', 'success');
+	            $scope.showSimpleToast('Message Sent');
 	        }).error(function (error, status) {
 	            var error_message = 'Something went wrong, please check your form.';
 	            if (error['message']) {
@@ -148,12 +148,12 @@
 	            for (var key in error['data']) {
 	                $scope.serverErrors[key] = error['data'][key];
 	            }
-	            $scope.showSimpleToast(error_message, 'warning');
+	            $scope.showSimpleToast(error_message);
 	        });
 	    };
 	
-	    $scope.showSimpleToast = function (text, _class) {
-	        $mdToast.show($mdToast.simple().textContent(text).position('bottom').hideDelay(0));
+	    $scope.showSimpleToast = function (text) {
+	        $mdToast.show($mdToast.simple().textContent(text).hideDelay(3000));
 	    };
 	});
 
