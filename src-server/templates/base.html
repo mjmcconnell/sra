@@ -8,7 +8,7 @@
     <body layout="column" ng-controller="AppCtrl">
         <a name="home"></a>
 
-        <div layout="row" flex>
+        <md-content layout="row" flex>
             <div layout="column" flex id="content">
 
                 <md-toolbar class="global-header">
@@ -29,7 +29,7 @@
                     {% block content %}{% endblock %}
                 </div>
 
-                <!-- <footer flex="none">
+                <footer flex="none">
                     <div class="strip default-strip">
                         <div class="strip-content">
                         <span>Share:</span>
@@ -42,10 +42,10 @@
                             </a>
                         </div>
                     </div>
-                </footer> -->
+                </footer>
 
             </div>
-        </div>
+        </md-content>
 
         <!-- Angular Material Dependencies -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
