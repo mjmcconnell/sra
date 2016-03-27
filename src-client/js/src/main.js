@@ -65,10 +65,13 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast)
                         <md-dialog-content>
                             <div class="md-dialog-content">
                                 <h2>Image Title</h2>
-                                <p>
-                                    The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit.
-                                </p>
                                 <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.imgSrc ]}">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
+                                    Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                                    Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+                                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                </p>
                             </div>
                         </md-dialog-content>
                         <md-dialog-actions layout="row">
