@@ -44,35 +44,32 @@
                     <md-input-container class="md-block">
                         <label for="name">Name</label>
                         <input required id="name" name="name" type="text" ng-model="formData.name">
-                        <div ng-messages="formData.name.$error" role="alert">
-                            <div ng-message-exp="['required']">
-                                Please provide your name.
-                            </div>
+                        <div ng-messages="formData.name.$error" role="alert" class="md-input-message-animation">
+                            <div ng-message="server" ng-repeat="error in serverErrors.name track by $index">{[error]}</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label for="email">Email Address</label>
                         <input required type="email" name="email" ng-model="formData.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                        <div ng-messages="formData.email.$error" role="alert">
-                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                Please provide a valid email address.
-                            </div>
+                        <div ng-messages="formData.email.$error" role="alert" class="md-input-message-animation">
+                            <div ng-message="server" ng-repeat="error in serverErrors.email track by $index">{[error]}</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label for="subject">Subject</label>
                         <input id="subject" name="subject" type="text" ng-model="formData.subject">
+                        <div ng-messages="formData.subject.$error" role="alert" class="md-input-message-animation">
+                            <div ng-message="server" ng-repeat="error in serverErrors.subject track by $index">{[error]}</div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label for="message">Message</label>
                         <textarea required id="message" name="message" ng-model="formData.message"></textarea>
-                        <div ng-messages="formData.message.$error" role="alert">
-                            <div ng-message-exp="['required']">
-                                Please provide a message with your email.
-                            </div>
+                        <div ng-messages="formData.message.$error" role="alert" class="md-input-message-animation">
+                            <div ng-message="server" ng-repeat="error in serverErrors.message track by $index">{[error]}</div>
                         </div>
                     </md-input-container>
-                    <md-button class="contact-form-btn" ng-click="sendMessage()">Send Message</md-button>
+                    <md-button class="contact-form-btn" ng-click="submitForm()">Send Message</md-button>
                 </md-card-content>
             </md-card>
 

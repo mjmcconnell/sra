@@ -40,6 +40,8 @@ form.contact-form .md-input-message-animation { text-align: right; }
 
 form.contact-form .contact-form-btn { float: right; color: #79d3c6; font-weight: bold; }
 
+md-toast { position: fixed; padding: 0; text-align: center; max-width: 400px; margin: 0 auto; }
+
 footer { border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
 footer .strip .strip-content { text-align: left; min-height: 0; }

@@ -4,11 +4,18 @@ import json
 
 # third-party imports
 import webapp2
+from google.appengine.api import app_identity
 from google.appengine.api import users
 
 # local imports
 from .base import constants
 from .base import models
+
+# fetch the app id for the serviing app
+try:
+    APP_ID = app_identity.get_application_id()
+except AttributeError:
+    APP_ID = 'testing'
 
 
 # Place global application configuration settings (e.g. settings for

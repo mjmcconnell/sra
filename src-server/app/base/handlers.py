@@ -214,18 +214,18 @@ class BaseHandler(webapp2.RequestHandler):
         self.response.headers['X-XSS-Protection'] = '1; mode=block'
         self.response.headers['X-Content-Type-Options'] = 'nosniff'
 
-        # csp_policy = self.app.config.get(
-        #     'csp_policy', constants.DEFAULT_CSP_POLICY)
-        # report_only = False
-        # if 'reportOnly' in csp_policy:
-        #     report_only = csp_policy.get('reportOnly')
-        #     del csp_policy['reportOnly']
-        # header_name = ('Content-Security-Policy%s' %
-        #                ('-Report-Only' if report_only else ''))
-        # policies = []
-        # for (k, v) in csp_policy.iteritems():
-        #     policies.append('%s %s' % (k, v))
-        # self.response.headers.add(header_name, '; '.join(policies))
+        csp_policy = self.app.config.get(
+            'csp_policy', constants.DEFAULT_CSP_POLICY)
+        report_only = False
+        if 'reportOnly' in csp_policy:
+            report_only = csp_policy.get('reportOnly')
+            del csp_policy['reportOnly']
+        header_name = ('Content-Security-Policy%s' %
+                       ('-Report-Only' if report_only else ''))
+        policies = []
+        for (k, v) in csp_policy.iteritems():
+            policies.append('%s %s' % (k, v))
+        self.response.headers.add(header_name, '; '.join(policies))
 
     @webapp2.cached_property
     def current_user(self):

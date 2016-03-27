@@ -1,8 +1,5 @@
 """API Handlers.
 """
-# stdlib imports
-import json
-
 # third-party imports
 from google.appengine.api import mail
 
@@ -23,25 +20,17 @@ class ContactHandler(BaseAjaxHandler):
         """
         code = 200
         return_data = {}
-        form = ContactForm(data=json.loads(self.request.body))
+        form = ContactForm(self.request.POST)
 
         if form.validate():
             # Render the user generated content using jinja2,
             # to enable auto-escaping
-            message_subject = self.jinja2.from_string(
-                '{{ form.subject.data }}').render(form)
-
-            message_body = self.jinja2.from_string("""
-            Name: {{ form.name.data }}
-            Email: {{ form.email.data }}
-            Message: {{ form.message.data }}
-            """).render(form)
-
             mail.send_mail(
                 sender='contact@{}.appspotmail.com'.format(config.APP_ID),
                 to=config.EMAIL_TO,
-                subject=message_subject,
-                body=message_body
+                subject=self.jinja2.from_string(
+                    '{{ form.subject.data }}').render({'form': form}),
+                body=self.render_to_string('emails/contact.html', {'form': form})
             )
             return_data['status'] = 'success'
         else:

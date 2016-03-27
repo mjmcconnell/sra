@@ -55,7 +55,7 @@
 	});
 	
 	// List controller
-	app.controller('AppCtrl', function ($scope, $mdMedia, $mdDialog) {
+	app.controller('AppCtrl', function ($scope, $mdMedia, $mdDialog, $http, $mdToast) {
 	
 	    $scope.colorTiles = function () {
 	        var tiles = [];
@@ -116,9 +116,11 @@
 	        };
 	    };
 	
+	    $scope.formData = {};
 	    $scope.submitForm = function () {
 	        $scope.toastMessage = false;
-	        var uploadUrl = '/api' + window.location.pathname;
+	        $scope.serverErrors = {};
+	        var uploadUrl = '/api/contact';
 	
 	        // Create an empty FormData object to store all form fields
 	        var fd = new FormData();
@@ -135,11 +137,7 @@
 	            transformRequest: angular.identity,
 	            headers: { 'Content-Type': undefined }
 	        }).success(function (result) {
-	            if (result['data'] == false) {
-	                $scope.toastMessage = ['Message Sent', 'success'];
-	            } else {
-	                window.location.href = result['data'];
-	            }
+	            $scope.showSimpleToast('Message Sent', 'success');
 	        }).error(function (error, status) {
 	            var error_message = 'Something went wrong, please check your form.';
 	            if (error['message']) {
@@ -147,11 +145,15 @@
 	            } else if (error['error']) {
 	                error_message = error['error'];
 	            }
-	            $scope.toastMessage = [error_message, 'warning'];
 	            for (var key in error['data']) {
 	                $scope.serverErrors[key] = error['data'][key];
 	            }
+	            $scope.showSimpleToast(error_message, 'warning');
 	        });
+	    };
+	
+	    $scope.showSimpleToast = function (text, _class) {
+	        $mdToast.show($mdToast.simple().textContent(text).position('bottom').hideDelay(0));
 	    };
 	});
 
