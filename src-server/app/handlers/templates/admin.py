@@ -35,16 +35,3 @@ class AdminTemplateHandler(handlers.AdminHandler):
             self.redirect(self.request.url)
         finally:
             self.session_store.save_sessions(self.response)
-
-
-class AdminAjaxHandler(handlers.AdminAjaxHandler):
-
-    def DenyAccess(self):
-        self.response.set_status(403)
-        self.render_json({
-            'error': 'You are not authorised to access that location.'
-        })
-
-    def XsrfFail(self):
-        self.response.set_status(400)
-        self.render_json({'error': 'XSRF Fail'})

@@ -1,0 +1,66 @@
+<div layout="column" flex>
+
+    <md-card>
+        <md-card-header>
+            <h2 class="md-title">Title</h2>
+        </md-card-header>
+        <md-card-content>
+            Description
+        </md-card-content>
+    </md-card>
+
+    <md-card id="list-card">
+
+        <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-show="options.rowSelection && selected.length">
+            <div class="md-toolbar-tools" layout="row" flex>
+                <span>
+                    {[selected.length]} {[selected.length > 1 ? 'items' : 'item']} selected
+                </span>
+                <div flex></div>
+                <md-button aria-label="Delete Selected" ng-click="deleteSelected()">
+                    <md-icon md-svg-src="/static/img/icons/ic_delete_black_24px.svg"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-hide="options.rowSelection && selected.length">
+            <div class="md-toolbar-tools" layout="row" flex>
+                <span>
+                    Records
+                </span>
+                <div flex></div>
+                <md-button aria-label="Add" ng-click="openForm($event)">
+                    <md-icon md-svg-src="/static/img/icons/ic_add_black_24px.svg"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-table-container>
+            <table md-table md-row-select="options.rowSelection" ng-model="selected" md-progress="promise">
+                <thead md-head md-order="query.order">
+                    <tr md-row>
+                        <th md-column md-order-by="field_1"><span>Field_1</span></th>
+                        <th md-column md-order-by="field_2"><span>Field_2</span></th>
+                        <th md-column md-order-by="field_3"><span>Field_3</span></th>
+                        <th md-column md-order-by="field_4"><span>Field_4</span></th>
+                        <th md-column md-numeric md-order-by="user_defined_order"><span>Order</span></th>
+                        <th md-column md-numeric><span></span></th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{[record.field_1]}</md-cell>
+                        <td md-cell>{[record.field_2]}</td>
+                        <td md-cell>{[record.field_3]}</td>
+                        <td md-cell>{[record.field_4]}</td>
+                        <td md-cell>{[record.user_defined_order]}</td>
+                        <td md-cell ng-click="openForm($event, $index)">Edit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{[records.count]}" md-page-select="options.pageSelector" md-boundary-links="options.boundaryLinks"></md-table-pagination>
+
+    </md-card>
+</div>

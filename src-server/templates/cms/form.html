@@ -1,0 +1,30 @@
+<md-content layout="column" class="md-padding">
+    <form name="recordForm" novalidate>
+
+        <md-input-container class="md-accent">
+            <label for="name">field_1</label>
+            <input id="field_1" name="field_1" type="text" ng-model="formData.field_1">
+        </md-input-container>
+
+        <md-input-container>
+            <label for="field_2">field_2</label>
+            <input id="field_2" name="field_2" ng-model="formData.field_2">
+        </md-input-container>
+
+        <md-input-container>
+            <label for="field_3">field_3</label>
+            <input id="field_3" name="field_3" ng-model="formData.field_3">
+        </md-input-container>
+
+        <md-input-container>
+            <label for="field_4">field_4</label>
+            <input id="field_4" name="field_4" ng-model="formData.field_4">
+        </md-input-container>
+
+        <dir>
+            <md-button class="md-raised md-primary" ng-click="submitForm(formData.id)">Submit</md-button>
+            <md-button class="md-raised md-warn" ng-click="closeForm()">Cancel</md-button>
+        </dir>
+
+    </form>
+</md-content>

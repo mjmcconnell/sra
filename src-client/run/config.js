@@ -115,7 +115,8 @@ module.exports = {
              * @type {Array}
              */
             bundles: [
-                { sourceFilePath: './css/src/main.scss', outputFileName: 'main' }
+                { sourceFilePath: './css/src/public.scss', outputFileName: 'public' },
+                { sourceFilePath: './css/src/admin.scss', outputFileName: 'admin' }
             ],
 
             /**
@@ -171,7 +172,8 @@ module.exports = {
             webpackSettings: {
                 watch: false,
                 entry: {
-                    main: './js/src/main.js'
+                    public: './js/src/public.js',
+                    admin: './js/src/admin.js'
                 },
                 output: {
                     filename: '[name].js'

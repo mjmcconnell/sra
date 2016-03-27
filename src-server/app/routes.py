@@ -12,7 +12,7 @@ from app.utils.routes import MultiPrefixRoute
 
 # These should all inherit from base.handlers.BaseHandler
 _UNAUTHENTICATED_ROUTES = [
-    HandlerPrefixRoute('app.handlers.templates.pages.', [
+    HandlerPrefixRoute('app.handlers.templates.public.', [
         Route(r'/', 'HomeHandler', name='home'),
         Route(r'/gallery', 'GalleryHandler', name='gallery'),
         Route(r'/contact', 'ContactHandler', name='contact'),
@@ -36,11 +36,11 @@ _AJAX_ROUTES = []
 
 # These should all inherit from base.handlers.AdminHandler
 _ADMIN_ROUTES = MultiPrefixRoute(
-    handler_pfx='app.handlers.templates.',
+    handler_pfx='app.handlers.templates.admin.',
     name_pfx='admin-',
     path_pfx='/admin',
     routes=[
-        Route(r'/images', 'images.ImageHandler', name='images-list'),
+        # Route(r'/images', 'ImageHandler', name='images-list'),
     ]
 ).routes
 
