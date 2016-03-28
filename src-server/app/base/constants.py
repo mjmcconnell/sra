@@ -23,7 +23,7 @@ def _IsDevAppServer():
 # webapp2 application configuration constants.
 
 # using_angular
-DEFAULT_ANGULAR = False
+DEFAULT_ANGULAR = True
 
 # framing_policy
 (DENY, SAMEORIGIN, PERMIT) = range(0, 3)

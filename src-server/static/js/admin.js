@@ -91,6 +91,7 @@
 	    var url_parts = ['/api', pathname];
 	    var base_url = url_parts.join('/');
 	
+	    $scope.flashMessages = [];
 	    $scope.formData = {};
 	    $scope.records = [];
 	    $scope.selected = [];
@@ -149,7 +150,7 @@
 	    $scope.fetchItems();
 	
 	    $scope.deleteSelected = function () {
-	        var deleteUrl = [base_url, _id].join('/');
+	        $scope.flashMessages = [];
 	
 	        // Appending dialog to document.body to cover sidenav in docs app
 	        var confirm = $mdDialog.confirm().title('Delete item').content('Are you sure you want to remove the selected item(s)?').ariaLabel('Delete item').ok('Delete').cancel('Cancel').clickOutsideToClose(true);
@@ -157,6 +158,7 @@
 	        $mdDialog.show(confirm).then(function () {
 	            angular.forEach($scope.selected, function (item) {
 	                // jshint ignore:line
+	                var deleteUrl = [base_url, item.id].join('/');
 	                // Remove item from backend
 	                $http.delete(deleteUrl).success(function () {
 	                    $scope.flashMessages.push(['Items deleted', 'success']);

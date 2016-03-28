@@ -43,6 +43,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     var url_parts = ['/api', pathname]
     var base_url = url_parts.join('/');
 
+    $scope.flashMessages = [];
     $scope.formData = {};
     $scope.records = [];
     $scope.selected = [];
@@ -103,7 +104,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.fetchItems();
 
     $scope.deleteSelected = function() {
-        var deleteUrl = [base_url, _id].join('/');
+        $scope.flashMessages = [];
 
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
@@ -116,6 +117,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
 
         $mdDialog.show(confirm).then(function() {
             angular.forEach($scope.selected, function(item) {   // jshint ignore:line
+                var deleteUrl = [base_url, item.id].join('/');
                 // Remove item from backend
                 $http.delete(deleteUrl).
                     success(function() {
