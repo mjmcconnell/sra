@@ -1,10 +1,10 @@
-<html lang="en" ng-app="CMSApp">
+<html lang="en" ng-app="App">
     <head>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/admin.css">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material-data-table/0.9.9/md-data-table.min.css">
+        <link rel="stylesheet" href="/static/css/libs/angular-material-data-table/md-data-table-0.9.9.min.css">
 
         {% block extra_head %}{% endblock %}
 
@@ -15,13 +15,13 @@
 
         <md-content layout="row" flex class="content-wrapper">
 
-            {% include 'sidebar.html' %}
+            {% include 'admin/includes/sidebar.html' %}
 
             <div layout="column" flex class="content-wrapper" id="primary-col">
 
-                {% include 'header.html' %}
+                {% include 'admin/includes/header.html' %}
 
-                {% include "list.html" %}
+                {% include 'admin/includes/list.html' %}
 
             </div>
 
@@ -31,7 +31,7 @@
                 </md-toolbar>
                 <md-content layout-padding>
 
-                    {% include "form.html" %}
+                    {% include 'admin/includes/form.html' %}
 
                 </md-content>
             </md-sidenav>
@@ -47,9 +47,9 @@
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-data-table/0.9.9/md-data-table.min.js"></script>
+        <script src="/static/js/libs/angular-material-data-table/md-data-table-0.9.9.min.js"></script>
 
-        <script src="/static/js/main.js"></script>
+        <script src="/static/js/admin.js"></script>
 
         {% block extra_js %}{% endblock %}
 

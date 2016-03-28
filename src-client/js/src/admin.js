@@ -40,14 +40,34 @@ app.directive('input', ['$parse', function ($parse) {
 app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $mdDialog) {
     // pathname without the inital forward slash
     var pathname = window.location.pathname.substring(1)
+    var url_parts = ['/api', pathname]
+    var base_url = url_parts.join('/');
+
+    $scope.formData = {};
+    $scope.records = [];
+    $scope.selected = [];
+    $scope.xsrf = '';
+
+    // Set options for pagination
+    $scope.options = {
+        autoSelect: true,
+        boundaryLinks: false,
+        largeEditDialog: false,
+        pageSelector: false,
+        rowSelection: true
+    };
+
+    // Set query options for pagination
+    $scope.query = {
+        order: 'user_defined_order',
+        limit: 10,
+        page: 1
+    };
 
     // Simple replacement method of links
     $scope.clearFlashMessage = function(index) {
         $scope.flashMessages.splice(index, 1);
     }
-
-    $scope.records = [];
-    $scope.selected = [];
 
     $scope.openNav = function() {
         $mdSidenav('left').toggle();
@@ -58,7 +78,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
 
         $scope.formData = {};
         if (index !== undefined) {
-            $scope.formData = $scope.records.data[index];
+            $scope.formData = angular.copy($scope.records.data[index]);
         }
         $mdSidenav('right').toggle();
     };
@@ -67,25 +87,10 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         $mdSidenav('right').toggle();
     };
 
-    $scope.options = {
-        autoSelect: true,
-        boundaryLinks: false,
-        largeEditDialog: false,
-        pageSelector: false,
-        rowSelection: true
-    };
-
-    // Set pagination settings
-    $scope.query = {
-        order: 'user_defined_order',
-        limit: 10,
-        page: 1
-    };
-
     $scope.fetchItems = function() {
         $scope.records = [];
         // Fetch all active records
-        $http.get('/api/records').
+        $http.get(base_url).
             success(function(results) {
                 $scope.records = results;
             }).
@@ -94,11 +99,11 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             });
     };
 
+    // Fetch all items for given model
     $scope.fetchItems();
 
     $scope.deleteSelected = function() {
-        url_parts = ['/api', pathname, _id, 'delete']
-        var deleteUrl = url_parts.join('/');
+        var deleteUrl = [base_url, _id].join('/');
 
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
@@ -112,7 +117,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         $mdDialog.show(confirm).then(function() {
             angular.forEach($scope.selected, function(item) {   // jshint ignore:line
                 // Remove item from backend
-                $http.get(deleteUrl).
+                $http.delete(deleteUrl).
                     success(function() {
                         $scope.flashMessages.push([
                             'Items deleted',
@@ -134,11 +139,13 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     };
 
     // Process a form
-    $scope.formData = {};
-    $scope.serverErrors = {};
-    $scope.submitForm = function(){
+    $scope.submitForm = function(_id){
+        $scope.serverErrors = {};
         $scope.flashMessages = [];
-        var uploadUrl = '/api' + window.location.pathname;
+        var uploadUrl = base_url;
+        if (_id){
+            uploadUrl = [base_url, _id].join('/')
+        }
 
         // Create an empty FormData object to store all form fields
         var fd = new FormData();
@@ -149,6 +156,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         }
 
         // Loop through all other fields, and append them to the FormData object
+        $scope.formData.xsrf = $scope.xsrf;
         for (var key in $scope.formData) {
             if ($scope.formData[key]) {
                 fd.append(key, $scope.formData[key]);
@@ -161,14 +169,19 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             headers: {'Content-Type': undefined}
         })
         .success(function(result){
-            if (result['data'] == false) {
-                $scope.flashMessages.push(['Form Saved', 'success']);
+            $scope.flashMessages.push(['Form Saved', 'success']);
+            if (_id) {
+                // Update record
+                var record = $filter('filter')($scope.records.data, {id: _id});
+                record = result;
             } else {
-                window.location.href = result['data'];
+                // Append new record to list
+                $scope.records.data.push(result);
+                $scope.records.count = $scope.records.count + 1;
             }
+            $scope.closeForm();
         })
         .error(function(error, status){
-            var scroll_to_first = true;
             var error_message = 'Something went wrong, please try again.'
             if (error['message']) {
                 error_message = error['message'];
@@ -178,12 +191,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             $scope.flashMessages.push([error_message, 'warning']);
             for (var key in error['data']) {
                 $scope.serverErrors[key] = error['data'][key];
-
-                if (scroll_to_first == true) {
-                    scroll_to_first = false;
-                    $location.hash(key);
-                    $anchorScroll();
-                }
             }
         });
     };

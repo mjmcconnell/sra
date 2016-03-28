@@ -88,14 +88,34 @@
 	app.controller('AppCtrl', function ($scope, $log, $http, $filter, $mdSidenav, $mdDialog) {
 	    // pathname without the inital forward slash
 	    var pathname = window.location.pathname.substring(1);
+	    var url_parts = ['/api', pathname];
+	    var base_url = url_parts.join('/');
+	
+	    $scope.formData = {};
+	    $scope.records = [];
+	    $scope.selected = [];
+	    $scope.xsrf = '';
+	
+	    // Set options for pagination
+	    $scope.options = {
+	        autoSelect: true,
+	        boundaryLinks: false,
+	        largeEditDialog: false,
+	        pageSelector: false,
+	        rowSelection: true
+	    };
+	
+	    // Set query options for pagination
+	    $scope.query = {
+	        order: 'user_defined_order',
+	        limit: 10,
+	        page: 1
+	    };
 	
 	    // Simple replacement method of links
 	    $scope.clearFlashMessage = function (index) {
 	        $scope.flashMessages.splice(index, 1);
 	    };
-	
-	    $scope.records = [];
-	    $scope.selected = [];
 	
 	    $scope.openNav = function () {
 	        $mdSidenav('left').toggle();
@@ -106,7 +126,7 @@
 	
 	        $scope.formData = {};
 	        if (index !== undefined) {
-	            $scope.formData = $scope.records.data[index];
+	            $scope.formData = angular.copy($scope.records.data[index]);
 	        }
 	        $mdSidenav('right').toggle();
 	    };
@@ -115,36 +135,21 @@
 	        $mdSidenav('right').toggle();
 	    };
 	
-	    $scope.options = {
-	        autoSelect: true,
-	        boundaryLinks: false,
-	        largeEditDialog: false,
-	        pageSelector: false,
-	        rowSelection: true
-	    };
-	
-	    // Set pagination settings
-	    $scope.query = {
-	        order: 'user_defined_order',
-	        limit: 10,
-	        page: 1
-	    };
-	
 	    $scope.fetchItems = function () {
 	        $scope.records = [];
 	        // Fetch all active records
-	        $http.get('/api/records').success(function (results) {
+	        $http.get(base_url).success(function (results) {
 	            $scope.records = results;
 	        }).error(function (error) {
 	            $log.log(error);
 	        });
 	    };
 	
+	    // Fetch all items for given model
 	    $scope.fetchItems();
 	
 	    $scope.deleteSelected = function () {
-	        url_parts = ['/api', pathname, _id, 'delete'];
-	        var deleteUrl = url_parts.join('/');
+	        var deleteUrl = [base_url, _id].join('/');
 	
 	        // Appending dialog to document.body to cover sidenav in docs app
 	        var confirm = $mdDialog.confirm().title('Delete item').content('Are you sure you want to remove the selected item(s)?').ariaLabel('Delete item').ok('Delete').cancel('Cancel').clickOutsideToClose(true);
@@ -153,7 +158,7 @@
 	            angular.forEach($scope.selected, function (item) {
 	                // jshint ignore:line
 	                // Remove item from backend
-	                $http.get(deleteUrl).success(function () {
+	                $http.delete(deleteUrl).success(function () {
 	                    $scope.flashMessages.push(['Items deleted', 'success']);
 	                }).error(function (error) {
 	                    $scope.flashMessages.push(['Failed to remove items, please try again.', 'warning']);
@@ -167,11 +172,13 @@
 	    };
 	
 	    // Process a form
-	    $scope.formData = {};
-	    $scope.serverErrors = {};
-	    $scope.submitForm = function () {
+	    $scope.submitForm = function (_id) {
+	        $scope.serverErrors = {};
 	        $scope.flashMessages = [];
-	        var uploadUrl = '/api' + window.location.pathname;
+	        var uploadUrl = base_url;
+	        if (_id) {
+	            uploadUrl = [base_url, _id].join('/');
+	        }
 	
 	        // Create an empty FormData object to store all form fields
 	        var fd = new FormData();
@@ -182,6 +189,7 @@
 	        }
 	
 	        // Loop through all other fields, and append them to the FormData object
+	        $scope.formData.xsrf = $scope.xsrf;
 	        for (var key in $scope.formData) {
 	            if ($scope.formData[key]) {
 	                fd.append(key, $scope.formData[key]);
@@ -193,13 +201,18 @@
 	            transformRequest: angular.identity,
 	            headers: { 'Content-Type': undefined }
 	        }).success(function (result) {
-	            if (result['data'] == false) {
-	                $scope.flashMessages.push(['Form Saved', 'success']);
+	            $scope.flashMessages.push(['Form Saved', 'success']);
+	            if (_id) {
+	                // Update record
+	                var record = $filter('filter')($scope.records.data, { id: _id });
+	                record = result;
 	            } else {
-	                window.location.href = result['data'];
+	                // Append new record to list
+	                $scope.records.data.push(result);
+	                $scope.records.count = $scope.records.count + 1;
 	            }
+	            $scope.closeForm();
 	        }).error(function (error, status) {
-	            var scroll_to_first = true;
 	            var error_message = 'Something went wrong, please try again.';
 	            if (error['message']) {
 	                error_message = error['message'];
@@ -209,12 +222,6 @@
 	            $scope.flashMessages.push([error_message, 'warning']);
 	            for (var key in error['data']) {
 	                $scope.serverErrors[key] = error['data'][key];
-	
-	                if (scroll_to_first == true) {
-	                    scroll_to_first = false;
-	                    $location.hash(key);
-	                    $anchorScroll();
-	                }
 	            }
 	        });
 	    };

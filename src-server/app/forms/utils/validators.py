@@ -5,8 +5,10 @@ from __future__ import absolute_import
 
 # stdlib import
 import re
+from StringIO import StringIO
 
 # third-party imports
+from PIL import Image
 from wtforms import ValidationError
 from wtforms import validators
 
@@ -28,6 +30,21 @@ def validate_email_address(form, field):
         raise ValidationError('Not a valid email address.')
 
 
+def validate_image_format(form, field):
+    """Use PIL to inspect an image, to see its format type.
+    """
+    valid_formats = ['JPG', 'JPEG', 'PNG']
+
+    if len(field.raw_data):
+        if hasattr(field.raw_data[0], 'filename'):
+            try:
+                i = Image.open(StringIO(field.raw_data[0].value))
+                if i.format not in valid_formats:
+                    raise ValidationError('Invalid image provided.')
+            except IOError:
+                raise ValidationError('Invalid image format found.')
+
+
 class RequiredIf(validators.Required):
     """A validator which makes a field required if
     another field is set and has a truthy value.
@@ -44,7 +61,8 @@ class RequiredIf(validators.Required):
     def __call__(self, form, field):
         other_field = form._fields.get(self.other_field_name)
         if other_field is None:
-            raise Exception('no field named "%s" in form' % self.other_field_name)
+            raise Exception(
+                'no field named "%s" in form' % self.other_field_name)
         if bool(other_field.data):
             super(RequiredIf, self).__call__(form, field)
 

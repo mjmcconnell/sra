@@ -2,11 +2,13 @@
 
     <md-card>
         <md-card-header>
-            <h2 class="md-title">Title</h2>
+            <h2 class="md-title">{{ title }}</h2>
         </md-card-header>
+        {% if description %}
         <md-card-content>
-            Description
+            {{ description }}
         </md-card-content>
+        {% endif %}
     </md-card>
 
     <md-card id="list-card">
@@ -26,7 +28,7 @@
         <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-hide="options.rowSelection && selected.length">
             <div class="md-toolbar-tools" layout="row" flex>
                 <span>
-                    Records
+                    {{ type }}
                 </span>
                 <div flex></div>
                 <md-button aria-label="Add" ng-click="openForm($event)">
@@ -39,22 +41,32 @@
             <table md-table md-row-select="options.rowSelection" ng-model="selected" md-progress="promise">
                 <thead md-head md-order="query.order">
                     <tr md-row>
-                        <th md-column md-order-by="field_1"><span>Field_1</span></th>
-                        <th md-column md-order-by="field_2"><span>Field_2</span></th>
-                        <th md-column md-order-by="field_3"><span>Field_3</span></th>
-                        <th md-column md-order-by="field_4"><span>Field_4</span></th>
-                        <th md-column md-numeric md-order-by="user_defined_order"><span>Order</span></th>
-                        <th md-column md-numeric><span></span></th>
+                        {% for name, props in list_columns.iteritems() %}
+                            <th md-column{% if props.type == 'numeric' %} md-numeric{% endif %}
+                            {% if loop.index  < 3 and loop.index > 1 %}
+                                    hide show-gt-xs
+                                {% elif not loop.first %}
+                                    hide show-gt-sm
+                                {% endif %}
+                            ><span>{{ props.label }}</span></th>
+                        {% endfor %}
+                        <th md-column><span></span></th>
                     </tr>
                 </thead>
                 <tbody md-body>
                     <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                        <td md-cell>{[record.field_1]}</md-cell>
-                        <td md-cell>{[record.field_2]}</td>
-                        <td md-cell>{[record.field_3]}</td>
-                        <td md-cell>{[record.field_4]}</td>
-                        <td md-cell>{[record.user_defined_order]}</td>
-                        <td md-cell ng-click="openForm($event, $index)">Edit</td>
+                        {% for name, props in list_columns.iteritems() %}
+                            <td md-cell
+                                {% if loop.index  < 3 and loop.index > 1 %}
+                                    hide show-gt-xs
+                                {% elif not loop.first %}
+                                    hide show-gt-sm
+                                {% endif %}
+                            >
+                                {[record.{{name}}]}
+                            </md-cell>
+                        {% endfor %}
+                        <td class="align-right" md-cell ng-click="openForm($event, $index)">Edit</td>
                     </tr>
                 </tbody>
             </table>

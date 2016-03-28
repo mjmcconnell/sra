@@ -26,6 +26,7 @@ _UNAUTHENTICATED_AJAX_ROUTES = MultiPrefixRoute(
     path_pfx='/api',
     routes=[
         Route(r'/contact', 'mail.ContactHandler', name='contact'),
+        Route(r'/images', 'images.PublicImageList', name='images'),
     ]
 ).routes
 # These should all inherit from base.handlers.AuthenticatedHandler
@@ -40,7 +41,7 @@ _ADMIN_ROUTES = MultiPrefixRoute(
     name_pfx='admin-',
     path_pfx='/admin',
     routes=[
-        # Route(r'/images', 'ImageHandler', name='images-list'),
+        Route(r'/images', 'ImageHandler', name='images'),
     ]
 ).routes
 
@@ -49,7 +50,20 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
     handler_pfx='app.handlers.apis.',
     name_pfx='admin-api-',
     path_pfx='/api/admin',
-    routes=[]
+    routes=[
+        Route(
+            r'/images',
+            'images.AdminImageList',
+            methods=['GET', 'POST'],
+            name='images'
+        ),
+        Route(
+            r'/images/<_id:\d+>',
+            'images.AdminImageDetail',
+            methods=['GET', 'POST', 'DELETE'],
+            name='images'
+        ),
+    ]
 ).routes
 
 # These should all inherit from base.handlers.BaseCronHandler

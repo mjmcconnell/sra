@@ -40,8 +40,9 @@ handlers:
 libraries:
   - name: jinja2
     version: latest
-
   - name: webapp2
+    version: latest
+  - name: PIL
     version: latest
 
 skip_files:

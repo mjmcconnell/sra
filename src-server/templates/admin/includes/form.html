@@ -1,0 +1,17 @@
+{% import 'admin/macros.html' as macros %}
+
+<div ng-init="xsrf = '{{ _xsrf }}'"></div>
+<md-content layout="column">
+    <form novalidate>
+        {% for field in form %}
+            {{ macros.angular_field(field) }}
+        {% endfor %}
+
+        <dir>
+            <md-button class="md-raised md-primary" ng-click="submitForm(formData.id)">Submit</md-button>
+            <md-button class="md-raised md-warn" ng-click="closeForm()">Cancel</md-button>
+        </dir>
+
+    </form>
+</md-content>
+

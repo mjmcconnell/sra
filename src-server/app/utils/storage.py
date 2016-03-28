@@ -120,7 +120,7 @@ def stat_file(filename):
     }
 
 
-def get_mimetype_for_filename(filename):
+def get_mimetype(filename):
     """Simple map of filenames to values we can use in Content-Type headers
     """
     filename, ext = os.path.splitext(filename)

@@ -24,18 +24,15 @@ class BaseModel(ndb.Model):
         cls.clear_cache(key)
 
     @classmethod
-    def create_or_update(cls, form, p_key, _id=None, defaults=None):
+    def create(cls, form, _id=None, defaults=None):
         """Tries to fetch an existing record,
         if none is found a new record is created.
         """
-        if _id:
-            record = cls.get_by_id(int(_id), parent=p_key)
-        else:
-            record = cls(parent=p_key)
-            # Update the new record with default values
-            if defaults:
-                for key, value in defaults.iteritems():
-                    setattr(record, key, value)
+        record = cls()
+        # Update the new record with default values
+        if defaults:
+            for key, value in defaults.iteritems():
+                setattr(record, key, value)
 
         return record.update(form)
 
@@ -134,16 +131,16 @@ class OrderMixin(object):
                 r.put()
 
     @classmethod
-    def create_or_update(cls, form, p_key, _id=None, defaults=None):
+    def create_or_update(cls, form, _id=None, defaults=None):
         """Set the initial order value for the record."""
         if defaults is None:
             defaults = {}
 
         if _id is None:
-            defaults['order'] = cls.query(ancestor=p_key).count()
+            defaults['order'] = cls.query().count()
 
         return super(OrderMixin, cls).create_or_update(
-            form, p_key, _id, defaults)
+            form, _id, defaults)
 
 
 class UploadMixin(object):
@@ -159,11 +156,11 @@ class UploadMixin(object):
                 storage.remove_file(v)
 
     @classmethod
-    def bgenerate_bucket_url(self, image_name):
+    def generate_bucket_url(self, image_name):
         """Create a url for the gcs bucket,
         that is unique and identifiable to the record
         """
-        return '/'.join(self.__class__.__name__, uuid4(), image_name)
+        return '/'.join([self.__name__, str(uuid4()), image_name])
 
     def build_public_url(self, url):
         return storage.get_public_serving_url(url)
