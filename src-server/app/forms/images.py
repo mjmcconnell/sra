@@ -6,6 +6,7 @@ from __future__ import absolute_import
 # third-party imports
 from wtforms import Form
 from wtforms import FileField
+from wtforms import SelectField
 from wtforms import StringField
 from wtforms import TextAreaField
 from wtforms import validators
@@ -22,6 +23,13 @@ class ImageForm(Form):
             validators.DataRequired(),
             validate_image_format
         ],
+    )
+    layout = SelectField(
+        'Image Layout',
+        validators=[
+            validators.DataRequired(),
+        ],
+        choices=[('square', 'Square'), ('tall', 'Tall'), ('wide', 'Wide')]
     )
     title = StringField(
         'Title',

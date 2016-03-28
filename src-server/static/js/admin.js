@@ -93,6 +93,7 @@
 	
 	    $scope.flashMessages = [];
 	    $scope.formData = {};
+	    $scope.isProcessing = false;
 	    $scope.records = [];
 	    $scope.selected = [];
 	    $scope.xsrf = '';
@@ -177,6 +178,8 @@
 	    $scope.submitForm = function (_id) {
 	        $scope.serverErrors = {};
 	        $scope.flashMessages = [];
+	        $scope.isProcessing = true;
+	
 	        var uploadUrl = base_url;
 	        if (_id) {
 	            uploadUrl = [base_url, _id].join('/');
@@ -203,6 +206,7 @@
 	            transformRequest: angular.identity,
 	            headers: { 'Content-Type': undefined }
 	        }).success(function (result) {
+	            $scope.isProcessing = false;
 	            $scope.flashMessages.push(['Form Saved', 'success']);
 	            if (_id) {
 	                // Update record
@@ -210,11 +214,12 @@
 	                record = result;
 	            } else {
 	                // Append new record to list
-	                $scope.records.data.push(result);
+	                $scope.records.data.push(result['data']);
 	                $scope.records.count = $scope.records.count + 1;
 	            }
 	            $scope.closeForm();
 	        }).error(function (error, status) {
+	            $scope.isProcessing = false;
 	            var error_message = 'Something went wrong, please try again.';
 	            if (error['message']) {
 	                error_message = error['message'];

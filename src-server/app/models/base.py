@@ -24,7 +24,7 @@ class BaseModel(ndb.Model):
         cls.clear_cache(key)
 
     @classmethod
-    def create(cls, form, _id=None, defaults=None):
+    def create(cls, form, defaults=None):
         """Tries to fetch an existing record,
         if none is found a new record is created.
         """
@@ -131,21 +131,23 @@ class OrderMixin(object):
                 r.put()
 
     @classmethod
-    def create_or_update(cls, form, _id=None, defaults=None):
+    def create(cls, form, defaults=None):
         """Set the initial order value for the record."""
         if defaults is None:
             defaults = {}
 
-        if _id is None:
-            defaults['order'] = cls.query().count()
+        defaults['order'] = cls.query().count()
 
-        return super(OrderMixin, cls).create_or_update(
-            form, _id, defaults)
+        return super(OrderMixin, cls).create(form, defaults)
 
 
 class UploadMixin(object):
     """Mixin to handle image uploads.
     """
+
+    # Default field to apply sorting against
+    sort_order = 'order'
+    order = ndb.IntegerProperty()
 
     @classmethod
     def _pre_delete_hook(cls, key):

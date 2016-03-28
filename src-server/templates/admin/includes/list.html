@@ -1,78 +1,81 @@
 <div layout="column" flex>
 
-    <md-card>
-        <md-card-header>
-            <h2 class="md-title">{{ title }}</h2>
-        </md-card-header>
-        {% if description %}
-        <md-card-content>
-            {{ description }}
-        </md-card-content>
-        {% endif %}
-    </md-card>
+    <md-content>
 
-    <md-card id="list-card">
+        <md-card>
+            <md-card-header>
+                <h2 class="md-title">{{ title }}</h2>
+            </md-card-header>
+            {% if description %}
+            <md-card-content>
+                {{ description }}
+            </md-card-content>
+            {% endif %}
+        </md-card>
 
-        <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-show="options.rowSelection && selected.length">
-            <div class="md-toolbar-tools" layout="row" flex>
-                <span>
-                    {[selected.length]} {[selected.length > 1 ? 'items' : 'item']} selected
-                </span>
-                <div flex></div>
-                <md-button aria-label="Delete Selected" ng-click="deleteSelected()">
-                    <md-icon md-svg-src="/static/img/icons/ic_delete_black_24px.svg"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
+        <md-card id="list-card">
 
-        <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-hide="options.rowSelection && selected.length">
-            <div class="md-toolbar-tools" layout="row" flex>
-                <span>
-                    {{ type }}
-                </span>
-                <div flex></div>
-                <md-button aria-label="Add" ng-click="openForm($event)">
-                    <md-icon md-svg-src="/static/img/icons/ic_add_black_24px.svg"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
+            <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-show="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools" layout="row" flex>
+                    <span>
+                        {[selected.length]} {[selected.length > 1 ? 'items' : 'item']} selected
+                    </span>
+                    <div flex></div>
+                    <md-button aria-label="Delete Selected" ng-click="deleteSelected()">
+                        <md-icon md-svg-src="/static/img/icons/ic_delete_black_24px.svg"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
 
-        <md-table-container>
-            <table md-table md-row-select="options.rowSelection" ng-model="selected" md-progress="promise">
-                <thead md-head md-order="query.order">
-                    <tr md-row>
-                        {% for name, props in list_columns.iteritems() %}
-                            <th md-column{% if props.type == 'numeric' %} md-numeric{% endif %}
-                            {% if loop.index  < 3 and loop.index > 1 %}
-                                    hide show-gt-xs
-                                {% elif not loop.first %}
-                                    hide show-gt-sm
-                                {% endif %}
-                            ><span>{{ props.label }}</span></th>
-                        {% endfor %}
-                        <th md-column><span></span></th>
-                    </tr>
-                </thead>
-                <tbody md-body>
-                    <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                        {% for name, props in list_columns.iteritems() %}
-                            <td md-cell
+            <md-toolbar class="md-table-toolbar {[options.rowSelection && selected.length ? 'alternate' : 'md-default']}" ng-hide="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools" layout="row" flex>
+                    <span>
+                        {{ type }}
+                    </span>
+                    <div flex></div>
+                    <md-button aria-label="Add" ng-click="openForm($event)">
+                        <md-icon md-svg-src="/static/img/icons/ic_add_black_24px.svg"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-table-container>
+                <table md-table md-row-select="options.rowSelection" ng-model="selected" md-progress="promise">
+                    <thead md-head md-order="query.order">
+                        <tr md-row>
+                            {% for name, props in list_columns.iteritems() %}
+                                <th md-column{% if props.type == 'numeric' %} md-numeric{% endif %}
                                 {% if loop.index  < 3 and loop.index > 1 %}
-                                    hide show-gt-xs
-                                {% elif not loop.first %}
-                                    hide show-gt-sm
-                                {% endif %}
-                            >
-                                {[record.{{name}}]}
-                            </md-cell>
-                        {% endfor %}
-                        <td class="align-right" md-cell ng-click="openForm($event, $index)">Edit</td>
-                    </tr>
-                </tbody>
-            </table>
-        </md-table-container>
+                                        hide show-gt-xs
+                                    {% elif not loop.first %}
+                                        hide show-gt-sm
+                                    {% endif %}
+                                ><span>{{ props.label }}</span></th>
+                            {% endfor %}
+                            <th md-column><span></span></th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                            {% for name, props in list_columns.iteritems() %}
+                                <td md-cell
+                                    {% if loop.index  < 3 and loop.index > 1 %}
+                                        hide show-gt-xs
+                                    {% elif not loop.first %}
+                                        hide show-gt-sm
+                                    {% endif %}
+                                >
+                                    {[record.{{name}}]}
+                                </td md-cell>
+                            {% endfor %}
+                            <td class="align-right" md-cell ng-click="openForm($event, $index)">Edit</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
 
-        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{[records.count]}" md-page-select="options.pageSelector" md-boundary-links="options.boundaryLinks"></md-table-pagination>
+            <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{[records.count]}" md-page-select="options.pageSelector" md-boundary-links="options.boundaryLinks"></md-table-pagination>
 
-    </md-card>
+        </md-card>
+    </md-content>
 </div>

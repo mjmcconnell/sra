@@ -48,6 +48,10 @@ class ImageHandler(AdminTemplateHandler):
                     'label': 'Title',
                     'type': 'string'
                 }),
+                ('layout', {
+                    'label': 'Layout',
+                    'type': 'string'
+                }),
                 ('image_filename', {
                     'label': 'Image',
                     'type': 'string'
