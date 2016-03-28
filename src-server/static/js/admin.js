@@ -93,6 +93,7 @@
 	
 	    $scope.flashMessages = [];
 	    $scope.formData = {};
+	    $scope.imageFields = {};
 	    $scope.isProcessing = false;
 	    $scope.records = [];
 	    $scope.selected = [];
@@ -109,7 +110,7 @@
 	
 	    // Set query options for pagination
 	    $scope.query = {
-	        order: 'user_defined_order',
+	        order: 'order',
 	        limit: 10,
 	        page: 1
 	    };
@@ -126,7 +127,9 @@
 	    $scope.openForm = function (event, index) {
 	        event.stopPropagation();
 	
+	        $scope.imageFields = {};
 	        $scope.formData = {};
+	
 	        if (index !== undefined) {
 	            $scope.formData = angular.copy($scope.records.data[index]);
 	        }

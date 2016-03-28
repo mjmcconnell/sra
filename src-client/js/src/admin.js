@@ -45,6 +45,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
 
     $scope.flashMessages = [];
     $scope.formData = {};
+    $scope.imageFields = {};
     $scope.isProcessing = false;
     $scope.records = [];
     $scope.selected = [];
@@ -61,7 +62,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
 
     // Set query options for pagination
     $scope.query = {
-        order: 'user_defined_order',
+        order: 'order',
         limit: 10,
         page: 1
     };
@@ -78,7 +79,9 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.openForm = function(event, index) {
         event.stopPropagation();
 
+        $scope.imageFields = {};
         $scope.formData = {};
+
         if (index !== undefined) {
             $scope.formData = angular.copy($scope.records.data[index]);
         }
