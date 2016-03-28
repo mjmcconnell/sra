@@ -12,7 +12,7 @@ from app.models.base import OrderMixin
 from app.models.base import UploadMixin
 
 
-class Image(BaseModel, OrderMixin, UploadMixin):
+class Image(OrderMixin, UploadMixin, BaseModel):
 
     title = ndb.StringProperty(required=True, indexed=False)
     description = ndb.StringProperty(required=False, indexed=False)
