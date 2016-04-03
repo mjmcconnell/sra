@@ -164,7 +164,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         }
 
         // Loop through all other fields, and append them to the FormData object
-        $scope.formData.xsrf = $scope.xsrf;
         for (var key in $scope.formData) {
             if ($scope.formData[key]) {
                 fd.append(key, $scope.formData[key]);

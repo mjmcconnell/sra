@@ -1,8 +1,8 @@
 {% import 'admin/macros.html' as macros %}
 
-<div ng-init="xsrf = '{{ _xsrf }}'"></div>
 <md-content layout="column">
-    <form novalidate>
+    <form novalidate enctype="multipart/form-data">
+        <input type="hidden" value="{{ _xsrf }}" id="xsrf" name="xsrf" ng-model="formData.xsrf">
         {% for field in form %}
             {{ macros.angular_field(field) }}
         {% endfor %}
