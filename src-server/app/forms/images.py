@@ -3,8 +3,10 @@
 # future imports
 from __future__ import absolute_import
 
+# stdlib imports
+from collections import OrderedDict
+
 # third-party imports
-from wtforms import Form
 from wtforms import FileField
 from wtforms import SelectField
 from wtforms import StringField
@@ -12,10 +14,13 @@ from wtforms import TextAreaField
 from wtforms import validators
 
 # local imports
-from .utils.validators import validate_image_format
+from app.forms.base import SerialiserForm
+from app.forms.utils.serialisers import ModelSerialiser
+from app.forms.utils.validators import validate_image_format
+from app.models.images import Image
 
 
-class ImageForm(Form):
+class ImageForm(SerialiserForm):
 
     image = FileField(
         'Image',
@@ -43,3 +48,19 @@ class ImageForm(Form):
             validators.DataRequired(),
         ],
     )
+
+    class Serializer(ModelSerialiser):
+        model = Image
+        fields = OrderedDict([
+            ('title', {
+                'label': 'Title'
+            }),
+            ('layout', {
+                'label': 'Layout'
+            }),
+            ('image_filename', {
+                'label': 'Image',
+                'type': 'link',
+                'link_property': 'image_bucket_url',
+            }),
+        ])

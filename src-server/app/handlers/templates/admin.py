@@ -1,8 +1,5 @@
 """Base handlers for the application.
 """
-# stdlib imports
-from collections import OrderedDict
-
 # third-party imports
 from google.appengine.api import users
 from webapp2_extras import sessions
@@ -38,28 +35,12 @@ class AdminTemplateHandler(handlers.AdminHandler):
 class ImageHandler(AdminTemplateHandler):
 
     def get(self):
+        form = ImageForm()
         template_data = {
             'title': 'Images',
             'type': 'Images',
             'description': '',
-            'form': ImageForm(),
-            'list_columns': OrderedDict([
-                ('title', {
-                    'label': 'Title',
-                    'type': 'string'
-                }),
-                ('layout', {
-                    'label': 'Layout',
-                    'type': 'string'
-                }),
-                ('image_filename', {
-                    'label': 'Image',
-                    'type': 'string'
-                }),
-                # ('image_bucket_url', {
-                #     'label': 'Url',
-                #     'type': 'string'
-                # }),
-            ])
+            'form': form,
+            'fields': form.serialiser.fields
         }
         self.render('admin/cms.html', template_data)

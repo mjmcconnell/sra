@@ -43,7 +43,7 @@
                 <table md-table md-row-select="options.rowSelection" ng-model="selected" md-progress="promise">
                     <thead md-head md-order="query.order">
                         <tr md-row>
-                            {% for name, props in list_columns.iteritems() %}
+                            {% for name, props in fields.iteritems() %}
                                 <th md-column{% if props.type == 'numeric' %} md-numeric{% endif %}
                                 {% if loop.index  < 3 and loop.index > 1 %}
                                         hide show-gt-xs
@@ -57,7 +57,7 @@
                     </thead>
                     <tbody md-body>
                         <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                            {% for name, props in list_columns.iteritems() %}
+                            {% for name, props in fields.iteritems() %}
                                 <td md-cell
                                     {% if loop.index  < 3 and loop.index > 1 %}
                                         hide show-gt-xs
@@ -65,7 +65,13 @@
                                         hide show-gt-sm
                                     {% endif %}
                                 >
-                                    {[record.{{name}}]}
+                                {% if props.type %}
+                                    {% if props.type == 'link' %}
+                                        <a href="{[ record.{{ props.link_property }} ]}" target="_blank">{[record.{{ name }}]}</a>
+                                    {% endif %}
+                                {% else %}
+                                    {[record.{{ name }}]}
+                                {% endif %}
                                 </td md-cell>
                             {% endfor %}
                             <td class="align-right" md-cell ng-click="openForm($event, $index)">Edit</td>
