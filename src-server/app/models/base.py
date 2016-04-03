@@ -149,13 +149,13 @@ class UploadMixin(object):
     sort_order = 'order'
     order = ndb.IntegerProperty()
 
-    @classmethod
-    def _pre_delete_hook(cls, key):
-        """Remove the image from gcs
-        """
-        for k, v in key.get().to_dict().iteritems():
-            if k.startswith('image_url') and v:
-                storage.remove_file(v)
+    # @classmethod
+    # def _pre_delete_hook(cls, key):
+    #     """Remove the image from gcs
+    #     """
+    #     for k, v in key.get().to_dict().iteritems():
+    #         if k.startswith('image_url') and v:
+    #             storage.remove_file(v)
 
     @classmethod
     def generate_bucket_url(self, image_name):
