@@ -49,7 +49,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.isProcessing = false;
     $scope.records = [];
     $scope.selected = [];
-    $scope.xsrf = '';
 
     // Set options for pagination
     $scope.options = {
@@ -129,6 +128,13 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
                             'Items deleted',
                             'success'
                         ]);
+
+                        // Update the template with the records removed
+                        var selectedIndex = $scope.selected.indexOf(item);
+                        $scope.selected.splice(selectedIndex, 1);
+                        var recordsIndex = $scope.records.data.indexOf(item);
+                        $scope.records.data.splice(recordsIndex, 1);
+                        $scope.records.count = $scope.records.count - 1;
                     }).
                     error(function(error) {
                         $scope.flashMessages.push([
@@ -137,10 +143,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
                         ]);
                     });
             });
-            setTimeout(function() {
-                $scope.selected = [];
-                $scope.fetchItems();
-            }, 500);
         });
     };
 

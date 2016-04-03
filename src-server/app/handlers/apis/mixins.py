@@ -189,12 +189,13 @@ class DeleteMixin(BaseMixin):
     def delete(self, _id):
         """Remove a record from the datastore.
         """
-        record = self._get_record(_id)
-        if record is None:
-            self.response.set_status(400)
-            return self.render_json({'message': 'Record not found'})
+        pass
+        # record = self._get_record(_id)
+        # if record is None:
+        #     self.response.set_status(400)
+        #     return self.render_json({'message': 'Record not found'})
 
-        return record.key.delete()
+        # return record.key.delete()
 
 
 class RetrieveUpdateDeleteMixin(RetrieveMixin, UpdateMixin, DeleteMixin):
