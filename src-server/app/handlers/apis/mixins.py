@@ -59,10 +59,7 @@ class BaseMixin(object):
         """
         self.form = self.form(data, record)
         for k, v in data.iteritems():
-            if k.startswith('image'):
-                if record:
-                    org_image = getattr(record, k)
-
+            if k.endswith('image'):
                 # Check if the image field is populated
                 if hasattr(v, 'filename'):
                     # to preform cleanup on the filename
@@ -73,9 +70,9 @@ class BaseMixin(object):
                     c_filename = c_filename + ext
                     path = self.model.generate_bucket_url(c_filename)
                     self.new_image_files.append({
-                        'filename': self.model.generate_bucket_url(c_filename),
-                        'minetype': storage.get_mimetype(c_filename),
-                        'value': v
+                        'filename': path,
+                        'minetype': v.type,
+                        'value': v.file.read()
                     })
                     # Update the form field Filestorage data with the
                     # cleaned filename
@@ -83,11 +80,11 @@ class BaseMixin(object):
                 # If the field is not set, then try to use the records value
                 # to populate the field.
                 elif record:
-                    v = org_image
+                    v = getattr(record, k)
             try:
                 setattr(getattr(self.form, k), 'data', v)
-            except AttributeError as e:
-                logger.error(e)
+            except AttributeError:
+                pass
 
         return self.form
 
@@ -95,9 +92,9 @@ class BaseMixin(object):
         for new_image in self.new_image_files:
             # Upload the image to the googe cloud storage bucket
             storage.store_file(
-                new_image['filename'],
-                new_image['minetype'],
-                new_image['value']
+                filename=new_image['filename'],
+                data=new_image['value'],
+                mimetype=new_image['minetype']
             )
 
         return form

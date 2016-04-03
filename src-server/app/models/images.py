@@ -10,6 +10,7 @@ from google.appengine.ext import ndb
 from app.models.base import BaseModel
 from app.models.base import OrderMixin
 from app.models.base import UploadMixin
+from app.utils import storage
 
 
 class Image(OrderMixin, UploadMixin, BaseModel):
@@ -21,4 +22,4 @@ class Image(OrderMixin, UploadMixin, BaseModel):
     image_filename = ndb.ComputedProperty(
         lambda self: self.image.split('/')[-1])
     image_bucket_url = ndb.ComputedProperty(
-        lambda self: self.build_public_url(self.image))
+        lambda self: storage.get_public_serving_url(self.image))
