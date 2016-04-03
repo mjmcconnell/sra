@@ -8,7 +8,7 @@ STORAGE_CONTAINER = $(CID)-storage
 # user can pass `app=<appname>` or `version=<version>` to control where the
 # app gets deployed
 ifndef app
-	app = gae-scaffold
+	app = sharon-regan-art
 endif
 ifndef version
 	version = development
