@@ -3,9 +3,6 @@
 # future imports
 from __future__ import absolute_import
 
-# stdlib imports
-from collections import OrderedDict
-
 # third-party imports
 from wtforms import FileField
 from wtforms import SelectField
@@ -51,7 +48,7 @@ class ImageForm(SerialiserForm):
 
     class Serializer(ModelSerialiser):
         model = Image
-        fields = OrderedDict([
+        list_fields = [
             ('title', {
                 'label': 'Title'
             }),
@@ -63,4 +60,4 @@ class ImageForm(SerialiserForm):
                 'type': 'link',
                 'link_property': 'image_bucket_url',
             }),
-        ])
+        ]

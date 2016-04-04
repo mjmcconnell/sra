@@ -7,6 +7,7 @@ from webapp2_extras import sessions
 # local imports
 from app.base import handlers
 from app.forms.images import ImageForm
+from app.forms.pages import PageForm
 
 
 class AdminTemplateHandler(handlers.AdminHandler):
@@ -41,6 +42,20 @@ class ImageHandler(AdminTemplateHandler):
             'type': 'Images',
             'description': '',
             'form': form,
-            'fields': form.serialiser.fields
+            'fields': form.fields
+        }
+        self.render('admin/cms.html', template_data)
+
+
+class PageHandler(AdminTemplateHandler):
+
+    def get(self):
+        form = PageForm()
+        template_data = {
+            'title': 'Pages',
+            'type': 'Pages',
+            'description': '',
+            'form': form,
+            'fields': form.fields
         }
         self.render('admin/cms.html', template_data)

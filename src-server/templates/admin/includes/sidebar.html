@@ -2,22 +2,15 @@
     <md-list class="nav-list">
         <md-item>
             <md-item-content>
-                <md-button href="#">
-                    Link 1
+                <md-button {% if request.path.startswith(uri_for('admin-pages-list')) %} class="selected"{% endif %} href="{{uri_for('admin-pages-list')}}">
+                    Pages
                 </md-button>
             </md-item-content>
         </md-item>
         <md-item>
             <md-item-content>
-                <md-button href="#">
-                    Link 2
-                </md-button>
-            </md-item-content>
-        </md-item>
-        <md-item>
-            <md-item-content>
-                <md-button href="#">
-                    Link 3
+                <md-button {% if request.path.startswith(uri_for('admin-images-list')) %} class="selected"{% endif %} href="{{uri_for('admin-images-list')}}">
+                    Images
                 </md-button>
             </md-item-content>
         </md-item>

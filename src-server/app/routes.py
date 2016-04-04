@@ -5,6 +5,7 @@ import itertools
 # third-party imports
 from webapp2 import Route
 from webapp2_extras.routes import HandlerPrefixRoute
+from webapp2_extras.routes import RedirectRoute
 
 # local imports
 from app.utils.routes import MultiPrefixRoute
@@ -27,6 +28,8 @@ _UNAUTHENTICATED_AJAX_ROUTES = MultiPrefixRoute(
     routes=[
         Route(r'/contact', 'mail.ContactHandler', name='contact'),
         Route(r'/images', 'images.PublicImageList', name='images'),
+        Route(r'/meta_data', 'images.PublicMetaDataList', name='meta_data'),
+        Route(r'/pages', 'images.PublicPageList', name='pages'),
     ]
 ).routes
 # These should all inherit from base.handlers.AuthenticatedHandler
@@ -36,12 +39,18 @@ _USER_ROUTES = []
 _AJAX_ROUTES = []
 
 # These should all inherit from base.handlers.AdminHandler
-_ADMIN_ROUTES = MultiPrefixRoute(
+_ADMIN_ROUTES = [
+    RedirectRoute(r'/admin', redirect_to_name='admin-pages-list'),
+    RedirectRoute(r'/admin/', redirect_to_name='admin-pages-list'),
+]
+
+_ADMIN_ROUTES = _ADMIN_ROUTES + MultiPrefixRoute(
     handler_pfx='app.handlers.templates.admin.',
     name_pfx='admin-',
     path_pfx='/admin',
     routes=[
-        Route(r'/images', 'ImageHandler', name='images'),
+        Route(r'/images', 'ImageHandler', name='images-list'),
+        Route(r'/pages', 'PageHandler', name='pages-list'),
     ]
 ).routes
 
@@ -55,13 +64,25 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
             r'/images',
             'images.AdminImageList',
             methods=['GET', 'POST'],
-            name='images'
+            name='images-list'
         ),
         Route(
             r'/images/<_id:\d+>',
             'images.AdminImageDetail',
             methods=['GET', 'POST', 'DELETE'],
-            name='images'
+            name='images-detail'
+        ),
+        Route(
+            r'/pages',
+            'pages.AdminPageList',
+            methods=['GET'],
+            name='pages-list'
+        ),
+        Route(
+            r'/pages/<_id:\d+>',
+            'pages.AdminPageDetail',
+            methods=['GET', 'POST'],
+            name='pages-detail'
         ),
     ]
 ).routes
