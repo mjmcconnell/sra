@@ -206,4 +206,40 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         });
     };
 
+    $scope.reorder = function(event, index, increment){
+        event.stopPropagation();
+        var fd = new FormData()
+        var first_el = angular.copy($scope.records.data[index]);
+        var second_el = angular.copy($scope.records.data[index + increment]);
+        fd.append(
+            'ids', angular.toJson([
+                {'id': first_el['id'], 'order': first_el['order']},
+                {'id': second_el['id'], 'order': second_el['order']},
+            ])
+        );
+
+        $http.put(base_url, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(result){
+            $scope.isProcessing = false;
+            $scope.records.data[index]['order'] = second_el['order'];
+            $scope.records.data[index + increment]['order'] = first_el['order'];
+        })
+        .error(function(error, status){
+            $scope.isProcessing = false;
+            var error_message = 'Something went wrong, please try again.'
+            if (error['message']) {
+                error_message = error['message'];
+            } else if (error['error']) {
+                error_message = error['error'];
+            }
+            $scope.flashMessages.push([error_message, 'warning']);
+            for (var key in error['data']) {
+                $scope.serverErrors[key] = error['data'][key];
+            }
+        });
+    };
+
 });

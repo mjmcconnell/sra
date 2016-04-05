@@ -63,7 +63,7 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
         Route(
             r'/images',
             'images.AdminImageList',
-            methods=['GET', 'POST'],
+            methods=['GET', 'POST', 'PUT'],
             name='images-list'
         ),
         Route(
@@ -75,7 +75,7 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
         Route(
             r'/pages',
             'pages.AdminPageList',
-            methods=['GET'],
+            methods=['GET', 'PUT'],
             name='pages-list'
         ),
         Route(

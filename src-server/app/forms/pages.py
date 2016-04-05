@@ -55,6 +55,10 @@ class PageForm(SerialiserForm):
             ('page__title', {
                 'label': 'Page Title',
             }),
+            ('order', {
+                'label': 'Order',
+                'type': 'ordering',
+            }),
         ]
         field_sets = [
             {

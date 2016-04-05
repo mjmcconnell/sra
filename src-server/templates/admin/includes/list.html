@@ -45,11 +45,12 @@
                         <tr md-row>
                             {% for name, props in fields %}
                                 <th md-column{% if props.type == 'numeric' %} md-numeric{% endif %}
-                                {% if loop.index  < 3 and loop.index > 1 %}
+                                {% if loop.index  < 3 and loop.index > 1 or props.type == 'ordering'%}
                                         hide show-gt-xs
                                     {% elif not loop.first %}
                                         hide show-gt-sm
                                     {% endif %}
+                                    {% if props.type == 'ordering' %} class="ordering-buttons"{% endif %}
                                 ><span>{{ props.label }}</span></th>
                             {% endfor %}
                             <th md-column><span></span></th>
@@ -59,22 +60,36 @@
                         <tr md-row md-select="record" md-auto-select="options.autoSelect" ng-repeat="record in records.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                             {% for name, props in fields %}
                                 <td md-cell
-                                    {% if loop.index  < 3 and loop.index > 1 %}
+                                    {% if loop.index  < 3 and loop.index > 1 or props.type == 'ordering' %}
                                         hide show-gt-xs
                                     {% elif not loop.first %}
                                         hide show-gt-sm
                                     {% endif %}
+                                    {% if props.type == 'ordering' %} class="ordering-buttons"{% endif %}
                                 >
                                 {% if props.type %}
                                     {% if props.type == 'link' %}
                                         <a href="{[ record.{{ props.link_property }} ]}" target="_blank">{[record.{{ name }}]}</a>
+                                    {% elif props.type == 'ordering' %}
+                                        <md-button ng-hide="$first" class="md-icon-button" ng-click="reorder($event, $index, -1)" aria-label="Move up">
+                                            <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_up_black_24px.svg"></md-icon>
+                                        </md-button>
+                                        <md-button ng-show="$first == true" class="md-icon-button" aria-label="Move up">
+                                            <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_up_grey_24px.svg"></md-icon>
+                                        </md-button>
+                                        <md-button ng-hide="$last" class="md-icon-button" ng-click="reorder($event, $index, 1)" aria-label="Move down">
+                                            <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_down_black_24px.svg"></md-icon>
+                                        </md-button>
+                                        <md-button ng-show="$last == true" class="md-icon-button" aria-label="Move down">
+                                            <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_down_grey_24px.svg"></md-icon>
+                                        </md-button>
                                     {% endif %}
                                 {% else %}
                                     {[record.{{ name }}]}
                                 {% endif %}
                                 </td md-cell>
                             {% endfor %}
-                            <td class="align-right" md-cell ng-click="openForm($event, $index)">Edit</td>
+                            <td class="align-right list-edit-cell" md-cell ng-click="openForm($event, $index)">Edit</td>
                         </tr>
                     </tbody>
                 </table>

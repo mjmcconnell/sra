@@ -1,6 +1,7 @@
 """Template handlers, for injecting python into html templates.
 """
 # stdlib imports
+import json
 import logging
 import os
 import re
@@ -204,3 +205,19 @@ class DeleteMixin(BaseMixin):
 class RetrieveUpdateDeleteMixin(RetrieveMixin, UpdateMixin, DeleteMixin):
 
     pass
+
+
+class OrderMixin(BaseMixin):
+    """Updates the position of each models record in the datastore
+
+    Expects a list of objects with an "id" attribrute indicating the record id
+    """
+
+    def put(self, *args, **kwargs):
+        """Update the records position field.
+        """
+        post_data = self.request.POST
+        for data in json.loads((post_data['ids'])):
+            record = self._get_record(data['id'])
+            record.order = int(data['order'])
+            record.put()

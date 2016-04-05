@@ -4,6 +4,7 @@
 from app.base.handlers import BaseAjaxHandler
 from app.base.handlers import AdminAjaxHandler
 from app.handlers.apis.mixins import ListMixin
+from app.handlers.apis.mixins import OrderMixin
 from app.handlers.apis.mixins import RetrieveMixin
 from app.handlers.apis.mixins import UpdateMixin
 
@@ -22,7 +23,7 @@ class PublicPageList(ListMixin, BaseAjaxHandler):
     model = Page
 
 
-class AdminPageList(ListMixin, AdminAjaxHandler):
+class AdminImageList(ListMixin, OrderMixin, AdminAjaxHandler):
 
     form = PageForm
     model = Page

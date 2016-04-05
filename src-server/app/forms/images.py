@@ -60,4 +60,8 @@ class ImageForm(SerialiserForm):
                 'type': 'link',
                 'link_property': 'image_bucket_url',
             }),
+            ('order', {
+                'label': 'Order',
+                'type': 'ordering',
+            }),
         ]
