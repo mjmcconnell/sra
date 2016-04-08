@@ -14,10 +14,32 @@ md-toolbar.global-header {
 
     .md-toolbar-tools {
         height: 60px;
+        padding: 30px;
+
+        a.logo-large {
+            width: 300px;
+            img {
+                max-height: 50px;
+                float: left;
+                padding: 0 17px 0 0;
+                border-right: 2px solid #000;
+                margin-right: 17px;
+                margin-top: 6px;
+            }
+            h2 {
+                padding: 20px;
+            }
+        }
+        a.logo-small {
+            width: 120px;
+            img {
+                max-height: 50px;
+            }
+        }
 
         .global-header-links {
             margin-right: -16px;
-            margin-bottom: -6px;
+            margin-top: 3px;
 
             .global-header-link {
                 color: black;
