@@ -31,7 +31,6 @@ md-toolbar.global-header {
             }
         }
         a.logo-small {
-            width: 120px;
             img {
                 max-height: 50px;
             }
@@ -46,6 +45,28 @@ md-toolbar.global-header {
                 padding: 12px 0;
                 margin: -3px;
                 border-radius: 0;
+            }
+        }
+    }
+}
+
+/* SIDE NAV */
+md-sidenav.md-sidenav-right {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+
+    md-list {
+        width: 100%;
+
+        md-item {
+            display: inline-flex;
+
+            md-item-content a {
+                text-align: left;
+                width: 200px;
+                margin: 0px 0;
+                padding: 4px 0 4px 20px;
             }
         }
     }

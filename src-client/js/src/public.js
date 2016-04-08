@@ -7,7 +7,11 @@ app.config(function($interpolateProvider, $mdThemingProvider) {
 });
 
 // List controller
-app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast) {
+app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav) {
+
+    $scope.openNav = function() {
+        $mdSidenav('right').toggle();
+    };
 
     $scope.colorTiles = (function() {
         var tiles = [];

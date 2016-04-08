@@ -9,6 +9,7 @@
         <a name="home"></a>
 
         <md-content layout="row" flex>
+            {% include 'includes/sidebar.html' %}
             <div layout="column" flex id="content">
 
                 <md-toolbar class="global-header">
@@ -21,10 +22,13 @@
                             <img src="/static/img/logo.png">
                         </a>
                         <span flex></span>
-                        <div class="global-header-links">
+                        <div hide show-gt-xs class="global-header-links">
                             <md-button href="#gallery" class="global-header-link">Gallery</md-button>
                             <md-button href="#contact" class="global-header-link">Contact</md-button>
                         </div>
+                        <md-button class="md-icon-button" aria-label="Toggle Menu" hide-gt-xs ng-click="openNav()">
+                            <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
+                        </md-button>
                     </div>
                 </md-toolbar>
 
