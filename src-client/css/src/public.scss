@@ -81,6 +81,12 @@ md-sidenav.md-sidenav-right {
     background-position: 50% 50%;
 }
 
+@media (max-width: 599px) {
+    .hero {
+        min-height: 300px;
+    }
+}
+
 .strip {
     padding: 2.4rem 1.9rem 2.8rem 1.9rem;
     text-align: center;
