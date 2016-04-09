@@ -9,28 +9,29 @@
         <a name="home"></a>
         {% include 'includes/sidebar.html' %}
 
-        <md-content layout="row" flex>
-            <div layout="column" flex id="content">
+        <div class="header-background"></div>
+        <md-toolbar class="global-header">
+            <div class="md-toolbar-tools">
+                <a class="logo-large" hide show-gt-xs href="#home">
+                    <img src="/static/img/head.png">
+                    <h2>Sharon Regan Art</h2>
+                </a>
+                <a class="logo-small" hide-gt-xs href="#home">
+                    <img src="/static/img/logo.png">
+                </a>
+                <span flex></span>
+                <div hide show-gt-xs class="global-header-links">
+                    <md-button href="#gallery" class="global-header-link">Gallery</md-button>
+                    <md-button href="#contact" class="global-header-link">Contact</md-button>
+                </div>
+                <!-- <md-button class="md-icon-button" aria-label="Toggle Menu" hide-gt-xs ng-click="openNav()">
+                    <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
+                </md-button> -->
+            </div>
+        </md-toolbar>
 
-                <md-toolbar class="global-header">
-                    <div class="md-toolbar-tools">
-                        <a class="logo-large" hide show-gt-xs href="#home">
-                            <img src="/static/img/head.png">
-                            <h2>Sharon Regan Art</h2>
-                        </a>
-                        <a class="logo-small" hide-gt-xs href="#home">
-                            <img src="/static/img/logo.png">
-                        </a>
-                        <span flex></span>
-                        <div hide show-gt-xs class="global-header-links">
-                            <md-button href="#gallery" class="global-header-link">Gallery</md-button>
-                            <md-button href="#contact" class="global-header-link">Contact</md-button>
-                        </div>
-                        <!-- <md-button class="md-icon-button" aria-label="Toggle Menu" hide-gt-xs ng-click="openNav()">
-                            <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
-                        </md-button> -->
-                    </div>
-                </md-toolbar>
+        <md-content layout="row" flex id="main">
+            <div layout="column" flex id="content">
 
                 <div class="page-content">
                     {% block content %}{% endblock %}
