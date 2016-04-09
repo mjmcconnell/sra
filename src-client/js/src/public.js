@@ -7,11 +7,17 @@ app.config(function($interpolateProvider, $mdThemingProvider) {
 });
 
 // List controller
-app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav) {
+app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav, $location, $anchorScroll, $window) {
 
-    $scope.openNav = function() {
-        $mdSidenav('right').toggle();
+    $scope.toggleNav = function(el) {
+        $mdSidenav(el).toggle();
     };
+
+    $scope.scrollToEl = function(el) {
+        $location.hash(el);
+        $anchorScroll();
+        $mdSidenav('right').close();
+    }
 
     $scope.colorTiles = (function() {
         var tiles = [];

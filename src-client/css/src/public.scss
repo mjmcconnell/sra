@@ -52,14 +52,17 @@ md-toolbar.global-header {
             margin: -3px;
             border-radius: 0;
         }
+        .toggle_menu {
+            margin-right: 6px;
+        }
     }
 }
 
 /* SIDE NAV */
 md-sidenav.md-sidenav-right {
     width: 200px;
-    min-width: 200px;
     max-width: 200px;
+    position: fixed;
 
     md-list {
         width: 100%;
@@ -67,11 +70,12 @@ md-sidenav.md-sidenav-right {
         md-item {
             display: inline-flex;
 
-            md-item-content a {
+            md-item-content button {
                 text-align: left;
                 width: 200px;
                 margin: 0px 0;
                 padding: 4px 0 4px 20px;
+                border-radius: 0;
             }
         }
     }
