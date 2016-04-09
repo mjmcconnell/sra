@@ -20,7 +20,7 @@
                     <img src="/static/img/logo.png">
                 </a>
                 <span flex></span>
-                <div hide show-gt-xs class="global-header-links">
+                <div hide show-gt-xs>
                     <md-button href="#gallery" class="global-header-link">Gallery</md-button>
                     <md-button href="#contact" class="global-header-link">Contact</md-button>
                 </div>
@@ -33,9 +33,7 @@
         <md-content layout="row" flex id="main">
             <div layout="column" flex id="content">
 
-                <div class="page-content">
-                    {% block content %}{% endblock %}
-                </div>
+                {% block content %}{% endblock %}
 
                 <footer flex="none">
                     <div class="strip default-strip">
