@@ -6,6 +6,10 @@ app.config(function($interpolateProvider, $mdThemingProvider) {
     $interpolateProvider.endSymbol(']}');
 });
 
+app.run(['$anchorScroll', function($anchorScroll) {
+    $anchorScroll.yOffset = 60;
+}])
+
 // List controller
 app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav, $location, $anchorScroll, $window) {
 
