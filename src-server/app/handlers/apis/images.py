@@ -21,6 +21,7 @@ class AdminImageList(ListCreateMixin, OrderMixin, AdminAjaxHandler):
 
     form = ImageForm
     model = Image
+    sort_order = 'order'
 
 
 class AdminImageDetail(RetrieveUpdateDeleteMixin, AdminAjaxHandler):

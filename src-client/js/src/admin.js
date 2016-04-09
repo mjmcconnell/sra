@@ -43,6 +43,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     var url_parts = ['/api', pathname]
     var base_url = url_parts.join('/');
 
+    $scope.activeRecordIndex = false;
     $scope.flashMessages = [];
     $scope.formData = {};
     $scope.imageFields = {};
@@ -82,6 +83,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         $scope.formData = {};
 
         if (index !== undefined) {
+            $scope.activeRecordIndex = index
             $scope.formData = angular.copy($scope.records.data[index]);
         }
         $mdSidenav('right').toggle();
@@ -182,8 +184,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             $scope.flashMessages.push(['Form Saved', 'success']);
             if (_id) {
                 // Update record
-                var record = $filter('filter')($scope.records.data, {id: _id});
-                record = result;
+                $scope.records.data[$scope.activeRecordIndex] = result['data'];
             } else {
                 // Append new record to list
                 $scope.records.data.push(result['data']);
