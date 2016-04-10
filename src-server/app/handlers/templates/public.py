@@ -2,9 +2,14 @@
 """
 # local imports
 from app.base.handlers import BaseHandler
+from app.models.pages import MetaData
 
 
 class HomeHandler(BaseHandler):
 
     def get(self):
-        self.render('home.html')
+        pages = MetaData.fetch_cached_dataset()
+        tagged_pages = {}
+        for p in pages:
+            tagged_pages.update({p['tag']: p})
+        self.render('home.html', {'pages': tagged_pages})

@@ -6,15 +6,15 @@
 
 <div class="strip primary-strip">
     <div class="strip-content">
-        <h1 class="md-headline">Welcome to sharon regan art</h1>
-        <p class="md-subhead">I often find my inspiration whilst out walking the dogs or exploring country lanes on horseback, I love to catch sight of hares, foxes and other wildlife or watching the horses play in the field, it feels like a wonderful gift, a special moment. I aim to capture that moment and bring the outdoors indoors. Watching my subjects gives me pleasure, creating the sculptures from clay brings me pleasure, I hope my sculptures bring you pleasure too.</p>
+        <h1 class="md-headline">{{ pages.home.page.title }}</h1>
+        <p class="md-subhead">{{ pages.home.page['copy'] }}</p>
     </div>
 </div>
 
 <div class="strip default-strip">
     <div id="gallery" class="strip-content">
-        <h1 class="md-display-1">Gallery</h1>
-        <p class="md-subhead">My sculptures reflect my fascination with the duality of strength and fragility found within human existence and nature.</p>
+        <h1 class="md-display-1">{{ pages.gallery.page.title }}</h1>
+        <p class="md-subhead">{{ pages.gallery.page['copy'] }}</p>
         <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
             <md-grid-tile class="thumbnail" ng-click="showDialog($event, $index)" ng-repeat="tile in colorTiles" ng-style="{'background-image':'url({[tile.imgSrc]})'}" md-colspan-gt-sm="{[tile.colspan]}" md-rowspan-gt-sm="{[tile.rowspan]}"></md-grid-tile>
         </md-grid-list>
@@ -24,7 +24,7 @@
 
 <div id="contact" class="strip primary-strip">
     <div class="strip-content">
-        <h1 class="md-headline">Questions? Comments? Let's talk.</h1>
+        <h1 class="md-headline">{{ pages.contact.page.title }}</h1>
     </div>
 </div>
 
@@ -34,9 +34,7 @@
 
             <md-card>
                 <md-card-content>
-                    <h1 class="md-subhead contact-form-header-copy">
-                        Fell free to drop me a message for any enquiries about my work, for just for a chat.
-                    </h1>
+                    <h1 class="md-subhead contact-form-header-copy">{{ pages.contact.page['copy'] }}</h1>
                     <md-input-container class="md-block">
                         <label for="name">Name</label>
                         <input required id="name" name="name" type="text" ng-model="formData.name">
