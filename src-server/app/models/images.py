@@ -17,7 +17,6 @@ class Image(OrderMixin, UploadMixin, BaseModel):
 
     title = ndb.StringProperty(required=True, indexed=False)
     description = ndb.StringProperty(required=False, indexed=False)
-    layout = ndb.StringProperty(choices=['square', 'tall', 'wide'])
     image = ndb.StringProperty(required=False, indexed=False)
     image_filename = ndb.ComputedProperty(
         lambda self: self.image.split('/')[-1])

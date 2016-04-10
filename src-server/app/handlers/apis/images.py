@@ -15,6 +15,7 @@ from app.models.images import Image
 class PublicImageList(ListMixin, BaseAjaxHandler):
 
     model = Image
+    sort_order = 'order'
 
 
 class AdminImageList(ListCreateMixin, OrderMixin, AdminAjaxHandler):

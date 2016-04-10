@@ -71,13 +71,13 @@
                                     {% if props.type == 'link' %}
                                         <a href="{[ record.{{ props.link_property }} ]}" target="_blank">{[record.{{ name }}]}</a>
                                     {% elif props.type == 'ordering' %}
-                                        <md-button ng-hide="$first" class="md-icon-button" ng-click="reorder($event, $index, -1)" aria-label="Move up">
+                                        <md-button ng-hide="$first" class="md-icon-button" ng-click="reorder($event, record, -1)" aria-label="Move up">
                                             <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_up_black_24px.svg"></md-icon>
                                         </md-button>
                                         <md-button ng-show="$first == true" class="md-icon-button" aria-label="Move up">
                                             <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_up_grey_24px.svg"></md-icon>
                                         </md-button>
-                                        <md-button ng-hide="$last" class="md-icon-button" ng-click="reorder($event, $index, 1)" aria-label="Move down">
+                                        <md-button ng-hide="$last" class="md-icon-button" ng-click="reorder($event, record, 1)" aria-label="Move down">
                                             <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_down_black_24px.svg"></md-icon>
                                         </md-button>
                                         <md-button ng-show="$last == true" class="md-icon-button" aria-label="Move down">

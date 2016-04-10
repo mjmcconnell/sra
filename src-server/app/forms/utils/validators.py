@@ -45,6 +45,42 @@ def validate_image_format(form, field):
                 raise ValidationError('Invalid image format found.')
 
 
+def validate_image_size(width=None, height=None):
+
+    def _validate_image_size(form, field):
+        if len(field.raw_data):
+            if hasattr(field.raw_data[0], 'filename'):
+                try:
+                    i = Image.open(StringIO(field.raw_data[0].value))
+                    if (width and height) and ((width, height) != i.size):
+                        raise ValidationError(
+                            'Image must be {}x{}, found {}x{}.'.format(
+                                width,
+                                height,
+                                i.size[0],
+                                i.size[1]
+                            )
+                        )
+                    elif width and width != i.size[0]:
+                        raise ValidationError(
+                            'Image must be {}px in width, found {}px.'.format(
+                                width,
+                                i.size[0]
+                            )
+                        )
+                    elif height and height != i.size[1]:
+                        raise ValidationError(
+                            'Image must be {}px in height, found {}px.'.format(
+                                height,
+                                i.size[1]
+                            )
+                        )
+                except IOError:
+                    raise ValidationError('Invalid image format found.')
+
+    return _validate_image_size
+
+
 class RequiredIf(validators.Required):
     """A validator which makes a field required if
     another field is set and has a truthy value.
