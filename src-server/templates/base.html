@@ -1,5 +1,12 @@
 <html lang="en" ng-app="App">
     <head>
+        <title>Sharon Regan Art - {{ pages.home.title }}</title>
+        <meta property="og:title" content="{{ pages.home.title }}" />
+        <meta itemprop="name" content="{{ pages.home.title }}">
+        <meta name="description" content="{{ pages.home.description }}">
+        <meta property="og:description" content="{{ pages.home.description }}" />
+        <meta itemprop="description" content="{{ pages.home.description }}">
+        <meta name="keywords" content="{{ pages.home.tags }}">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
         <link rel="stylesheet" href="/static/css/public.css">
