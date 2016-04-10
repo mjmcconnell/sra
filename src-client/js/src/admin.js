@@ -207,15 +207,20 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         });
     };
 
-    $scope.reorder = function(event, index, increment){
+    $scope.reorder = function(event, record, increment){
         event.stopPropagation();
-        var fd = new FormData()
-        var first_el = angular.copy($scope.records.data[index]);
-        var second_el = angular.copy($scope.records.data[index + increment]);
+        var fd = new FormData();
+        var firstIndex = $scope.records.data.indexOf(record);
+        var first_el = angular.copy($scope.records.data[firstIndex]);
+        var second_el = $scope.records.data.filter(function(obj) {
+          return obj['order'] == first_el['order'] + increment;
+        })[0];
+        var secondIndex = $scope.records.data.indexOf(second_el);
+
         fd.append(
             'ids', angular.toJson([
-                {'id': first_el['id'], 'order': first_el['order']},
-                {'id': second_el['id'], 'order': second_el['order']},
+                {'id': first_el['id'], 'order': second_el['order']},
+                {'id': second_el['id'], 'order': first_el['order']},
             ])
         );
 
@@ -225,8 +230,8 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         })
         .success(function(result){
             $scope.isProcessing = false;
-            $scope.records.data[index]['order'] = second_el['order'];
-            $scope.records.data[index + increment]['order'] = first_el['order'];
+            $scope.records.data[firstIndex]['order'] = second_el['order'];
+            $scope.records.data[secondIndex]['order'] = first_el['order'];
         })
         .error(function(error, status){
             $scope.isProcessing = false;
