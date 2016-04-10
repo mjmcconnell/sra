@@ -23,7 +23,7 @@ class PublicPageList(ListMixin, BaseAjaxHandler):
     model = Page
 
 
-class AdminImageList(ListMixin, OrderMixin, AdminAjaxHandler):
+class AdminPageList(ListMixin, OrderMixin, AdminAjaxHandler):
 
     form = PageForm
     model = Page

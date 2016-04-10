@@ -23,21 +23,21 @@ class PageForm(SerialiserForm):
         description='This decides if the page will be viewable on the public facing site.',
     )
     title = StringField(
-        'Title',
+        'Meta Title',
         validators=[validators.Optional()],
     )
     # Repeated value
     tags = StringField(
-        'Tags',
+        'Meta Tags',
         description='This should be a comma seperated list of tags.',
     )
-    description = TextAreaField('Description')
+    description = TextAreaField('Meta Description')
     page__title = StringField(
-        'Title',
+        'Page Title',
         validators=[validators.Optional()],
     )
-    page__copy = StringField(
-        'Meta Title',
+    page__copy = TextAreaField(
+        'Page Copy',
         validators=[validators.Optional()],
     )
 
