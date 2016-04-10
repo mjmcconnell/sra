@@ -85,6 +85,10 @@ class BaseMixin(object):
                 # to populate the field.
                 elif record:
                     v = getattr(record, k)
+                try:
+                    setattr(getattr(self.form, k), 'data', v)
+                except AttributeError:
+                    pass
 
         return self.form
 

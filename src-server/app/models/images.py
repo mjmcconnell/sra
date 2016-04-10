@@ -22,3 +22,8 @@ class Image(OrderMixin, UploadMixin, BaseModel):
         lambda self: self.image.split('/')[-1])
     image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.image))
+    thumbnail_image = ndb.StringProperty(required=False, indexed=False)
+    thumbnail_image_filename = ndb.ComputedProperty(
+        lambda self: self.image.split('/')[-1])
+    thumbnail_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.image))

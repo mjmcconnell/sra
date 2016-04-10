@@ -27,11 +27,11 @@ class ImageForm(SerialiserForm):
         ],
     )
     thumbnail_image = FileField(
-        'Image (280 x 220)',
+        'Image (420 x 330)',
         validators=[
             validators.DataRequired(),
             validate_image_format,
-            validate_image_size(280, 220)
+            validate_image_size(420, 330)
         ],
     )
     title = StringField(

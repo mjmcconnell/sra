@@ -62,7 +62,7 @@ class BaseModel(ndb.Model):
     def get_queryset(cls):
         queryset = cls.query()
         if cls.sort_order:
-            queryset = queryset.order(getattr(cls.model, cls.sort_order))
+            queryset = queryset.order(getattr(cls, cls.sort_order))
         return queryset
 
     @classmethod

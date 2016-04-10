@@ -13,6 +13,8 @@ app.run(['$anchorScroll', function($anchorScroll) {
 // List controller
 app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav, $location, $anchorScroll, $window) {
 
+    $scope.images = [];
+
     $scope.toggleNav = function(el) {
         $mdSidenav(el).toggle();
     };
@@ -23,45 +25,21 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
         $mdSidenav('right').close();
     }
 
-    $scope.colorTiles = (function() {
-        var tiles = [];
-        for (var i = 0; i < 30; i++) {
-            var props = randomImage();
-            tiles.push({
-                colspan: 1,
-                rowspan: props[0],
-                'imgSrc': '/static/img/' + props[1]
+    $scope.fetchImages = function() {
+        // Fetch all active records
+        $http.get('/api/images').
+            success(function(results) {
+                $scope.images = results['data'];
+            }).
+            error(function(error) {
+                $log.log(error);
             });
-        }
-        return tiles;
-    })();
+    };
 
-    function randomImage() {
-        var rowSpan = 1;
-        var imgSrc = '';
-
-        var srcs = {
-            'square': 'seal.jpg',
-            'tall': [
-                'fox.jpg',
-                'horse.jpg',
-                'hare_side.jpg',
-                'hare_fr.jpg',
-                'hare_side.jpg',
-            ]
-        }
-        var r = Math.random();
-        if (r < 0.6) {
-            imgSrc = srcs['square'];
-        } else {
-            rowSpan = 2;
-            imgSrc = srcs['tall'][Math.floor(Math.random() * srcs['tall'].length)];
-        }
-        return [rowSpan, imgSrc];
-    }
+    $scope.fetchImages()
 
     $scope.showDialog = function(event, index) {
-        $scope.activeEl = $scope.colorTiles[index];
+        $scope.activeEl = $scope.images[index];
         $mdDialog.show({
             controller: DialogController,
             template: `
@@ -69,7 +47,7 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
                     <form>
                         <md-toolbar>
                             <div class="md-toolbar-tools">
-                                <h2>Toolbar title</h2>
+                                <h2>{[ activeEl.title ]}</h2>
                                 <span flex></span>
                                 <md-button class="md-icon-button" ng-click="cancel()">
                                     <md-icon md-svg-src="/static/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
@@ -78,13 +56,9 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
                         </md-toolbar>
                         <md-dialog-content>
                             <div class="md-dialog-content">
-                                <h2>Image Title</h2>
-                                <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.imgSrc ]}">
+                                <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.image_bucket_url ]}">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                                    Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-                                    Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-                                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                    {[ activeEl.description ]}
                                 </p>
                             </div>
                         </md-dialog-content>
