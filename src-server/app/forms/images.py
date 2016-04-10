@@ -40,12 +40,7 @@ class ImageForm(SerialiserForm):
             validators.DataRequired(),
         ],
     )
-    description = TextAreaField(
-        'Description',
-        validators=[
-            validators.DataRequired(),
-        ],
-    )
+    description = TextAreaField('Description')
 
     class Serializer(ModelSerialiser):
         model = Image
