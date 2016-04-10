@@ -10,26 +10,24 @@ from app.handlers.apis.mixins import UpdateMixin
 
 from app.forms.pages import PageForm
 from app.models.pages import MetaData
-from app.models.pages import Page
 
 
-class PublicMetaDataList(ListMixin, BaseAjaxHandler):
+def _create_pages():
+    pass
+
+
+class PublicPageDetail(RetrieveMixin, BaseAjaxHandler):
 
     model = MetaData
-
-
-class PublicPageList(ListMixin, BaseAjaxHandler):
-
-    model = Page
 
 
 class AdminPageList(ListMixin, OrderMixin, AdminAjaxHandler):
 
     form = PageForm
-    model = Page
+    model = MetaData
 
 
 class AdminPageDetail(RetrieveMixin, UpdateMixin, AdminAjaxHandler):
 
     form = PageForm
-    model = Page
+    model = MetaData

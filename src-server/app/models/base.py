@@ -19,14 +19,16 @@ class BaseModel(ndb.Model):
     """Common data/operations for all storage models
     """
 
+    cache_keys = []
+    sort_order = None
+
     @classmethod
     def _post_delete_hook(cls, key, future):
         cls.clear_cache(key)
 
     @classmethod
     def create(cls, form, defaults=None):
-        """Tries to fetch an existing record,
-        if none is found a new record is created.
+        """Create a new bdn record, from a submitted form.
         """
         record = cls()
         # Update the new record with default values
@@ -40,15 +42,14 @@ class BaseModel(ndb.Model):
     def clear_cache(cls, key):
         """Flush the cached querysets for the model.
         """
-        if key.parent():
-            queryset_key = cls.get_cache_key(key.parent().id())
-            memcache.delete(queryset_key)
+        queryset_key = cls.get_cache_key()
+        memcache.delete(queryset_key)
 
-            # Clean up any cached records
-            if cls.cache_keys:
-                memcache.delete_multi(
-                    [cls.get_cache_key(k) for k in cls.cache_keys]
-                )
+        # Clean up any cached records
+        if cls.cache_keys:
+            memcache.delete_multi(
+                [cls.get_cache_key(k) for k in cls.cache_keys]
+            )
 
     @classmethod
     def get_cache_key(cls, *args):
@@ -58,7 +59,14 @@ class BaseModel(ndb.Model):
         return '-'.join(_parts)
 
     @classmethod
-    def fetch_cached_dataset(cls, parent_key):
+    def get_queryset(cls):
+        queryset = cls.query()
+        if cls.sort_order:
+            queryset = queryset.order(getattr(cls.model, cls.sort_order))
+        return queryset
+
+    @classmethod
+    def fetch_cached_dataset(cls):
         """Fetches model related data from memcache,
         If no records are found then fetches them directly from the datastore,
         and adds the results into memcache for future references.
@@ -72,7 +80,7 @@ class BaseModel(ndb.Model):
         if dataset is None:
             dataset = []
             # Store the queried data in memcache for 1 day
-            for r in cls.query().fetch():
+            for r in cls.get_queryset().fetch():
                 dataset.append(r.to_dict())
             memcache.add(cache_key, dataset, 86400)
 
@@ -109,6 +117,12 @@ class BaseModel(ndb.Model):
     def update(self, form):
         """Update a records property values from a form's request data.
         """
+        for field in form:
+            if '__' in field.name:
+                child_model, field_name = field.name.split('__')
+                child_record = getattr(self, child_model).get()
+                setattr(child_record, field_name, field.data)
+                child_record.put()
         # Populate the record with the form request data
         form.populate_obj(self)
         # Save the record to the datastore
@@ -148,14 +162,6 @@ class UploadMixin(object):
     # Default field to apply sorting against
     sort_order = 'order'
     order = ndb.IntegerProperty()
-
-    # @classmethod
-    # def _pre_delete_hook(cls, key):
-    #     """Remove the image from gcs
-    #     """
-    #     for k, v in key.get().to_dict().iteritems():
-    #         if k.startswith('image_url') and v:
-    #             storage.remove_file(v)
 
     @classmethod
     def generate_bucket_url(self, image_name):

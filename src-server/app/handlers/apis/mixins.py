@@ -85,10 +85,6 @@ class BaseMixin(object):
                 # to populate the field.
                 elif record:
                     v = getattr(record, k)
-            try:
-                setattr(getattr(self.form, k), 'data', v)
-            except AttributeError:
-                pass
 
         return self.form
 
@@ -111,18 +107,10 @@ class ListMixin(BaseMixin):
     def get(self):
         """Retrieve record/s from the datastore for a given model.
         """
-        json_records = []
-        queryset = self.model.query()
-
-        if self.sort_order:
-            queryset = queryset.order(getattr(self.model, self.sort_order))
-
-        for r in queryset.fetch():
-            json_records.append(r.to_dict())
-
+        records = self.model.fetch_cached_dataset()
         return self.render_json({
-            'count': len(json_records),
-            'data': json_records
+            'count': len(records),
+            'data': records
         })
 
 

@@ -85,6 +85,13 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         if (index !== undefined) {
             $scope.activeRecordIndex = index
             $scope.formData = angular.copy($scope.records.data[index]);
+            angular.forEach($scope.records.data[index], function(value, key) {
+                if (typeof value === 'object') {
+                    angular.forEach(value, function(v, k) {
+                        $scope.formData[key + '__' + k] = v;
+                    });
+                }
+            });
         }
         $mdSidenav('right').toggle();
     };
