@@ -22,14 +22,14 @@ class ImageForm(SerialiserForm):
     image = FileField(
         'Image',
         validators=[
-            validators.DataRequired(),
+            validators.Optional(),
             validate_image_format
         ],
     )
     thumbnail_image = FileField(
         'Image (420 x 330)',
         validators=[
-            validators.DataRequired(),
+            validators.Optional(),
             validate_image_format,
             validate_image_size(420, 330)
         ],

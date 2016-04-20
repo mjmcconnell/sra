@@ -5,10 +5,6 @@ html, body {
     height:auto;
 }
 
-#main {
-    margin-top: 60px;
-}
-
 .header-background {
     width: 100%;
     height: 90px;
@@ -24,33 +20,17 @@ md-toolbar.global-header {
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.26),0px 2px 10px 0px rgba(0,0,0,0.16);
 
     .md-toolbar-tools {
-        padding: 30px 0 30px 30px;
+        min-height: 70;
 
-        a.logo-large {
-            width: 300px;
+        a.logo {
             img {
-                max-height: 50px;
-                float: left;
+                max-height: 60px;
                 padding: 0 17px 0 0;
-                border-right: 2px solid #000;
-                margin-right: 17px;
-                margin-top: 6px;
-            }
-            h2 {
-                padding: 20px;
-            }
-        }
-        a.logo-small {
-            img {
-                max-height: 50px;
             }
         }
 
         .global-header-link {
             color: black;
-            padding: 13px 0;
-            margin: -3px;
-            border-radius: 0;
         }
         .toggle_menu {
             margin-right: 6px;
@@ -83,12 +63,28 @@ md-sidenav.md-sidenav-right {
 }
 
 .hero {
+    margin-top: 60px;
     width: 100%;
     min-height: 600px;
-    background-image: url("/static/img/home.jpg");
+    background-image: url("/static/img/hero.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 100%;
+
+    .hero_text {
+        background: #000000;
+        opacity: 0.7;
+        margin: 110px 25px 0;
+        width: 350px;
+        display: flex;
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 3.7em;
+            padding: 10px 15px;
+            margin: 0px;
+        }
+    }
 }
 
 @media (max-width: 599px) {
@@ -183,24 +179,44 @@ footer {
             text-align: left;
             min-height: 0;
 
-            span {
-                font-weight: 600;
-                color: rgba(0,0,0,0.54);
+            .share_logos {
+                float: left;
+                span {
+                    font-weight: 600;
+                    color: rgba(0,0,0,0.54);
+                }
+
+                a {
+                    display: inline-block;
+                    height: 0;
+                    margin-left: 2.5rem;
+                    position: relative;
+                    top: 0.5rem;
+
+                    img {
+                        display: block;
+                        position: relative;
+                        top: -30px;
+                        height: 30px;
+                    }
+                }
             }
 
-            a {
-                display: inline-block;
-                height: 0;
-                margin-left: 2.5rem;
-                position: relative;
-                top: 0.5rem;
-
-                img {
-                    display: block;
-                    position: relative;
-                    top: -30px;
-                    height: 30px;
+            @media (max-width: 599px) {
+                .share_logos {
+                    a {
+                        margin-left: 1rem;
+                    }
                 }
+            }
+            .craft_ni_logo {
+                float: right;
+                img {
+                        display: block;
+                        position: relative;
+                        top: -20px;
+                        height: 60px;
+                    }
             }
         }
     }

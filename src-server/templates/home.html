@@ -2,11 +2,15 @@
 
 {% block content %}
 
-<div class="hero"></div>
+<div class="hero">
+    <div hide show-md class="hero_text">
+        <h1>{{ pages.home.page.title|upper }}</h1>
+    </div>
+</div>
 
 <div class="strip primary-strip">
     <div class="strip-content">
-        <h1 class="md-headline">{{ pages.home.page.title }}</h1>
+        <h1 hide-md class="md-headline">{{ pages.home.page.title }}</h1>
         <p class="md-subhead">{{ pages.home.page['copy'] }}</p>
     </div>
 </div>
@@ -19,7 +23,6 @@
             <md-grid-tile class="thumbnail" ng-click="showDialog($event, $index)" ng-repeat="imageData in images" ng-style="{'background-image':'url({[imageData.thumbnail_image_bucket_url]})'}" md-colspan-gt-sm="1" md-rowspan-gt-sm="1">
             </md-grid-tile>
         </md-grid-list>
-      </md-content>
     </div>
 </div>
 

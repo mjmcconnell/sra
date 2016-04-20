@@ -13,30 +13,25 @@
         <meta name="viewport" content="initial-scale=1" />
     </head>
     <body layout="column" ng-controller="AppCtrl" ng-cloak>
-        {% include 'includes/sidebar.html' %}
+        <md-content flex id="main">
+            {% include 'includes/sidebar.html' %}
 
-        <div class="header-background"></div>
-        <md-toolbar class="global-header">
-            <div class="md-toolbar-tools">
-                <a class="logo-large" hide show-gt-xs ng-click="scrollToEl('home')" href="">
-                    <img src="/static/img/head.png">
-                    <h2>Sharon Regan Art</h2>
-                </a>
-                <a class="logo-small" hide-gt-xs ng-click="scrollToEl('home')" href="">
-                    <img src="/static/img/logo.png">
-                </a>
-                <span flex></span>
-                <div hide show-gt-xs>
-                    <md-button ng-click="scrollToEl('gallery')" href="" class="global-header-link">Gallery</md-button>
-                    <md-button ng-click="scrollToEl('contact')" href="" class="global-header-link">Contact</md-button>
+            <md-toolbar class="global-header">
+                <div class="md-toolbar-tools">
+                    <a class="logo" ng-click="scrollToEl('home')" href="">
+                        <img src="/static/img/logo.png">
+                    </a>
+                    <span flex></span>
+                    <div hide-xs>
+                        <md-button ng-click="scrollToEl('gallery')" href="" class="global-header-link">Gallery</md-button>
+                        <md-button ng-click="scrollToEl('contact')" href="" class="global-header-link">Contact</md-button>
+                    </div>
+                    <md-button class="toggle_menu md-icon-button" aria-label="Toggle Menu" hide show-xs ng-click="toggleNav('right')">
+                        <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
+                    </md-button>
                 </div>
-                <md-button class="toggle_menu md-icon-button" aria-label="Toggle Menu" hide-gt-xs ng-click="toggleNav('right')">
-                    <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
+            </md-toolbar>
 
-        <md-content layout="row" flex id="main">
             <div layout="column" flex id="content">
                 <div id="home"></div>
 
@@ -45,14 +40,19 @@
                 <footer flex="none">
                     <div class="strip default-strip">
                         <div class="strip-content">
-                        <span>Share:</span>
-                            <a href="http://www.facebook.com/sharer/sharer.php?u=sharonreganart.com" target="_blank">
-                                <img src="/static/img/fb.png" alt="Facebook">
-                            </a>
+                            <div class="share_logos">
+                                <span>Share:</span>
+                                <a href="http://www.facebook.com/sharer/sharer.php?u=sharonreganart.com" target="_blank">
+                                    <img src="/static/img/fb.png" alt="Facebook">
+                                </a>
 
-                            <a href="https://twitter.com/share?url=https://sharonreganart.com&amp;text=Check out some of the fantastic work by Sharon Regan Art" target="_blank">
-                                <img src="/static/img/twitter.png" alt="Twitter">
-                            </a>
+                                <a href="https://twitter.com/share?url=https://sharonreganart.com&amp;text=Check out some of the fantastic work by Sharon Regan Art" target="_blank">
+                                    <img src="/static/img/twitter.png" alt="Twitter">
+                                </a>
+                            </div>
+                            <div class="craft_ni_logo" >
+                                <img src="/static/img/craft_ni.png" alt="Craft NI Directory">
+                            </div>
                         </div>
                     </div>
                 </footer>
