@@ -89,7 +89,7 @@
                                 {% endif %}
                                 </td md-cell>
                             {% endfor %}
-                            <td class="align-right list-edit-cell" md-cell ng-click="openForm($event, $index)">Edit</td>
+                            <td class="align-right list-edit-cell" md-cell ng-click="openForm($event, ((query.page-1)*10) + $index)">Edit</td>
                         </tr>
                     </tbody>
                 </table>

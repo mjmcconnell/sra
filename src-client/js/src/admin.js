@@ -77,6 +77,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     };
 
     $scope.openForm = function(event, index) {
+        console.log(index);
         event.stopPropagation();
 
         $scope.imageFields = {};

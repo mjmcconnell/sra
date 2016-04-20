@@ -39,6 +39,7 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
     $scope.fetchImages()
 
     $scope.showDialog = function(event, index) {
+        return
         $scope.activeEl = $scope.images[index];
         $mdDialog.show({
             controller: DialogController,
