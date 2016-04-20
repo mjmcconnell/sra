@@ -62,12 +62,6 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
                                 </p>
                             </div>
                         </md-dialog-content>
-                        <md-dialog-actions layout="row">
-                            <span flex></span>
-                            <md-button ng-click="cancel()">
-                                Close
-                            </md-button>
-                        </md-dialog-actions>
                     </form>
                 </md-dialog>`,
             parent: angular.element(document.body),
