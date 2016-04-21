@@ -79,13 +79,13 @@ CONFIG = {
                       'http://fonts.gstatic.com data:',
         'frame-src': '\'self\' https://www.youtube.com',
         'script-src': '\'self\' \'unsafe-eval\' ' +
-                      'ajax.googleapis.com www.googletagmanager.com ' +
+                      'https://ajax.googleapis.com www.googletagmanager.com ' +
                       'www.google-analytics.com https://www.gstatic.com ' +
                       'https://www.googleadservices.com',
-        'style-src': '\'self\' \'unsafe-inline\' ajax.googleapis.com ' +
+        'style-src': '\'self\' \'unsafe-inline\' https://ajax.googleapis.com ' +
                      'https://fonts.googleapis.com https://www.gstatic.com',
         'img-src': '\'self\' http://0.0.0.0:8080 *.googleusercontent.com www.google-analytics.com' +
-                   ' https://www.gstatic.com data:',
+                   ' https://lh3.googleusercontent.com https://www.gstatic.com data:',
         # fallback
         'default-src': '\'self\'',
         'report-uri':  '/csp',
