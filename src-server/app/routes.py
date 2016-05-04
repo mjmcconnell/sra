@@ -15,8 +15,7 @@ from app.utils.routes import MultiPrefixRoute
 _UNAUTHENTICATED_ROUTES = [
     HandlerPrefixRoute('app.handlers.templates.public.', [
         Route(r'/', 'HomeHandler', name='home'),
-        Route(r'/gallery', 'GalleryHandler', name='gallery'),
-        Route(r'/contact', 'ContactHandler', name='contact'),
+        Route(r'/<path:.*>', 'HomeHandler', name='home-all'),
     ]),
 ]
 
@@ -106,7 +105,6 @@ _TASK_ROUTES = MultiPrefixRoute(
 
 # Aggregate all the routes into something we can pass directly to our WSGI app
 ROUTES = list(itertools.chain(
-    _UNAUTHENTICATED_ROUTES,
     _UNAUTHENTICATED_AJAX_ROUTES,
     _USER_ROUTES,
     _AJAX_ROUTES,
@@ -114,4 +112,5 @@ ROUTES = list(itertools.chain(
     _ADMIN_AJAX_ROUTES,
     _CRON_ROUTES,
     _TASK_ROUTES,
+    _UNAUTHENTICATED_ROUTES,
 ))

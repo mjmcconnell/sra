@@ -7,7 +7,7 @@ from app.models.pages import MetaData
 
 class HomeHandler(BaseHandler):
 
-    def get(self):
+    def get(self, *args, **kwargs):
         pages = MetaData.fetch_cached_dataset()
         tagged_pages = {}
         for p in pages:

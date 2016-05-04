@@ -182,16 +182,16 @@ class UpdateMixin(BaseMixin):
 
 class DeleteMixin(BaseMixin):
 
-    @ndb.toplevel
     def delete(self, _id):
         """Remove a record from the datastore.
         """
         key = ndb.Key(self.model, int(_id))
-        if key.get() is None:
+        record = key.get()
+        if record is None:
             self.response.set_status(400)
             return self.render_json({'message': 'Record not found'})
 
-        key.delete_async()
+        key.delete()
 
 
 class RetrieveUpdateDeleteMixin(RetrieveMixin, UpdateMixin, DeleteMixin):

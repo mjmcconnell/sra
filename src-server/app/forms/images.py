@@ -45,6 +45,10 @@ class ImageForm(SerialiserForm):
     class Serializer(ModelSerialiser):
         model = Image
         list_fields = [
+            ('thumbnail_image_bucket_url', {
+                'label': 'Thumbnail',
+                'type': 'image',
+            }),
             ('title', {
                 'label': 'Title'
             }),

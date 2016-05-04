@@ -70,6 +70,8 @@
                                 {% if props.type %}
                                     {% if props.type == 'link' %}
                                         <a href="{[ record.{{ props.link_property }} ]}" target="_blank">{[record.{{ name }}]}</a>
+                                    {% elif props.type == 'image' %}
+                                        <img src="{[ record.{{ name }} ]}" class="list-thumbnail">
                                     {% elif props.type == 'ordering' %}
                                         <md-button ng-hide="$first" class="md-icon-button" ng-click="reorder($event, record, -1)" aria-label="Move up">
                                             <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_up_black_24px.svg"></md-icon>
