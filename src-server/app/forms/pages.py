@@ -36,7 +36,7 @@ class PageForm(SerialiserForm):
         'Page Title',
         validators=[validators.Optional()],
     )
-    page__copy = TextAreaField(
+    page__content = TextAreaField(
         'Page Copy',
         validators=[validators.Optional()],
     )
@@ -52,7 +52,7 @@ class PageForm(SerialiserForm):
             ('title', {
                 'label': 'Meta Title'
             }),
-            ('page__title', {
+            ('page.title', {
                 'label': 'Page Title',
             }),
             ('order', {
@@ -78,7 +78,7 @@ class PageForm(SerialiserForm):
                 'title': 'Page Content',
                 'fields': (
                     'page__title',
-                    'page__copy',
+                    'page__content',
                 ),
             },
         ]

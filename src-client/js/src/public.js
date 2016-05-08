@@ -10,36 +10,17 @@ app.run(['$anchorScroll', function($anchorScroll) {
     $anchorScroll.yOffset = 60;
 }])
 
-// List controller
-app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav, $location, $anchorScroll, $window) {
-
-    $scope.images = [];
-
+// Site Nav controller
+app.controller('NavCtrl', function($scope, $mdSidenav) {
     $scope.toggleNav = function(el) {
         $mdSidenav(el).toggle();
     };
+});
 
-    $scope.scrollToEl = function(el) {
-        $location.hash(el);
-        $anchorScroll();
-        $mdSidenav('right').close();
-    }
-
-    $scope.fetchImages = function() {
-        // Fetch all active records
-        $http.get('/api/images').
-            success(function(results) {
-                $scope.images = results['data'];
-            }).
-            error(function(error) {
-                $log.log(error);
-            });
-    };
-
-    $scope.fetchImages()
+// Gallery controller
+app.controller('GalleryCtrl', function($scope, $mdDialog) {
 
     $scope.showDialog = function(event, index) {
-        return
         $scope.activeEl = $scope.images[index];
         $mdDialog.show({
             controller: DialogController,
@@ -87,6 +68,10 @@ app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast,
             $mdDialog.hide(answer);
         };
     };
+});
+
+// Contact controller
+app.controller('ContactCtrl', function($scope, $http, $mdToast) {
 
     $scope.formData = {};
     $scope.submitForm = function(){

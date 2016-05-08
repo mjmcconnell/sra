@@ -40,6 +40,8 @@ class MetaData(OrderMixin, BaseModel):
     visible = ndb.BooleanProperty(default=False)
     page = ndb.KeyProperty(kind='Page')
 
+    cache_keys = ['MetaData-group_by-tag']
+
     @classmethod
     def fetch_or_create(cls):
         """Create the initail meta_data records for each page.
@@ -98,4 +100,5 @@ class MetaData(OrderMixin, BaseModel):
 class Page(BaseModel):
 
     title = ndb.StringProperty(required=False, indexed=False)
-    copy = ndb.StringProperty(required=False, indexed=False)
+    content = ndb.StringProperty(required=False, indexed=False)
+

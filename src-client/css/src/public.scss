@@ -1,8 +1,13 @@
 $primary-color: #79d3c6;
 
 html, body {
-    min-height:100%;
-    height:auto;
+    min-height: 100%;
+    height: auto;
+}
+
+#content {
+    margin-top: 60px;
+    background: #F5F5F5;
 }
 
 .header-background {
@@ -40,30 +45,31 @@ md-toolbar.global-header {
 
 /* SIDE NAV */
 md-sidenav.md-sidenav-right {
-    width: 200px;
-    max-width: 200px;
-    min-width: 200px;
+    width: 250px;
     position: fixed;
 
     md-list {
         width: 100%;
 
         md-item {
+            width: 100%;
             display: inline-flex;
-
-            md-item-content button {
-                text-align: left;
-                width: 200px;
-                margin: 0px 0;
-                padding: 4px 0 4px 20px;
-                border-radius: 0;
+            md-item-content {
+                width: 100%;
+                a {
+                    text-align: left;
+                    margin: 0;
+                    width: 100%;
+                    border-radius: 0;
+                    padding: 3px 0 3px 15px;
+                    font-size: 1.1em;
+                }
             }
         }
     }
 }
 
 .hero {
-    margin-top: 60px;
     width: 100%;
     min-height: 600px;
     background-image: url("/static/img/hero.jpg");
@@ -99,7 +105,21 @@ md-sidenav.md-sidenav-right {
 
     .strip-content {
         max-width: 822px;
-        min-height: 60px;
+        margin: 0 auto;
+
+        md-card {
+            margin: -15px;
+            padding: 15px;
+        }
+    }
+}
+
+.hero_strip {
+    padding: 2rem 1.9rem 3rem 1.9rem;
+    min-height: 100px;
+
+    .strip-content {
+        max-width: 822px;
         margin: 0 auto;
     }
 }
@@ -146,7 +166,7 @@ md-sidenav.md-sidenav-right {
 }
 
 form.contact-form {
-    margin-top: -95px;
+    margin-top: -80px;
 
     .contact-form-header-copy {
         text-align: left;
@@ -154,6 +174,7 @@ form.contact-form {
         padding-bottom: 20px;
         font-size: 1.2rem;
         font-weight: 300;
+        margin: -10px 0 5px;
     }
     .md-input-message-animation {
         text-align: right;
@@ -173,6 +194,7 @@ md-toast {
 footer {
     clear: both;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
 
     .strip {
         .strip-content {

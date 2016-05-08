@@ -24,7 +24,10 @@ class BaseModel(ndb.Model):
 
     @classmethod
     def _post_delete_hook(cls, key, future):
-        cls.clear_cache(key)
+        memcache.flush_all()
+
+    def _post_put_hook(self, future):
+        memcache.flush_all()
 
     @classmethod
     def create(cls, form, defaults=None):
@@ -37,19 +40,6 @@ class BaseModel(ndb.Model):
                 setattr(record, key, value)
 
         return record.update(form)
-
-    @classmethod
-    def clear_cache(cls, key):
-        """Flush the cached querysets for the model.
-        """
-        queryset_key = cls.get_cache_key()
-        memcache.delete(queryset_key)
-
-        # Clean up any cached records
-        if cls.cache_keys:
-            memcache.delete_multi(
-                [cls.get_cache_key(k) for k in cls.cache_keys]
-            )
 
     @classmethod
     def get_cache_key(cls, *args):
@@ -86,8 +76,20 @@ class BaseModel(ndb.Model):
 
         return dataset
 
-    def _post_put_hook(self, future):
-        self.clear_cache(self.key)
+    @classmethod
+    def group_by(cls, group_property):
+        cache_key = cls.get_cache_key('group_by', group_property)
+
+        grouped_records = memcache.get(cache_key)
+        if not grouped_records:
+            grouped_records = {}
+            for p in cls.fetch_cached_dataset():
+                grouped_records.update({p[group_property]: p})
+
+            # Store the queried data in memcache for 1 day
+            memcache.add(cache_key, grouped_records, 86400)
+
+        return grouped_records
 
     def to_dict(self):
         """Serialise model instance to a dictionary (to make it play nice with

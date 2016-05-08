@@ -15,6 +15,11 @@ from app.utils.routes import MultiPrefixRoute
 _UNAUTHENTICATED_ROUTES = [
     HandlerPrefixRoute('app.handlers.templates.public.', [
         Route(r'/', 'HomeHandler', name='home'),
+        Route(r'/gallery', 'GalleryHandler', name='gallery'),
+        Route(r'/contact', 'ContactHandler', name='contact'),
+        # Route(r'/about', 'AboutHandler', name='about'),
+        # Route(r'/events', 'EventsHandler', name='events'),
+        # Route(r'/news', 'NewsHandler', name='news'),
         Route(r'/<path:.*>', 'HomeHandler', name='home-all'),
     ]),
 ]
