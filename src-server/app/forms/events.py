@@ -34,6 +34,18 @@ class EventForm(SerialiserForm):
         ],
     )
     content = TextAreaField('Description')
+    link_label = StringField(
+        'Link Title',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    link_url = StringField(
+        'Link URL',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
 
     class Serializer(ModelSerialiser):
         model = Image

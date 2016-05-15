@@ -49,7 +49,7 @@ class EventsHandler(PublicTemplateHandler):
 
     def get(self, *args, **kwargs):
         self.render('events', 'events.html', {
-            'json_events': json.dumps(Event.fetch_cached_dataset())
+            'events': Event.fetch_cached_dataset()
         })
 
 

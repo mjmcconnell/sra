@@ -9,10 +9,28 @@
     </div>
 </div>
 
-<div class="strip default-strip" ng-controller="GalleryCtrl" ng-init="images = {{ json_images }}">
-    <div id="gallery" class="strip-content">
-        <md-card>
+<div class="strip default-strip">
+    <div class="strip-content" layout="column">
+
+    {% for event in events %}
+        <md-card class="event-card">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ event.title }}</span>
+                    <span class="md-subhead">{{ event.content }}</span>
+                    <md-button href="{{ event.link_url }}">{{ event.link_label }}</md-button>
+                </md-card-title-text>
+                {% if event.image %}
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media">
+                            <img src="{{ event.image_bucket_url }}" alt="{{ event.title }}"/>
+                        </div>
+                    </md-card-title-media>
+                {% endif %}
+            </md-card-title>
         </md-card>
+    {% endfor %}
+
     </div>
 </div>
 

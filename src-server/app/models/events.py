@@ -21,3 +21,5 @@ class Event(OrderMixin, BaseModel):
         lambda self: self.image.split('/')[-1])
     image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.image))
+    link_label = ndb.StringProperty(required=False, indexed=False)
+    link_url = ndb.StringProperty(required=False, indexed=False)

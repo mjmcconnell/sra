@@ -120,6 +120,16 @@ md-sidenav.md-sidenav-right {
             margin: -15px;
             padding: 0 15px 25px;
         }
+        md-card.event-card {
+            min-height: 170px;
+            margin: 10px;
+            padding: 0;
+            text-align: left;
+            img {
+                height: 170px;
+                margin: -16px 0 0 16px;
+            }
+        }
     }
 }
 

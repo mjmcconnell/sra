@@ -150,6 +150,10 @@ class OrderMixin(object):
     """Mixin to handle a user defined sort order.
     """
 
+    sort_order = 'order'
+
+    order = ndb.IntegerProperty()
+
     @classmethod
     def _post_delete_hook(cls, key, future):
         super(OrderMixin, cls)._post_delete_hook(key, future)
