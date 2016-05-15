@@ -63,6 +63,6 @@ class DetailHandler(PageHandler):
         form = form(None, record)
 
         self.render('admin/form.html', {
-            'form': self.form,
+            'form': form,
             'json_record': json.dumps(record.to_dict())
         })

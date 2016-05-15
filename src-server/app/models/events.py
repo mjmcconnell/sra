@@ -9,11 +9,10 @@ from google.appengine.ext import ndb
 # local imports
 from app.models.base import BaseModel
 from app.models.base import OrderMixin
-from app.models.base import UploadMixin
 from app.utils import storage
 
 
-class Event(OrderMixin, UploadMixin, BaseModel):
+class Event(OrderMixin, BaseModel):
 
     title = ndb.StringProperty(required=True, indexed=False)
     content = ndb.StringProperty(required=False, indexed=False)

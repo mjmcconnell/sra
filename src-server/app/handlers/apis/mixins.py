@@ -177,7 +177,8 @@ class UpdateMixin(BaseMixin):
         self.response.set_status(400)
         return self.render_json({
             'message': 'Failed to update item',
-            'data': form.errors})
+            'data': form.errors
+        })
 
 
 class DeleteMixin(BaseMixin):

@@ -13,6 +13,7 @@ from google.appengine.ext import ndb
 # local imports
 from app.models.base import BaseModel
 from app.models.base import OrderMixin
+from app.utils import storage
 
 
 class MetaData(OrderMixin, BaseModel):
@@ -84,8 +85,6 @@ class MetaData(OrderMixin, BaseModel):
         return super(MetaData, self).update(form)
 
 
-
-
 class BasePage(BaseModel):
 
     title = ndb.StringProperty(required=False, indexed=False)
@@ -94,12 +93,27 @@ class BasePage(BaseModel):
 
 class HomePage(BasePage):
 
-    pass
+    # Gallery Banner
+    gallery_title = ndb.StringProperty(required=True, indexed=False)
+    gallery_copy = ndb.TextProperty(required=True, indexed=False)
+    gallery_image = ndb.StringProperty(required=False, indexed=False)
+    gallery_image_filename = ndb.ComputedProperty(
+        lambda self: self.gallery_image.split('/')[-1])
+    gallery_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.gallery_image))
+    # Events banner
+    events_title = ndb.StringProperty(required=True, indexed=False)
+    events_copy = ndb.TextProperty(required=True, indexed=False)
+    events_image = ndb.StringProperty(required=False, indexed=False)
+    events_image_filename = ndb.ComputedProperty(
+        lambda self: self.events_image.split('/')[-1])
+    events_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.events_image))
 
 
 class AboutPage(BasePage):
 
-    content = ndb.TextProperty(required=False, indexed=False)
+    pass
 
 
 class EventsPage(BasePage):

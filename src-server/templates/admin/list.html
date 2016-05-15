@@ -62,6 +62,8 @@
                         {% if props.type %}
                             {% if props.type == 'link' %}
                                 <a href="{[ record.{{ props.link_property }} ]}" target="_blank">{[record.{{ name }}]}</a>
+                            {% elif props.type == 'visible' %}
+                                    <md-icon md-svg-icon="/static/img/icons/ic_visibility_{[record.{{ name }} ? '' : 'off_']}black_24px.svg"></md-icon>
                             {% elif props.type == 'image' %}
                                 <img src="{[ record.{{ name }} ]}" class="list-thumbnail">
                             {% elif props.type == 'ordering' %}

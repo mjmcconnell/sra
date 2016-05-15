@@ -30,6 +30,16 @@ class BaseModel(ndb.Model):
         memcache.flush_all()
 
     @classmethod
+    def generate_bucket_url(self, image_name):
+        """Create a url for the gcs bucket,
+        that is unique and identifiable to the record
+        """
+        return '/'.join([self.__name__, str(uuid4()), image_name])
+
+    def build_public_url(self, url):
+        return storage.get_public_serving_url(url)
+
+    @classmethod
     def create(cls, form, defaults=None):
         """Create a new bdn record, from a submitted form.
         """
@@ -120,12 +130,16 @@ class BaseModel(ndb.Model):
     def update(self, form):
         """Update a records property values from a form's request data.
         """
+        child_record = None
         for field in form:
             if '__' in field.name:
                 child_model, field_name = field.name.split('__')
                 child_record = getattr(self, child_model).get()
                 setattr(child_record, field_name, field.data)
-                child_record.put()
+
+        if child_record:
+            child_record.put()
+
         # Populate the record with the form request data
         form.populate_obj(self)
         # Save the record to the datastore
@@ -156,22 +170,3 @@ class OrderMixin(object):
         defaults['order'] = cls.query().count()
 
         return super(OrderMixin, cls).create(form, defaults)
-
-
-class UploadMixin(object):
-    """Mixin to handle image uploads.
-    """
-
-    # Default field to apply sorting against
-    sort_order = 'order'
-    order = ndb.IntegerProperty()
-
-    @classmethod
-    def generate_bucket_url(self, image_name):
-        """Create a url for the gcs bucket,
-        that is unique and identifiable to the record
-        """
-        return '/'.join([self.__name__, str(uuid4()), image_name])
-
-    def build_public_url(self, url):
-        return storage.get_public_serving_url(url)
