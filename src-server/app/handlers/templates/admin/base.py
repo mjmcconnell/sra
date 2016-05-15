@@ -6,8 +6,6 @@ from webapp2_extras import sessions
 
 # local imports
 from app.base import handlers
-from app.forms.images import ImageForm
-from app.forms.pages import PageForm
 
 
 class AdminTemplateHandler(handlers.AdminHandler):
@@ -31,31 +29,3 @@ class AdminTemplateHandler(handlers.AdminHandler):
             self.redirect(self.request.url)
         finally:
             self.session_store.save_sessions(self.response)
-
-
-class ImageHandler(AdminTemplateHandler):
-
-    def get(self):
-        form = ImageForm()
-        template_data = {
-            'title': 'Images',
-            'type': 'Images',
-            'description': '',
-            'form': form,
-            'fields': form.fields
-        }
-        self.render('admin/cms.html', template_data)
-
-
-class PageHandler(AdminTemplateHandler):
-
-    def get(self):
-        form = PageForm()
-        template_data = {
-            'title': 'Pages',
-            'type': 'Pages',
-            'description': '',
-            'form': form,
-            'fields': form.fields
-        }
-        self.render('admin/cms.html', template_data)

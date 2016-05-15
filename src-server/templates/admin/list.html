@@ -1,17 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
 <div layout="column" flex>
 
     <md-content>
 
-        <md-card>
-            <md-card-header>
-                <h2 class="md-title">{{ title }}</h2>
-            </md-card-header>
-            {% if description %}
-            <md-card-content>
-                {{ description }}
-            </md-card-content>
-            {% endif %}
-        </md-card>
+        <div class="heading-placeholder">
+            <h2 class="md-display-2">{{ title }}</h2>
+            <p class="md-subhead">{{ description }}</p>
+        </div>
 
         <md-card id="list-card">
 
@@ -33,8 +31,8 @@
                         {{ type }}
                     </span>
                     <div flex></div>
-                    <md-button aria-label="Add" ng-click="openForm($event)">
-                        <md-icon md-svg-src="/static/img/icons/ic_add_black_24px.svg"></md-icon>
+                    <md-button aria-label="Add" href="./{{ type|lower }}/add">
+                        <md-icon class="list-add-btn" md-svg-src="/static/img/icons/ic_add_black_24px.svg"></md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
@@ -91,7 +89,7 @@
                                 {% endif %}
                                 </td md-cell>
                             {% endfor %}
-                            <td class="align-right list-edit-cell" md-cell ng-click="openForm($event, ((query.page-1)*10) + $index)">Edit</td>
+                            <td class="align-right list-edit-cell" md-cell {% if sideform %}ng-click="openForm($event, ((query.page-1)*10) + $index)">Edit{% else %}><a href="./{{ type|lower }}/{[record.id]}">Edit</a>{% endif %}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -102,3 +100,6 @@
         </md-card>
     </md-content>
 </div>
+
+
+{% endblock%}

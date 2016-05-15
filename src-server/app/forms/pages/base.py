@@ -18,10 +18,6 @@ from app.models.pages import MetaData
 class PageForm(SerialiserForm):
     """Stores meta data for each page.
     """
-    visible = BooleanField(
-        'Page is visible',
-        description='This decides if the page will be viewable on the public facing site.',
-    )
     title = StringField(
         'Meta Title',
         validators=[validators.Optional()],
@@ -36,7 +32,7 @@ class PageForm(SerialiserForm):
         'Page Title',
         validators=[validators.Optional()],
     )
-    page__content = TextAreaField(
+    page__sub_title = TextAreaField(
         'Page Copy',
         validators=[validators.Optional()],
     )
@@ -44,11 +40,6 @@ class PageForm(SerialiserForm):
     class Serializer(ModelSerialiser):
         model = MetaData
         list_fields = [
-            ('visible', {
-                'label': 'Public',
-                'type': 'icon',
-                'icon': 'visible'
-            }),
             ('title', {
                 'label': 'Meta Title'
             }),
@@ -78,7 +69,7 @@ class PageForm(SerialiserForm):
                 'title': 'Page Content',
                 'fields': (
                     'page__title',
-                    'page__content',
+                    'page__sub_title',
                 ),
             },
         ]

@@ -102,6 +102,7 @@ class BaseModel(ndb.Model):
     def serialise(self, _dict):
         serialised_dict = {}
         serialised_dict['id'] = self.key.id()
+        serialised_dict['ukey'] = self.key.urlsafe()
 
         # Fetch any child records as well, as any ndb keys in the dict
         # will break json serialisation.

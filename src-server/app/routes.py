@@ -17,9 +17,8 @@ _UNAUTHENTICATED_ROUTES = [
         Route(r'/', 'HomeHandler', name='home'),
         Route(r'/gallery', 'GalleryHandler', name='gallery'),
         Route(r'/contact', 'ContactHandler', name='contact'),
-        # Route(r'/about', 'AboutHandler', name='about'),
-        # Route(r'/events', 'EventsHandler', name='events'),
-        # Route(r'/news', 'NewsHandler', name='news'),
+        Route(r'/about', 'AboutHandler', name='about'),
+        Route(r'/events', 'EventsHandler', name='events'),
         Route(r'/<path:.*>', 'HomeHandler', name='home-all'),
     ]),
 ]
@@ -31,9 +30,6 @@ _UNAUTHENTICATED_AJAX_ROUTES = MultiPrefixRoute(
     path_pfx='/api',
     routes=[
         Route(r'/contact', 'mail.ContactHandler', name='contact'),
-        Route(r'/images', 'images.PublicImageList', name='images'),
-        Route(r'/meta_data', 'images.PublicMetaDataList', name='meta_data'),
-        Route(r'/pages', 'images.PublicPageList', name='pages'),
     ]
 ).routes
 # These should all inherit from base.handlers.AuthenticatedHandler
@@ -53,8 +49,57 @@ _ADMIN_ROUTES = _ADMIN_ROUTES + MultiPrefixRoute(
     name_pfx='admin-',
     path_pfx='/admin',
     routes=[
-        Route(r'/images', 'ImageHandler', name='images-list'),
-        Route(r'/pages', 'PageHandler', name='pages-list'),
+        # about_modules
+        Route(
+            r'/about_modules',
+            'about_modules.ListHandler',
+            name='about_modules-list'
+        ),
+        Route(
+            r'/about_modules/add',
+            'about_modules.DetailHandler',
+            name='about_modules-detail'
+        ),
+        Route(
+            r'/about_modules/<id:[0-9]+>',
+            'about_modules.DetailHandler',
+            name='about_modules-detail'
+        ),
+        # events
+        Route(r'/events', 'events.ListHandler', name='events-list'),
+        Route(
+            r'/events/add',
+            'events.DetailHandler',
+            name='events-detail'
+        ),
+        Route(
+            r'/events/<id:[0-9]+>',
+            'events.DetailHandler',
+            name='events-detail'
+        ),
+        # images
+        Route(
+            r'/images',
+            'images.ListHandler',
+            name='images-list'
+        ),
+        Route(
+            r'/images/add',
+            'images.DetailHandler',
+            name='images-detail'
+        ),
+        Route(
+            r'/images/<id:[0-9]+>',
+            'images.DetailHandler',
+            name='images-detail'
+        ),
+        # pages
+        Route(r'/pages', 'pages.ListHandler', name='pages-list'),
+        Route(
+            r'/pages/<id:[0-9]+>',
+            'pages.DetailHandler',
+            name='pages-detail'
+        ),
     ]
 ).routes
 
@@ -65,27 +110,43 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
     path_pfx='/api/admin',
     routes=[
         Route(
+            r'/about_modules',
+            'about_modules.AdminList',
+            name='events-list'
+        ),
+        Route(
+            r'/about_modules/<_id:\d+>',
+            'about_modules.AdminDetail',
+            name='about_modules-detail'
+        ),
+        Route(
+            r'/events',
+            'events.AdminList',
+            name='events-list'
+        ),
+        Route(
+            r'/events/<_id:\d+>',
+            'events.AdminDetail',
+            name='events-detail'
+        ),
+        Route(
             r'/images',
-            'images.AdminImageList',
-            methods=['GET', 'POST', 'PUT'],
+            'images.AdminList',
             name='images-list'
         ),
         Route(
             r'/images/<_id:\d+>',
-            'images.AdminImageDetail',
-            methods=['GET', 'POST', 'DELETE'],
+            'images.AdminDetail',
             name='images-detail'
         ),
         Route(
             r'/pages',
-            'pages.AdminPageList',
-            methods=['GET', 'PUT'],
+            'pages.AdminList',
             name='pages-list'
         ),
         Route(
             r'/pages/<_id:\d+>',
-            'pages.AdminPageDetail',
-            methods=['GET', 'POST'],
+            'pages.AdminDetail',
             name='pages-detail'
         ),
     ]

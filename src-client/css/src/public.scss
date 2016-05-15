@@ -1,5 +1,9 @@
 $primary-color: #79d3c6;
 
+.left {
+    text-align: left;
+}
+
 html, body {
     min-height: 100%;
     height: auto;
@@ -116,7 +120,7 @@ md-sidenav.md-sidenav-right {
 
 .hero_strip {
     padding: 2rem 1.9rem 3rem 1.9rem;
-    min-height: 100px;
+    height: 100px;
 
     .strip-content {
         max-width: 822px;

@@ -6,18 +6,18 @@ from app.handlers.apis.mixins import ListCreateMixin
 from app.handlers.apis.mixins import OrderMixin
 from app.handlers.apis.mixins import RetrieveUpdateDeleteMixin
 
-from app.forms.images import ImageForm
-from app.models.images import Image
+from app.forms.about_modules import AboutModuleForm
+from app.models.about_modules import AboutModule
 
 
 class AdminList(ListCreateMixin, OrderMixin, AdminAjaxHandler):
 
-    form = ImageForm
-    model = Image
+    form = AboutModuleForm
+    model = AboutModule
     sort_order = 'order'
 
 
 class AdminDetail(RetrieveUpdateDeleteMixin, AdminAjaxHandler):
 
-    form = ImageForm
-    model = Image
+    form = AboutModuleForm
+    model = AboutModule

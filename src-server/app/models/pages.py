@@ -15,30 +15,15 @@ from app.models.base import BaseModel
 from app.models.base import OrderMixin
 
 
-PAGE_MAP = OrderedDict([
-    ('home', {
-        'title': 'Home',
-        'visible': True
-    }),
-    ('gallery', {
-        'title': 'Gallery',
-        'visible': True
-    }),
-    ('contact', {
-        'title': 'Contact',
-        'visible': True
-    }),
-])
-
-
 class MetaData(OrderMixin, BaseModel):
 
     tag = ndb.StringProperty(required=True, indexed=True)
     title = ndb.StringProperty(required=True, indexed=False)
+    nav = ndb.StringProperty(required=True, indexed=False)
     description = ndb.StringProperty(required=False, indexed=False)
     tags = ndb.StringProperty(required=False, repeated=True, indexed=False)
     visible = ndb.BooleanProperty(default=False)
-    page = ndb.KeyProperty(kind='Page')
+    page = ndb.KeyProperty()
 
     cache_keys = ['MetaData-group_by-tag']
 
@@ -57,8 +42,10 @@ class MetaData(OrderMixin, BaseModel):
             if record is None:
                 record = cls(tag=tag)
                 for key, value in defaults.iteritems():
-                    setattr(record, key, value)
-                record.page = Page().put()
+                    if key == 'page':
+                        record.page = value().put()
+                    else:
+                        setattr(record, key, value)
                 record.put()
 
             records.append(record.to_dict())
@@ -97,8 +84,79 @@ class MetaData(OrderMixin, BaseModel):
         return super(MetaData, self).update(form)
 
 
-class Page(BaseModel):
+
+
+class BasePage(BaseModel):
 
     title = ndb.StringProperty(required=False, indexed=False)
-    content = ndb.StringProperty(required=False, indexed=False)
+    sub_title = ndb.StringProperty(required=False, indexed=False)
 
+
+class HomePage(BasePage):
+
+    pass
+
+
+class AboutPage(BasePage):
+
+    content = ndb.TextProperty(required=False, indexed=False)
+
+
+class EventsPage(BasePage):
+
+    pass
+
+
+class NewsPage(BasePage):
+
+    pass
+
+
+class GalleryPage(BasePage):
+
+    pass
+
+
+class ContactPage(BasePage):
+
+    pass
+
+
+PAGE_MAP = OrderedDict([
+    ('home', {
+        'title': 'Home',
+        'nav': 'Home',
+        'visible': True,
+        'page': HomePage,
+    }),
+    ('about', {
+        'title': 'About',
+        'nav': 'About',
+        'visible': True,
+        'page': AboutPage,
+    }),
+    ('events', {
+        'title': 'Events',
+        'nav': 'Events',
+        'visible': True,
+        'page': EventsPage,
+    }),
+    ('news', {
+        'title': 'News',
+        'nav': 'News',
+        'visible': True,
+        'page': NewsPage,
+    }),
+    ('gallery', {
+        'title': 'Gallery',
+        'nav': 'Gallery',
+        'visible': True,
+        'page': GalleryPage,
+    }),
+    ('contact', {
+        'title': 'Contact',
+        'nav': 'Contact',
+        'visible': True,
+        'page': ContactPage,
+    }),
+])

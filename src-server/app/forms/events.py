@@ -17,16 +17,9 @@ from app.forms.utils.validators import validate_image_size
 from app.models.images import Image
 
 
-class ImageForm(SerialiserForm):
+class EventForm(SerialiserForm):
 
     image = FileField(
-        'Image',
-        validators=[
-            validators.Optional(),
-            validate_image_format
-        ],
-    )
-    thumbnail_image = FileField(
         'Image (420 x 330)',
         validators=[
             validators.Optional(),
@@ -40,22 +33,17 @@ class ImageForm(SerialiserForm):
             validators.DataRequired(),
         ],
     )
-    description = TextAreaField('Description')
+    content = TextAreaField('Description')
 
     class Serializer(ModelSerialiser):
         model = Image
         list_fields = [
-            ('thumbnail_image_bucket_url', {
+            ('image_bucket_url', {
                 'label': 'Thumbnail',
                 'type': 'image',
             }),
             ('title', {
                 'label': 'Title'
-            }),
-            ('image_filename', {
-                'label': 'Image',
-                'type': 'link',
-                'link_property': 'image_bucket_url',
             }),
             ('order', {
                 'label': 'Order',

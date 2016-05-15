@@ -1,0 +1,41 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+    {% if serialised_record %}
+        <div ng-init="formData = {{ json_record }}"></div>
+    {% endif %}
+
+
+<div layout="column" flex>
+    <md-content>
+
+    <div class="list-intro">
+        <h1>{{ extras.breadcrumbs[-1] }}</h1>
+        <span>{{ extras.intro|safe }}</span>
+    </div>
+
+    <form enctype="multipart/form-data">
+        <!-- <input type="hidden" value="{{ _xsrf }}" id="xsrf" name="xsrf" ng-model="formData.xsrf"> -->
+
+        {% for fieldset in form.field_sets %}
+
+            {% with fieldset_title=fieldset.title, fieldset_fields=fieldset.fields %}
+                {% include "admin/includes/form-card.html" %}
+            {% endwith %}
+
+        {% endfor %}
+
+        <div>
+            {% if cancel_url %}
+                <md-button href="{{ cancel_url }}">Cancel</md-button>
+            {% endif %}
+            <md-button class="md-raised md-warn" ng-click="submitForm()" ng-disabled="isProcessing">Submit</md-button>
+        </div>
+
+    </form>
+
+    </md-content>
+</div>
+
+{% endblock %}

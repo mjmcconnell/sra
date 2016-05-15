@@ -1,0 +1,52 @@
+{% import 'cms/macros.html' as cms_macros %}
+
+<md-card>
+    {% if fieldset_title %}
+        <md-toolbar md-scroll-shrink class="list-header">
+            <div class="md-toolbar-tools">
+                {{ fieldset_title }}
+
+                {% if fieldset and fieldset.group_toggle %}
+                    {{ cms_macros.angular_field(fieldset.group_toggle, disabled=fieldset.group_toggle in extras.disabled_fields) }}
+                {% elif fieldset and fieldset.link %}
+                    <span flex></span>
+                {% endif %}
+                {% if fieldset and fieldset.link %}
+                    <md-button class="md-raised md-default fieldset_link" href="{{ uri_for(fieldset.link.path_name) }}">{{ fieldset.link.label }}</md-button>
+                {% endif %}
+            </div>
+
+            {% if fieldset and fieldset.description %}
+                <p class="form-fieldset-desc">{{ fieldset.description }}</p>
+            {% endif %}
+
+        </md-toolbar>
+    {% endif %}
+
+    {% if fieldset_fields %}
+        <md-card-content>
+            {% for field in fieldset_fields %}
+                {% if field is mapping %}
+                    <div{% if field.grouping %} class="grouped_fieldset"{% endif %}>
+                        <span class="md-subhead">
+                            {% if field.grouping %}
+                                <span class="grouped_fieldset_identifier">{{ field.grouping }}</span>
+                            {% endif %}
+                            {{ field.title }}
+                            {% if field.group_toggle %}
+                                {{ cms_macros.angular_field(field.group_toggle, disabled=field.group_toggle in extras.disabled_fields) }}
+                            {% endif %}
+                        </span>
+                        {% for sub_field in field.fields %}
+                            {{ cms_macros.angular_field(sub_field, disabled=sub_field.name in extras.disabled_fields) }}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ cms_macros.angular_field(field, disabled=field.name in extras.disabled_fields) }}
+                {% endif %}
+            {% endfor %}
+
+        </md-card-content>
+    {% endif %}
+
+</md-card>
