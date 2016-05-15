@@ -115,6 +115,11 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
             name='events-list'
         ),
         Route(
+            r'/about_modules/add',
+            'about_modules.AdminList',
+            name='about_modules-detail'
+        ),
+        Route(
             r'/about_modules/<_id:\d+>',
             'about_modules.AdminDetail',
             name='about_modules-detail'
@@ -125,6 +130,11 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
             name='events-list'
         ),
         Route(
+            r'/events/add',
+            'events.AdminList',
+            name='events-detail'
+        ),
+        Route(
             r'/events/<_id:\d+>',
             'events.AdminDetail',
             name='events-detail'
@@ -133,6 +143,11 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
             r'/images',
             'images.AdminList',
             name='images-list'
+        ),
+        Route(
+            r'/images/add',
+            'images.AdminList',
+            name='images-detail'
         ),
         Route(
             r'/images/<_id:\d+>',

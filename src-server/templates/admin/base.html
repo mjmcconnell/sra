@@ -21,7 +21,18 @@
 
                 {% include 'admin/includes/header.html' %}
 
-                {% block content %}{% endblock %}
+                <div layout="column" flex>
+                    <md-content>
+
+                        <div class="heading-placeholder">
+                            <h2 class="md-display-2">{{ title }}</h2>
+                            <p class="md-subhead">{{ description }}</p>
+                        </div>
+
+                        {% block content %}{% endblock %}
+
+                    </md-content>
+                </div>
 
             </div>
 

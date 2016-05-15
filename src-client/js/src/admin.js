@@ -113,9 +113,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             });
     };
 
-    // Fetch all items for given model
-    $scope.fetchItems();
-
     $scope.deleteSelected = function() {
         $scope.flashMessages = [];
 
@@ -188,17 +185,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             headers: {'Content-Type': undefined}
         })
         .success(function(result){
-            $scope.isProcessing = false;
-            $scope.flashMessages.push(['Form Saved', 'success']);
-            if (_id) {
-                // Update record
-                $scope.records.data[$scope.activeRecordIndex] = result['data'];
-            } else {
-                // Append new record to list
-                $scope.records.data.push(result['data']);
-                $scope.records.count = $scope.records.count + 1;
-            }
-            $scope.closeForm();
+            window.location.href = $scope.cancel_url;
         })
         .error(function(error, status){
             $scope.isProcessing = false;

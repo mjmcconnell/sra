@@ -1,41 +1,27 @@
 {% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as cms_macros %}
+{% set cancel_url = '/'.join(request.url.split('/')[:-1]) %}
 
 {% block content %}
 
-    {% if serialised_record %}
-        <div ng-init="formData = {{ json_record }}"></div>
-    {% endif %}
+<div ng-init="formData = {{ json_record }}"></div>
+<div ng-init="cancel_url = '{{ cancel_url }}'"></div>
 
+<form enctype="multipart/form-data">
 
-<div layout="column" flex>
-    <md-content>
+    <md-card>
+        <md-card-content layout="column">
+            {% for field in form %}
+                {{ cms_macros.angular_field(field) }}
+            {% endfor %}
+        </md-card-content>
+    </md-card>
 
-    <div class="list-intro">
-        <h1>{{ extras.breadcrumbs[-1] }}</h1>
-        <span>{{ extras.intro|safe }}</span>
+    <div>
+        <md-button href="{{ cancel_url }}">Cancel</md-button>
+        <md-button class="md-raised md-warn" ng-click="submitForm()" ng-disabled="isProcessing">Submit</md-button>
     </div>
 
-    <form enctype="multipart/form-data">
-        <!-- <input type="hidden" value="{{ _xsrf }}" id="xsrf" name="xsrf" ng-model="formData.xsrf"> -->
-
-        {% for fieldset in form.field_sets %}
-
-            {% with fieldset_title=fieldset.title, fieldset_fields=fieldset.fields %}
-                {% include "admin/includes/form-card.html" %}
-            {% endwith %}
-
-        {% endfor %}
-
-        <div>
-            {% if cancel_url %}
-                <md-button href="{{ cancel_url }}">Cancel</md-button>
-            {% endif %}
-            <md-button class="md-raised md-warn" ng-click="submitForm()" ng-disabled="isProcessing">Submit</md-button>
-        </div>
-
-    </form>
-
-    </md-content>
-</div>
+</form>
 
 {% endblock %}

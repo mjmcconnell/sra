@@ -19,7 +19,7 @@ class AboutModuleHandler(AdminTemplateHandler):
             'description': 'Manage your about modules',
             'fields': self.form.fields,
             'title': 'About Modules',
-            'type': 'AboutModule',
+            'type': 'about_modules',
         })
 
         return super(AboutModuleHandler, self).render(template, template_data)
@@ -36,15 +36,17 @@ class ListHandler(AboutModuleHandler):
 class DetailHandler(AboutModuleHandler):
 
     def get(self, id=None):
+        json_record = None
         if id:
             record = AboutModule.get_by_id(int(id))
 
             if record is None:
                 self.abort(404)
 
-            self.form = AboutModule(None, record)
+            self.form = AboutModuleForm(None, record)
+            json_record = json.dumps(record.to_dict())
 
         self.render('admin/form.html', {
             'form': self.form,
-            'json_record': json.dumps(record.to_dict())
+            'json_record': json_record
         })
