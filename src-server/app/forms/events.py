@@ -13,18 +13,18 @@ from wtforms import validators
 from app.forms.base import SerialiserForm
 from app.forms.utils.serialisers import ModelSerialiser
 from app.forms.utils.validators import validate_image_format
-from app.forms.utils.validators import validate_image_size
+# from app.forms.utils.validators import validate_image_size
 from app.models.images import Image
 
 
 class EventForm(SerialiserForm):
 
     image = FileField(
-        'Image (420 x 330)',
+        'Image',
         validators=[
             validators.Optional(),
             validate_image_format,
-            validate_image_size(420, 330)
+            # validate_image_size(420, 330)
         ],
     )
     title = StringField(

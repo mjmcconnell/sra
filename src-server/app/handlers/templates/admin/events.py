@@ -36,6 +36,7 @@ class ListHandler(EventHandler):
 class DetailHandler(EventHandler):
 
     def get(self, id=None):
+        json_record = None
         if id:
             record = Event.get_by_id(int(id))
 
@@ -43,8 +44,9 @@ class DetailHandler(EventHandler):
                 self.abort(404)
 
             self.form = EventForm(None, record)
+            json_record = json.dumps(record.to_dict())
 
         self.render('admin/form.html', {
             'form': self.form,
-            'json_record': json.dumps(record.to_dict())
+            'json_record': json_record
         })

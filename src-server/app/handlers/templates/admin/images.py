@@ -36,6 +36,7 @@ class ListHandler(ImageHandler):
 class DetailHandler(ImageHandler):
 
     def get(self, id=None):
+        json_record = None
         if id:
             record = Image.get_by_id(int(id))
 
@@ -43,8 +44,9 @@ class DetailHandler(ImageHandler):
                 self.abort(404)
 
             self.form = ImageForm(None, record)
+            json_record = json.dumps(record.to_dict())
 
         self.render('admin/form.html', {
             'form': self.form,
-            'json_record': json.dumps(record.to_dict())
+            'json_record': json_record
         })
