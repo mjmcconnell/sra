@@ -41,9 +41,7 @@ class AboutHandler(PublicTemplateHandler):
 
     def get(self, *args, **kwargs):
         self.render('about', 'about.html', {
-            'json_about_modules': json.dumps(
-                AboutModule.fetch_cached_dataset()
-            )
+            'about_modules': AboutModule.fetch_cached_dataset()
         })
 
 

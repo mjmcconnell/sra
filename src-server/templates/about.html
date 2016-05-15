@@ -12,27 +12,12 @@
 <div class="strip">
     <div class="strip-content">
         <md-card class="left">
-            <h2>Background</h2>
 
-            <p>Why clay? Sharon loves the way it feels, the squidge of the wet clay, the stroking and caressing the
-            clay, feeling for imaginary bones and muscles, then finally animating, bringing out the
-            character/personality of my subjects. Clay is the perfect medium to convey the sense of strength yet
-            fragility that is present in all her sculptures.</p>
-            <p>Sharon graduated from the University of Ulster with a BA Contemporary Applied Art.</p>
-            <p>It was only after a period of illness that Sharon explored sculpture. That illness, at the time, seemed
-            like negative time in her life but actually opened the door to a much more fulfilling life.</p>
-            <p>The texture on the animals is created by adding a handful of chopped hay to clay slip.</p>
-            <p>When out walking the dogs or exploring country lanes on horseback Sharon loves those special
-            moments when she catches sight of a wild animal, it feels like a gift to see a hare watching me or
-            foxes playing as the sun sets and I love to watch the horses playing in the field and showing off. My
-            sculptures aim to capture that special moment and bring the outdoors indoors.</p>
+            {% for module in about_modules %}
+                <h2>{{ module.title }}</h2>
+                <span>{{ module.content }}</span>
+            {% endfor %}
 
-            <h2>Experience</h2>
-
-            <p>Sharon was the co-ordinator of Castle Ward Art &amp; Craft Studios for 4 years, growing a community of
-            artists and creatives within the Farm Yard at Castle Ward, Strangford. Sharon also curates ForM
-            Sculpture Exhibition, set in Bangor Castle Walled Garden in June, now in its 4 th year.</p>
-            <p>As well as exhibiting locally Sharon has exhibited in Dublin and New York.</p>
         </md-card>
     </div>
 </div>
