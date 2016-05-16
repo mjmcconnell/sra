@@ -4,6 +4,7 @@
 from __future__ import absolute_import
 
 # third-party imports
+from wtforms import DateField
 from wtforms import FileField
 from wtforms import StringField
 from wtforms import TextAreaField
@@ -19,6 +20,14 @@ from app.models.images import Image
 
 class EventForm(SerialiserForm):
 
+    start = DateField(
+        'Start',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    end = DateField('End')
+    time = StringField('Time')
     image = FileField(
         'Image',
         validators=[

@@ -14,7 +14,10 @@ from app.utils import storage
 
 class Event(OrderMixin, BaseModel):
 
-    title = ndb.StringProperty(required=True, indexed=False)
+    start = ndb.DateProperty(required=False, indexed=False)
+    end = ndb.DateProperty(required=False, indexed=False)
+    time = ndb.StringProperty(required=False, indexed=False)
+    title = ndb.StringProperty(required=False, indexed=False)
     content = ndb.StringProperty(required=False, indexed=False)
     image = ndb.StringProperty(required=False, indexed=False)
     image_filename = ndb.ComputedProperty(

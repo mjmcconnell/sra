@@ -2,6 +2,9 @@
 
     {% if field.type == 'HiddenField' %}
         {{ field() }}
+    {% elif field.type == 'DateField' %}
+        <label class="md-datepicker" for="{{ field.label.field_id }}">{{ field.label.text }}</label>
+        <md-datepicker ng-model="formData.{{ field.label.field_id }}" name="{{ field.label.field_id }}" md-placeholder="{{ field.label.text }}"></md-datepicker>
     {% else %}
 
         <md-input-container flex>
