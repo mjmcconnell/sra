@@ -99,32 +99,16 @@ class BasePage(BaseModel):
 class HomePage(BasePage):
 
     # Gallery Banner
-    gallery_title = ndb.StringProperty(
-        required=False,
-        indexed=False,
-        default="Visit the gallery"
-    )
-    gallery_copy = ndb.TextProperty(
-        required=False,
-        indexed=False,
-        default=""
-    )
+    gallery_title = ndb.StringProperty(required=False, indexed=False)
+    gallery_copy = ndb.TextProperty(required=False, indexed=False)
     gallery_image = ndb.StringProperty(required=False, indexed=False)
     gallery_image_filename = ndb.ComputedProperty(
         lambda self: self._get_filename(self.gallery_image))
     gallery_image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.gallery_image))
     # Events banner
-    events_title = ndb.StringProperty(
-        required=False,
-        indexed=False,
-        default="Events"
-    )
-    events_copy = ndb.TextProperty(
-        required=False,
-        indexed=False,
-        default=""
-    )
+    events_title = ndb.StringProperty(required=False, indexed=False)
+    events_copy = ndb.TextProperty(required=False, indexed=False)
     events_image = ndb.StringProperty(required=False, indexed=False)
     events_image_filename = ndb.ComputedProperty(
         lambda self: self._get_filename(self.events_image))

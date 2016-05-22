@@ -62,6 +62,7 @@ class BaseMixin(object):
         """Populates a wtform with data
         """
         self.form = self.form(data, record)
+        flat_record = record.to_dict(flatten=True)
         for k, v in data.iteritems():
             if k.endswith('image'):
                 # Check if the image field is populated
@@ -84,7 +85,7 @@ class BaseMixin(object):
                 # If the field is not set, then try to use the records value
                 # to populate the field.
                 elif record:
-                    v = getattr(record, k)
+                    v = flat_record[k]
                 try:
                     setattr(getattr(self.form, k), 'data', v)
                 except AttributeError:

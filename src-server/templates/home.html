@@ -15,4 +15,42 @@
     </div>
 </div>
 
+<div class="strip default-strip">
+    <div class="strip-content">
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.gallery_title }}</span>
+                    <span class="md-subhead">{{ page.gallery_copy }}</span>
+                    <div class="hp-card-actions">
+                        <md-button href="/gallery">View Gallery</md-button>
+                    </div>
+                </md-card-title-text>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="http://placehold.it/350x200">
+            </div>
+        </md-card>
+    </div>
+</div>
+
+<div class="strip default-strip">
+    <div class="strip-content">
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.events_title }}</span>
+                    <span class="md-subhead">{{ page.events_copy }}</span>
+                    <div class="hp-card-actions">
+                        <md-button href="/events">View Events</md-button>
+                    </div>
+                </md-card-title-text>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="http://placehold.it/350x200">
+            </div>
+        </md-card>
+    </div>
+</div>
+
 {% endblock %}
