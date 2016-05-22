@@ -106,6 +106,8 @@ class HomePage(BasePage):
         lambda self: self._get_filename(self.gallery_image))
     gallery_image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.gallery_image))
+    gallery_cta_label = ndb.StringProperty(required=False, indexed=False)
+    gallery_cta_url = ndb.StringProperty(required=False, indexed=False)
     # Events banner
     events_title = ndb.StringProperty(required=False, indexed=False)
     events_copy = ndb.TextProperty(required=False, indexed=False)
@@ -114,6 +116,8 @@ class HomePage(BasePage):
         lambda self: self._get_filename(self.events_image))
     events_image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.events_image))
+    events_cta_label = ndb.StringProperty(required=False, indexed=False)
+    events_cta_url = ndb.StringProperty(required=False, indexed=False)
 
 
 class AboutPage(BasePage):

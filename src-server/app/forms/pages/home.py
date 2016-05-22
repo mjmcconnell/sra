@@ -19,6 +19,39 @@ from app.models.pages import MetaData
 
 class HomePageForm(PageForm):
 
+    page__gallery_title = StringField(
+        'Gallery Title',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    page__gallery_copy = TextAreaField(
+        'Gallery Copy',
+        validators=[
+            validators.Optional(),
+        ],
+    )
+    page__gallery_cta_label = StringField(
+        'Gallery CTA Label',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    page__gallery_cta_url = StringField(
+        'Gallery CTA URL',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    page__gallery_image = FileField(
+        'Gallery Image',
+        validators=[
+            validators.Optional(),
+            validate_image_format,
+            # validate_image_size(),
+        ],
+    )
+
     page__events_title = StringField(
         'Events Title',
         validators=[
@@ -39,25 +72,16 @@ class HomePageForm(PageForm):
             # validate_image_size(),
         ],
     )
-
-    page__gallery_title = StringField(
-        'Gallery Title',
+    page__events_cta_label = StringField(
+        'Events CTA Label',
         validators=[
             validators.DataRequired(),
         ],
     )
-    page__gallery_copy = TextAreaField(
-        'Gallery Copy',
+    page__events_cta_url = StringField(
+        'Events CTA URL',
         validators=[
-            validators.Optional(),
-        ],
-    )
-    page__gallery_image = FileField(
-        'Gallery Image',
-        validators=[
-            validators.Optional(),
-            validate_image_format,
-            # validate_image_size(),
+            validators.DataRequired(),
         ],
     )
 
@@ -82,12 +106,26 @@ class HomePageForm(PageForm):
                 'fields': (
                     'page__title',
                     'page__sub_title',
-                    'page__events_title',
-                    'page__events_copy',
-                    'page__events_image',
+                ),
+            },
+            {
+                'title': 'Gallery Module',
+                'fields': (
                     'page__gallery_title',
                     'page__gallery_copy',
                     'page__gallery_image',
+                    'page__gallery_cta_label',
+                    'page__gallery_cta_url',
+                ),
+            },
+            {
+                'title': 'Events Module',
+                'fields': (
+                    'page__events_title',
+                    'page__events_copy',
+                    'page__events_image',
+                    'page__events_cta_label',
+                    'page__events_cta_url',
                 ),
             },
         ]

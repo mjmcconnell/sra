@@ -23,12 +23,12 @@
                     <span class="md-headline">{{ page.gallery_title }}</span>
                     <span class="md-subhead">{{ page.gallery_copy }}</span>
                     <div class="hp-card-actions">
-                        <md-button href="/gallery">View Gallery</md-button>
+                        <md-button href="{{ page.gallery_cta_url }}">{{ page.gallery_cta_label }}</md-button>
                     </div>
                 </md-card-title-text>
             </md-card-title>
             <div hide show-gt-xs flex class="hp-card-img">
-                <img src="http://placehold.it/350x200">
+                <img src="{{ page.gallery_image_bucket_url|default('http://placehold.it/350x200') }}">
             </div>
         </md-card>
     </div>
@@ -42,12 +42,12 @@
                     <span class="md-headline">{{ page.events_title }}</span>
                     <span class="md-subhead">{{ page.events_copy }}</span>
                     <div class="hp-card-actions">
-                        <md-button href="/events">View Events</md-button>
+                        <md-button href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
                     </div>
                 </md-card-title-text>
             </md-card-title>
             <div hide show-gt-xs flex class="hp-card-img">
-                <img src="http://placehold.it/350x200">
+                <img src="{{ page.events_image_bucket_url|default('http://placehold.it/350x200') }}">
             </div>
         </md-card>
     </div>
