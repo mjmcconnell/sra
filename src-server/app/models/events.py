@@ -14,15 +14,19 @@ from app.utils import storage
 
 class Event(OrderMixin, BaseModel):
 
-    start = ndb.DateProperty(required=False, indexed=False)
-    end = ndb.DateProperty(required=False, indexed=False)
-    time = ndb.StringProperty(required=False, indexed=False)
+    start = ndb.DateProperty(required=False, indexed=True)
+    end = ndb.DateProperty(required=False, indexed=True)
+    time = ndb.StringProperty(required=False, indexed=True)
+    location = ndb.StringProperty(required=False, indexed=True)
     title = ndb.StringProperty(required=False, indexed=False)
+    short_copy = ndb.StringProperty(required=False, indexed=False)
     content = ndb.StringProperty(required=False, indexed=False)
+    signup_cta_label = ndb.StringProperty(required=False, indexed=False)
+    signup_cta_url = ndb.StringProperty(required=False, indexed=False)
+    link_label = ndb.StringProperty(required=False, indexed=False)
+    link_url = ndb.StringProperty(required=False, indexed=False)
     image = ndb.StringProperty(required=False, indexed=False)
     image_filename = ndb.ComputedProperty(
         lambda self: self.image.split('/')[-1])
     image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.image))
-    link_label = ndb.StringProperty(required=False, indexed=False)
-    link_url = ndb.StringProperty(required=False, indexed=False)

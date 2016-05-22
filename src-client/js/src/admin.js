@@ -51,6 +51,16 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.records = [];
     $scope.selected = [];
 
+    $scope.populateForm = function(json_record) {
+        for (var key in json_record) {
+            if (key == 'start' || key == 'end') {
+                $scope.formData[key] = new Date(json_record[key]);
+            } else {
+                $scope.formData[key] = json_record[key];
+            }
+        }
+    }
+
     // Set options for pagination
     $scope.options = {
         autoSelect: true,

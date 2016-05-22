@@ -4,12 +4,11 @@
 from __future__ import absolute_import
 
 # stdlib imports
+import datetime
 import logging
-import os
 from uuid import uuid4
 
 # third-party imports
-import appengine_config
 from google.appengine.api import memcache
 from google.appengine.ext import ndb
 
@@ -125,29 +124,6 @@ class BaseModel(ndb.Model):
 
         return self.serialise(d)
 
-    def fetch_default_image(self, prop):
-        path = False
-        # path to cms default images
-        default_dir = os.path.join(
-            'static',
-            'cms',
-            'img',
-            'defaults',
-            self.key.kind().lower()
-        )
-
-        # Check for multiple file extensions
-        jpg_prop = '.'.join([prop, 'jpg'])
-        png_prop = '.'.join([prop, 'png'])
-        # check if file exists
-        if os.path.isfile(os.path.join(appengine_config.BUNDLE_ROOT, default_dir, jpg_prop)):
-            path = '/' + os.path.join(default_dir, jpg_prop)
-        elif os.path.isfile(os.path.join(appengine_config.BUNDLE_ROOT, default_dir, png_prop)):
-            path = '/' + os.path.join(default_dir, png_prop)
-        else:
-            logging.info('Missing default asset: %s', os.path.join(default_dir, png_prop))
-        return path
-
     def serialise(self, _dict):
         serialised_dict = {}
         serialised_dict['id'] = self.key.id()
@@ -161,9 +137,12 @@ class BaseModel(ndb.Model):
                     serialised_dict[prop] = value.get().to_dict()
                 except Exception as e:
                     logging.error(e)
-            elif prop.endswith('_bucket_url'):
-                if value is None:
-                    value = self.fetch_default_image(prop)
+            elif isinstance(value, datetime.datetime):
+                serialised_dict[prop] = str(value)
+            elif isinstance(value, datetime.date):
+                serialised_dict[prop] = str(value)
+            elif isinstance(value, datetime.time):
+                serialised_dict[prop] = str(value)
             else:
                 serialised_dict[prop] = value
 

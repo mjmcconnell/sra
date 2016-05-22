@@ -13,6 +13,7 @@ html, body, md-content {
     }
     .md-button {
         display: inline-table;
+        float: right;
     }
 
     .heading-placeholder {
@@ -109,5 +110,25 @@ html, body, md-content {
         input {
             font-size: 16px;
         }
+    }
+    .help-block {
+        float: left;
+        margin: -35px 3px 0;
+        font-size: 11px;
+        color: #444;
+    }
+    .form-validation-messages {
+        float: right;
+        color: rgb(221,44,0);
+        font-size: 12px;
+        line-height: 14px;
+        overflow: hidden;
+        transition: all .3s cubic-bezier(.55,0,.55,.2);
+        opacity: 1;
+        margin-top: 0;
+        padding: 0px 0 6px;
+    }
+    .md-datepicker-validation-messages {
+        margin-top: -20px;
     }
 }

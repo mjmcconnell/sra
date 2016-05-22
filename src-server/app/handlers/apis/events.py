@@ -16,8 +16,24 @@ class AdminList(ListCreateMixin, OrderMixin, AdminAjaxHandler):
     model = Event
     sort_order = 'order'
 
+    def _populate_form(self, data, record=None):
+        if data.get('start'):
+            data['start'] = data['start'][4:15]
+        if data.get('end'):
+            data['end'] = data['end'][4:15]
+
+        return super(AdminList, self)._populate_form(data, record)
+
 
 class AdminDetail(RetrieveUpdateDeleteMixin, AdminAjaxHandler):
 
     form = EventForm
     model = Event
+
+    def _populate_form(self, data, record=None):
+        if data.get('start'):
+            data['start'] = data['start'][4:15]
+        if data.get('end'):
+            data['end'] = data['end'][4:15]
+
+        return super(AdminDetail, self)._populate_form(data, record)
