@@ -18,6 +18,7 @@ class PublicTemplateHandler(BaseHandler):
             template_data = {}
 
         template_data['pages'] = MetaData.group_by('tag')
+        template_data['meta_data'] = template_data['pages'][tag]
         template_data['page'] = template_data['pages'][tag]['page']
 
         super(PublicTemplateHandler, self).render(template, template_data)

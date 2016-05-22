@@ -64,5 +64,5 @@ class DetailHandler(PageHandler):
 
         self.render('admin/form.html', {
             'form': form,
-            'json_record': json.dumps(record.to_dict())
+            'json_record': json.dumps(record.to_dict(flatten=True))
         })

@@ -5,9 +5,11 @@ from __future__ import absolute_import
 
 # stdlib imports
 import logging
+import os
 from uuid import uuid4
 
 # third-party imports
+import appengine_config
 from google.appengine.api import memcache
 from google.appengine.ext import ndb
 
@@ -28,6 +30,9 @@ class BaseModel(ndb.Model):
 
     def _post_put_hook(self, future):
         memcache.flush_all()
+
+    def _get_filename(self, prop):
+        return prop.split('/')[-1] if prop else None
 
     @classmethod
     def generate_bucket_url(self, image_name):
@@ -101,13 +106,47 @@ class BaseModel(ndb.Model):
 
         return grouped_records
 
-    def to_dict(self):
+    def to_dict(self, flatten=False):
         """Serialise model instance to a dictionary (to make it play nice with
         json.dumps())
         """
         d = super(BaseModel, self).to_dict()
+        if flatten:
+            flat_record = {}
+            for k, v in self.serialise(d).iteritems():
+                if type(v) is not dict:
+                    flat_record[k] = v
+                else:
+                    label = '{}__'.format(k)
+                    for ck, cv in v.iteritems():
+                        flat_record[label + ck] = cv
+
+            return flat_record
 
         return self.serialise(d)
+
+    def fetch_default_image(self, prop):
+        path = False
+        # path to cms default images
+        default_dir = os.path.join(
+            'static',
+            'cms',
+            'img',
+            'defaults',
+            self.key.kind().lower()
+        )
+
+        # Check for multiple file extensions
+        jpg_prop = '.'.join([prop, 'jpg'])
+        png_prop = '.'.join([prop, 'png'])
+        # check if file exists
+        if os.path.isfile(os.path.join(appengine_config.BUNDLE_ROOT, default_dir, jpg_prop)):
+            path = '/' + os.path.join(default_dir, jpg_prop)
+        elif os.path.isfile(os.path.join(appengine_config.BUNDLE_ROOT, default_dir, png_prop)):
+            path = '/' + os.path.join(default_dir, png_prop)
+        else:
+            logging.info('Missing default asset: %s', os.path.join(default_dir, png_prop))
+        return path
 
     def serialise(self, _dict):
         serialised_dict = {}
@@ -122,6 +161,9 @@ class BaseModel(ndb.Model):
                     serialised_dict[prop] = value.get().to_dict()
                 except Exception as e:
                     logging.error(e)
+            elif prop.endswith('_bucket_url'):
+                if value is None:
+                    value = self.fetch_default_image(prop)
             else:
                 serialised_dict[prop] = value
 
@@ -153,6 +195,16 @@ class OrderMixin(object):
     sort_order = 'order'
 
     order = ndb.IntegerProperty()
+
+    def _post_put_hook(self, future):
+        """Ensure order value is set, if not then set it to the
+        total number of current records
+        """
+        if self.order is None:
+            self.order = self.query().count()
+            self.put()
+
+        memcache.flush_all()
 
     @classmethod
     def _post_delete_hook(cls, key, future):

@@ -76,43 +76,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
         $mdSidenav('left').toggle();
     };
 
-    $scope.openForm = function(event, index) {
-        console.log(index);
-        event.stopPropagation();
-
-        $scope.imageFields = {};
-        $scope.formData = {};
-
-        if (index !== undefined) {
-            $scope.activeRecordIndex = index
-            $scope.formData = angular.copy($scope.records.data[index]);
-            angular.forEach($scope.records.data[index], function(value, key) {
-                if (typeof value === 'object') {
-                    angular.forEach(value, function(v, k) {
-                        $scope.formData[key + '__' + k] = v;
-                    });
-                }
-            });
-        }
-        $mdSidenav('right').toggle();
-    };
-
-    $scope.closeForm = function() {
-        $mdSidenav('right').toggle();
-    };
-
-    $scope.fetchItems = function() {
-        $scope.records = [];
-        // Fetch all active records
-        $http.get(base_url).
-            success(function(results) {
-                $scope.records = results;
-            }).
-            error(function(error) {
-                $log.log(error);
-            });
-    };
-
     $scope.deleteSelected = function() {
         $scope.flashMessages = [];
 

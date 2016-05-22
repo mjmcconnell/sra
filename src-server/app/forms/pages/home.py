@@ -28,7 +28,7 @@ class HomePageForm(PageForm):
     page__events_copy = TextAreaField(
         'Events Copy',
         validators=[
-            validators.DataRequired(),
+            validators.Optional(),
         ],
     )
     page__events_image = FileField(
@@ -49,7 +49,7 @@ class HomePageForm(PageForm):
     page__gallery_copy = TextAreaField(
         'Gallery Copy',
         validators=[
-            validators.DataRequired(),
+            validators.Optional(),
         ],
     )
     page__gallery_image = FileField(

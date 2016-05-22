@@ -44,7 +44,12 @@ class MetaData(OrderMixin, BaseModel):
                 record = cls(tag=tag)
                 for key, value in defaults.iteritems():
                     if key == 'page':
-                        record.page = value().put()
+                        page_record = value.query().get()
+                        if page_record:
+                            p_key = page_record.key()
+                        else:
+                            p_key = value().put()
+                        record.page = p_key
                     else:
                         setattr(record, key, value)
                 record.put()
@@ -94,19 +99,35 @@ class BasePage(BaseModel):
 class HomePage(BasePage):
 
     # Gallery Banner
-    gallery_title = ndb.StringProperty(required=True, indexed=False)
-    gallery_copy = ndb.TextProperty(required=True, indexed=False)
+    gallery_title = ndb.StringProperty(
+        required=False,
+        indexed=False,
+        default="Visit the gallery"
+    )
+    gallery_copy = ndb.TextProperty(
+        required=False,
+        indexed=False,
+        default=""
+    )
     gallery_image = ndb.StringProperty(required=False, indexed=False)
     gallery_image_filename = ndb.ComputedProperty(
-        lambda self: self.gallery_image.split('/')[-1])
+        lambda self: self._get_filename(self.gallery_image))
     gallery_image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.gallery_image))
     # Events banner
-    events_title = ndb.StringProperty(required=True, indexed=False)
-    events_copy = ndb.TextProperty(required=True, indexed=False)
+    events_title = ndb.StringProperty(
+        required=False,
+        indexed=False,
+        default="Events"
+    )
+    events_copy = ndb.TextProperty(
+        required=False,
+        indexed=False,
+        default=""
+    )
     events_image = ndb.StringProperty(required=False, indexed=False)
     events_image_filename = ndb.ComputedProperty(
-        lambda self: self.events_image.split('/')[-1])
+        lambda self: self._get_filename(self.events_image))
     events_image_bucket_url = ndb.ComputedProperty(
         lambda self: storage.get_public_serving_url(self.events_image))
 
@@ -117,11 +138,6 @@ class AboutPage(BasePage):
 
 
 class EventsPage(BasePage):
-
-    pass
-
-
-class NewsPage(BasePage):
 
     pass
 
@@ -143,11 +159,11 @@ PAGE_MAP = OrderedDict([
         'visible': True,
         'page': HomePage,
     }),
-    ('about', {
-        'title': 'About',
-        'nav': 'About',
+    ('gallery', {
+        'title': 'Gallery',
+        'nav': 'Gallery',
         'visible': True,
-        'page': AboutPage,
+        'page': GalleryPage,
     }),
     ('events', {
         'title': 'Events',
@@ -155,17 +171,11 @@ PAGE_MAP = OrderedDict([
         'visible': True,
         'page': EventsPage,
     }),
-    ('news', {
-        'title': 'News',
-        'nav': 'News',
+    ('about', {
+        'title': 'About',
+        'nav': 'About',
         'visible': True,
-        'page': NewsPage,
-    }),
-    ('gallery', {
-        'title': 'Gallery',
-        'nav': 'Gallery',
-        'visible': True,
-        'page': GalleryPage,
+        'page': AboutPage,
     }),
     ('contact', {
         'title': 'Contact',
