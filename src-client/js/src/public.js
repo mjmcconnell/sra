@@ -57,6 +57,46 @@ app.controller('GalleryCtrl', function($scope, $mdDialog) {
             // Dialog was closed
         });
     };
+    $scope.openEventForm = function(event, index) {
+        $scope.activeEl = $scope.events[index];
+        $mdDialog.show({
+            controller: DialogController,
+            template: `
+                <md-dialog id="eventDialog" aria-label="Image Details" ng-cloak>
+                    <form name="eventForm" novalidate class="event-form" ng-controller="EventFormCtrl">
+                        <md-card>
+                            <md-card-content>
+                                <h1 class="md-subhead event-form-header-copy">Please fill in the form to sign up for the event</h1>
+                                <md-input-container class="md-block">
+                                    <label for="name">Name</label>
+                                    <input required id="name" name="name" type="text" ng-model="formData.name">
+                                    <div ng-messages="formData.name.$error" role="alert" class="md-input-message-animation">
+                                        <div ng-message="server" ng-repeat="error in serverErrors.name track by $index">{[error]}</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block">
+                                    <label for="email">Email Address</label>
+                                    <input required type="email" name="email" ng-model="formData.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                                    <div ng-messages="formData.email.$error" role="alert" class="md-input-message-animation">
+                                        <div ng-message="server" ng-repeat="error in serverErrors.email track by $index">{[error]}</div>
+                                    </div>
+                                </md-input-container>
+                                <md-button class="contact-form-btn" ng-click="submitForm()">Sumbit</md-button>
+                            </md-card-content>
+                        </md-card>
+                    </form>
+                </md-dialog>`,
+            parent: angular.element(document.body),
+            scope: $scope,
+            preserveScope: true,
+            targetEvent: event,
+            clickOutsideToClose:true
+        }).then(function(answer) {
+            // User chose an answer
+        }, function() {
+            // Dialog was closed
+        });
+    };
     function DialogController($scope, $mdDialog) {
         $scope.hide = function() {
             $mdDialog.hide();

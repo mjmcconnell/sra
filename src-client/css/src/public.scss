@@ -18,6 +18,10 @@ p, span {
     word-spacing: 1px;
 }
 
+md-content.md-default-theme {
+    background: #F5F5F5;
+}
+
 #content {
     margin-top: 60px;
     background: #F5F5F5;
@@ -138,13 +142,50 @@ md-sidenav.md-sidenav-right {
         }
 
         .event-card {
-            min-height: 170px;
-            margin: 10px;
-            padding: 0;
-            text-align: left;
-            img {
-                height: 170px;
-                margin: -16px 0 0 16px;
+            padding: 10px;
+
+            .event-date-time {
+                margin: 10px -10px;
+                background: rgba(0, 0, 0, 0.1);
+                color: rgba(0, 0, 0, 0.4);
+                font-size: 0.9em;
+                padding: 5px 10px;
+
+                svg {
+                    fill: rgba(0,0,0,0.3);
+                    max-height: 90%;
+                }
+
+                .date {
+                    float: left;
+                }
+                .time {
+                    float: right;
+                }
+            }
+
+            md-card-title {
+                padding: 5px 0 10px;
+                display: inline;
+            }
+            md-card-content {
+                text-align: left;
+                padding: 10px 2px;
+            }
+            md-card-actions {
+                margin: 0;
+            }
+            a, button {
+                background: $primary-color;
+                color: #ffffff;
+                margin: 10px 0;
+                padding: 0 15px;
+
+                span {
+                    line-height: 2.4em;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
             }
         }
 

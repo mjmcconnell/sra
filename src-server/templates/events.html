@@ -10,28 +10,45 @@
 </div>
 
 <div class="strip default-strip">
-    <div class="strip-content" layout="column">
+    <div class="strip-content">
+        <div layout="row" layout-wrap ng-controller="EventCtrl" ng-init="events = {{ json_events }}">
 
-    {% for event in events %}
-        <md-card class="event-card">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{ event.title }}</span>
-                    <span class="md-subhead">{{ event.content }}</span>
-                    <md-button href="{{ event.link_url }}">{{ event.link_label }}</md-button>
-                </md-card-title-text>
-                {% if event.image %}
-                    <md-card-title-media>
-                        <div class="md-media-lg card-media">
-                            <img src="{{ event.image_bucket_url }}" alt="{{ event.title }}"/>
+            {% for i in range(5) %}
+                <div flex-xs flex-gt-xs="50" flex-sm="33" flex-gt-sm="33">
+                    <md-card class="event-card">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <div>
+                                    <span class="md-headline">Action buttons</span>
+                                </div>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <img ng-src="http://placehold.it/150x100" class="md-card-image"/>
+                        <div class="event-date-time">
+                            <span class="date">
+                                <md-icon md-svg-icon="/static/img/icons/ic_insert_invitation_black_24px.svg" style="color: #0F0;" ></md-icon>
+                                28-28th Dec
+                            </span>
+                            <span class="time">
+                                <md-icon md-svg-icon="/static/img/icons/ic_query_builder_black_24px.svg"></md-icon>
+                                12 - 14pm
+                            </span>
                         </div>
-                    </md-card-title-media>
-                {% endif %}
-            </md-card-title>
-        </md-card>
-    {% endfor %}
-
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button ng-click="openEventForm($event, $index)">Sign Up</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
 </div>
 
 {% endblock %}
