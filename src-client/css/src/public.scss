@@ -39,6 +39,7 @@ md-toolbar.global-header {
 
     .md-toolbar-tools {
         min-height: 70;
+        padding-right: 0;
 
         a.logo {
             img {
@@ -52,6 +53,18 @@ md-toolbar.global-header {
         }
         .toggle_menu {
             margin-right: 6px;
+        }
+    }
+
+    .global-header-nav-button {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: -5px;
+        button {
+            height: 100%;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            width: 70px;
         }
     }
 }
