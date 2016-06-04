@@ -12,7 +12,7 @@ from app.models.base import OrderMixin
 from app.utils import storage
 
 
-class Event(OrderMixin, BaseModel):
+class Workshop(OrderMixin, BaseModel):
 
     start = ndb.DateProperty(required=False, indexed=True)
     end = ndb.DateProperty(required=False, indexed=True)
@@ -21,6 +21,8 @@ class Event(OrderMixin, BaseModel):
     title = ndb.StringProperty(required=False, indexed=False)
     short_copy = ndb.StringProperty(required=False, indexed=False)
     content = ndb.StringProperty(required=False, indexed=False)
+    signup_cta_label = ndb.StringProperty(required=False, indexed=False)
+    signup_cta_url = ndb.StringProperty(required=False, indexed=False)
     link_label = ndb.StringProperty(required=False, indexed=False)
     link_url = ndb.StringProperty(required=False, indexed=False)
     image = ndb.StringProperty(required=False, indexed=False)

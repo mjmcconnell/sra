@@ -19,6 +19,7 @@ _UNAUTHENTICATED_ROUTES = [
         Route(r'/contact', 'ContactHandler', name='contact'),
         Route(r'/about', 'AboutHandler', name='about'),
         Route(r'/events', 'EventsHandler', name='events'),
+        Route(r'/workshops', 'WorkshopHandler', name='workshops'),
         Route(r'/<path:.*>', 'HomeHandler', name='home-all'),
     ]),
 ]
@@ -76,6 +77,18 @@ _ADMIN_ROUTES = _ADMIN_ROUTES + MultiPrefixRoute(
             r'/events/<id:[0-9]+>',
             'events.DetailHandler',
             name='events-detail'
+        ),
+        # workshopts
+        Route(r'/workshopts', 'workshopts.ListHandler', name='workshopts-list'),
+        Route(
+            r'/workshopts/add',
+            'workshopts.DetailHandler',
+            name='workshopts-detail'
+        ),
+        Route(
+            r'/workshopts/<id:[0-9]+>',
+            'workshopts.DetailHandler',
+            name='workshopts-detail'
         ),
         # images
         Route(
@@ -138,6 +151,21 @@ _ADMIN_AJAX_ROUTES = MultiPrefixRoute(
             r'/events/<_id:\d+>',
             'events.AdminDetail',
             name='events-detail'
+        ),
+        Route(
+            r'/workshops',
+            'workshops.AdminList',
+            name='workshops-list'
+        ),
+        Route(
+            r'/workshops/add',
+            'workshops.AdminList',
+            name='workshops-detail'
+        ),
+        Route(
+            r'/workshops/<_id:\d+>',
+            'workshops.AdminDetail',
+            name='workshops-detail'
         ),
         Route(
             r'/images',

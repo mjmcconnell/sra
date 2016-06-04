@@ -68,6 +68,13 @@ class EventForm(SerialiserForm):
         'Description',
         description="Shown on the popup dialog"
     )
+    signup_cta_label = StringField(
+        'Label',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    signup_cta_url = StringField('URL')
     link_label = StringField('Title')
     link_url = StringField('URL')
 
@@ -108,6 +115,13 @@ class EventForm(SerialiserForm):
                     'title',
                     'short_copy',
                     'content',
+                ),
+            },
+            {
+                'title': 'Form CTA',
+                'fields': (
+                    'signup_cta_label',
+                    'signup_cta_url',
                 ),
             },
             {
