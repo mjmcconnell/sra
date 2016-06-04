@@ -94,14 +94,6 @@ class HomePageForm(PageForm):
                 ),
             },
             {
-                'title': 'Meta Data',
-                'fields': (
-                    'title',
-                    'tags',
-                    'description',
-                ),
-            },
-            {
                 'title': 'Page Content',
                 'fields': (
                     'page__title',
@@ -126,6 +118,14 @@ class HomePageForm(PageForm):
                     'page__events_image',
                     'page__events_cta_label',
                     'page__events_cta_url',
+                ),
+            },
+            {
+                'title': 'Meta Data',
+                'fields': (
+                    'title',
+                    'tags',
+                    'description',
                 ),
             },
         ]
