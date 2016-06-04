@@ -87,7 +87,7 @@ class HomePageForm(PageForm):
 
     class Serializer(ModelSerialiser):
         model = MetaData
-        field_sets = [
+        fieldsets = [
             {
                 'fields': (
                     'visible',

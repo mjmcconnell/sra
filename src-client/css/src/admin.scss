@@ -90,6 +90,12 @@ html, body, md-content {
     }
 
     // Form
+    md-input-container {
+        width: 100%;
+    }
+    md-switch {
+        margin: 0;
+    }
     .list-add-btn {
         margin-top: 5px;
     }
