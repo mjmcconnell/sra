@@ -116,6 +116,12 @@ class HomePageForm(PageForm):
                 ),
             },
             {
+                'title': 'Sidebar',
+                'fields': (
+                    'nav',
+                ),
+            },
+            {
                 'title': 'Meta Data',
                 'fields': (
                     'title',

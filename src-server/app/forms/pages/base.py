@@ -28,6 +28,10 @@ class PageForm(SerialiserForm):
         'Meta Tags',
         description='This should be a comma seperated list of tags.',
     )
+    nav = StringField(
+        'Label for sidebar link',
+        validators=[validators.Optional()],
+    )
     description = TextAreaField('Meta Description')
     page__title = StringField(
         'Page Title',
@@ -62,18 +66,24 @@ class PageForm(SerialiserForm):
                 ),
             },
             {
+                'title': 'Page Content',
+                'fields': (
+                    'page__title',
+                    'page__sub_title',
+                ),
+            },
+            {
+                'title': 'Sidebar',
+                'fields': (
+                    'nav',
+                ),
+            },
+            {
                 'title': 'Meta Data',
                 'fields': (
                     'title',
                     'tags',
                     'description',
-                ),
-            },
-            {
-                'title': 'Page Content',
-                'fields': (
-                    'page__title',
-                    'page__sub_title',
                 ),
             },
         ]
