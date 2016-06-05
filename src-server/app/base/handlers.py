@@ -31,6 +31,7 @@ from . import api_fixer
 from . import constants
 from . import models
 from . import xsrf
+from app.filters.string_helper import nl2br
 
 
 # Assorted decorators that can be used inside a webapp2.RequestHandler object
@@ -252,6 +253,7 @@ class BaseHandler(webapp2.RequestHandler):
             loader=jinja2.FileSystemLoader(constants.TEMPLATE_DIR),
             extensions=extensions,
         )
+        env.filters['nl2br'] = nl2br
         for k, v in self.app.config['jinja2']['filters'].items():
             env.filters[k] = v
         return env

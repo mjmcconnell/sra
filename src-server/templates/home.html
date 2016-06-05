@@ -11,7 +11,7 @@
 <div class="strip primary-strip">
     <div class="strip-content">
         <h1 hide-gt-sm class="md-headline">{{ page.title }}</h1>
-        <p class="md-subhead">{{ page.sub_title }}</p>
+        <p class="md-subhead">{{ page.sub_title|nl2br }}</p>
     </div>
 </div>
 
@@ -22,7 +22,7 @@
             <md-card-title flex>
                 <md-card-title-text>
                     <span class="md-headline">{{ page.gallery_title }}</span>
-                    <span class="md-subhead">{{ page.gallery_copy }}</span>
+                    <span class="md-subhead">{{ page.gallery_copy|nl2br }}</span>
                 </md-card-title-text>
                 <div class="hp-card-actions">
                     <md-button href="{{ page.gallery_cta_url }}">{{ page.gallery_cta_label }}</md-button>
@@ -43,11 +43,11 @@
             <md-card-title flex>
                 <md-card-title-text>
                     <span class="md-headline">{{ page.events_title }}</span>
-                    <span class="md-subhead">{{ page.events_copy }}</span>
-                    <div class="hp-card-actions">
-                        <md-button href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
-                    </div>
+                    <span class="md-subhead">{{ page.events_copy|nl2br }}</span>
                 </md-card-title-text>
+                <div class="hp-card-actions">
+                    <md-button href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
+                </div>
             </md-card-title>
             <div hide show-gt-xs flex class="hp-card-img">
                 <img src="{{ page.events_image_bucket_url }}">
@@ -64,7 +64,7 @@
             <md-card-title flex>
                 <md-card-title-text>
                     <span class="md-headline">{{ page.workshops_title }}</span>
-                    <span class="md-subhead">{{ page.workshops_copy }}</span>
+                    <span class="md-subhead">{{ page.workshops_copy|nl2br }}</span>
                 </md-card-title-text>
                 <div class="hp-card-actions">
                     <md-button href="{{ page.workshops_cta_url }}">{{ page.workshops_cta_label }}</md-button>

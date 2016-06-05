@@ -5,7 +5,7 @@
 <div class="hero_strip primary-strip">
     <div class="strip-content">
         <h1 class="md-display-1">{{ page.title }}</h1>
-        <p class="md-subhead">{{ page.sub_title }}</p>
+        <p class="md-subhead">{{ page.sub_title|nl2br }}</p>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
 
             {% for module in about_modules %}
                 <h2>{{ module.title }}</h2>
-                <span>{{ module.content }}</span>
+                <span>{{ module.content|nl2br }}</span>
             {% endfor %}
 
         </md-card>
