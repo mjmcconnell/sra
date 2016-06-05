@@ -23,6 +23,13 @@
         </md-item>
         <md-item>
             <md-item-content>
+                <md-button {% if request.path.startswith(uri_for('admin-workshops-list')) %} class="selected"{% endif %} href="{{uri_for('admin-workshops-list')}}">
+                    Workshops
+                </md-button>
+            </md-item-content>
+        </md-item>
+        <md-item>
+            <md-item-content>
                 <md-button {% if request.path.startswith(uri_for('admin-about_modules-list')) %} class="selected"{% endif %} href="{{uri_for('admin-about_modules-list')}}">
                     About Modules
                 </md-button>

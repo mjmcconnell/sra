@@ -78,17 +78,17 @@ _ADMIN_ROUTES = _ADMIN_ROUTES + MultiPrefixRoute(
             'events.DetailHandler',
             name='events-detail'
         ),
-        # workshopts
-        Route(r'/workshopts', 'workshopts.ListHandler', name='workshopts-list'),
+        # workshops
+        Route(r'/workshops', 'workshops.ListHandler', name='workshops-list'),
         Route(
-            r'/workshopts/add',
-            'workshopts.DetailHandler',
-            name='workshopts-detail'
+            r'/workshops/add',
+            'workshops.DetailHandler',
+            name='workshops-detail'
         ),
         Route(
-            r'/workshopts/<id:[0-9]+>',
-            'workshopts.DetailHandler',
-            name='workshopts-detail'
+            r'/workshops/<id:[0-9]+>',
+            'workshops.DetailHandler',
+            name='workshops-detail'
         ),
         # images
         Route(

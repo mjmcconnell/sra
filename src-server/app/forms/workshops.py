@@ -18,7 +18,7 @@ from app.forms.utils.validators import validate_image_format
 from app.models.images import Image
 
 
-class EventForm(SerialiserForm):
+class WorkshopForm(SerialiserForm):
 
     start = DateField(
         'Start',
