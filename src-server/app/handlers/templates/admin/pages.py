@@ -34,9 +34,7 @@ class PageHandler(AdminTemplateHandler):
     def render(self, template, template_data={}):
 
         template_data.update({
-            'description': 'Manage the content of the site',
             'fields': self.form.fields,
-            'title': 'Pages',
             'type': 'Pages',
         })
 
@@ -47,7 +45,9 @@ class ListHandler(PageHandler):
 
     def get(self):
         self.render('admin/list.html', {
-            'json_records': json.dumps(MetaData.fetch_cached_dataset())
+            'json_records': json.dumps(MetaData.fetch_cached_dataset()),
+            'title': 'Pages',
+            'description': 'Manage the content of the site',
         })
 
 
@@ -64,5 +64,8 @@ class DetailHandler(PageHandler):
 
         self.render('admin/form.html', {
             'form': form,
-            'json_record': json.dumps(record.to_dict(flatten=True))
+            'json_record': json.dumps(record.to_dict(flatten=True)),
+            'title': record.title,
+            'description': 'Update content for the {} page'.format(
+                record.title),
         })

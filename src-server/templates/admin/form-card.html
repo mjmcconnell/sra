@@ -5,11 +5,10 @@
         <md-toolbar md-scroll-shrink class="list-header">
             <div class="md-toolbar-tools">
                 {{ fieldset.title }}
+                <span flex></span>
 
                 {% if fieldset.group_toggle %}
-                    {{ cms_macros.angular_field(fieldset.group_toggle, disabled=fieldset.group_toggle in extras.disabled_fields) }}
-                {% elif fieldset.link %}
-                    <span flex></span>
+                    {{ cms_macros.angular_field(form[fieldset.group_toggle], disabled=fieldset.group_toggle in disabled_fields) }}
                 {% endif %}
                 {% if fieldset.link %}
                     <md-button class="md-raised md-default fieldset_link" href="{{ uri_for(fieldset.link.path_name) }}">{{ fieldset.link.label }}</md-button>

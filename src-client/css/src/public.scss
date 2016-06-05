@@ -206,10 +206,11 @@ md-sidenav.md-sidenav-right {
             .hp-card-img {
                 padding-left: 20px;
                 img {
-                    float: right;
+                    height: inherit !important;
                 }
             }
             .hp-card-actions {
+                padding: 30px;
                 a {
                     background: $primary-color;
                     color: #ffffff;

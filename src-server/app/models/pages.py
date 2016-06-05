@@ -99,6 +99,11 @@ class BasePage(BaseModel):
 class HomePage(BasePage):
 
     # Gallery Banner
+    gallery_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
     gallery_title = ndb.StringProperty(required=False, indexed=False)
     gallery_copy = ndb.TextProperty(required=False, indexed=False)
     gallery_image = ndb.StringProperty(required=False, indexed=False)
@@ -109,6 +114,11 @@ class HomePage(BasePage):
     gallery_cta_label = ndb.StringProperty(required=False, indexed=False)
     gallery_cta_url = ndb.StringProperty(required=False, indexed=False)
     # Events banner
+    events_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
     events_title = ndb.StringProperty(required=False, indexed=False)
     events_copy = ndb.TextProperty(required=False, indexed=False)
     events_image = ndb.StringProperty(required=False, indexed=False)
@@ -118,6 +128,21 @@ class HomePage(BasePage):
         lambda self: storage.get_public_serving_url(self.events_image))
     events_cta_label = ndb.StringProperty(required=False, indexed=False)
     events_cta_url = ndb.StringProperty(required=False, indexed=False)
+    # Workshops banner
+    workshops_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
+    workshops_title = ndb.StringProperty(required=False, indexed=False)
+    workshops_copy = ndb.TextProperty(required=False, indexed=False)
+    workshops_image = ndb.StringProperty(required=False, indexed=False)
+    workshops_image_filename = ndb.ComputedProperty(
+        lambda self: self._get_filename(self.workshops_image))
+    workshops_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.workshops_image))
+    workshops_cta_label = ndb.StringProperty(required=False, indexed=False)
+    workshops_cta_url = ndb.StringProperty(required=False, indexed=False)
 
 
 class AboutPage(BasePage):

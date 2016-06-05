@@ -59,7 +59,7 @@ class PageForm(SerialiserForm):
                 'type': 'ordering',
             }),
         ]
-        field_sets = [
+        fieldsets = [
             {
                 'fields': (
                     'visible',
