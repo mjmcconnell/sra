@@ -113,6 +113,13 @@ app.controller('GalleryCtrl', function($scope, $mdDialog) {
 // Contact controller
 app.controller('ContactCtrl', function($scope, $http, $mdToast) {
 
+    $scope.populateForm = function(json_record) {
+        console.log(json_record);
+        for (var key in json_record) {
+            $scope.formData[key] = json_record[key];
+        }
+    }
+
     $scope.formData = {};
     $scope.submitForm = function(){
         $scope.toastMessage = false;

@@ -70,4 +70,12 @@ class WorkshopsHandler(PublicTemplateHandler):
 class ContactHandler(PublicTemplateHandler):
 
     def get(self, *args, **kwargs):
-        self.render('contact', 'contact.html')
+        template_data = {}
+        floc = self.request.get('floc')
+        if floc and floc == 'workshops':
+            template_data['json_record'] = json.dumps({
+                'subject': 'Workshops at the Pod',
+                'message': 'I would like to book my place for your workshop'
+            })
+        print template_data
+        self.render('contact', 'contact.html', template_data)
