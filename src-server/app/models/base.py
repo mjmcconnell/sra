@@ -6,6 +6,7 @@ from __future__ import absolute_import
 # stdlib imports
 import datetime
 import logging
+from collections import OrderedDict
 from uuid import uuid4
 
 # third-party imports
@@ -25,10 +26,19 @@ class BaseModel(ndb.Model):
 
     @classmethod
     def _post_delete_hook(cls, key, future):
-        memcache.flush_all()
+        cls.clear_cache()
 
     def _post_put_hook(self, future):
-        memcache.flush_all()
+        self.clear_cache()
+
+    @classmethod
+    def clear_cache(cls):
+        queryset_key = cls.get_cache_key()
+        memcache.delete(queryset_key)
+
+        # Clean up any cached records
+        if cls.cache_keys:
+            memcache.delete_multi(cls.cache_keys)
 
     def _get_filename(self, prop):
         return prop.split('/')[-1] if prop else None
@@ -96,7 +106,7 @@ class BaseModel(ndb.Model):
 
         grouped_records = memcache.get(cache_key)
         if not grouped_records:
-            grouped_records = {}
+            grouped_records = OrderedDict()
             for p in cls.fetch_cached_dataset():
                 grouped_records.update({p[group_property]: p})
 

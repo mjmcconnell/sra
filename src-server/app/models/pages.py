@@ -56,7 +56,7 @@ class MetaData(OrderMixin, BaseModel):
 
             records.append(record.to_dict())
 
-        return records
+        return sorted(records, key=lambda k: k['order'])
 
     @classmethod
     def fetch_cached_dataset(cls):
@@ -130,6 +130,11 @@ class EventsPage(BasePage):
     pass
 
 
+class WorkshopsPage(BasePage):
+
+    pass
+
+
 class GalleryPage(BasePage):
 
     pass
@@ -158,6 +163,12 @@ PAGE_MAP = OrderedDict([
         'nav': 'Events',
         'visible': True,
         'page': EventsPage,
+    }),
+    ('workshops', {
+        'title': 'Workshops',
+        'nav': 'Workshops',
+        'visible': True,
+        'page': WorkshopsPage,
     }),
     ('about', {
         'title': 'About',

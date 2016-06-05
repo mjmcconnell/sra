@@ -61,7 +61,6 @@ class BaseMixin(object):
     def _populate_form(self, data, record=None):
         """Populates a wtform with data
         """
-        print data
         self.form = self.form(data, record)
         if record:
             flat_record = record.to_dict(flatten=True)

@@ -9,6 +9,7 @@ from app.models.about_modules import AboutModule
 from app.models.events import Event
 from app.models.pages import MetaData
 from app.models.images import Image
+from app.models.workshops import Workshop
 
 
 class PublicTemplateHandler(BaseHandler):
@@ -19,6 +20,10 @@ class PublicTemplateHandler(BaseHandler):
 
         template_data['pages'] = MetaData.group_by('tag')
         template_data['meta_data'] = template_data['pages'][tag]
+        # Redirect user to the landing page if the page is not public
+        if template_data['meta_data']['visible'] is False:
+            return self.redirect_to('home')
+
         template_data['page'] = template_data['pages'][tag]['page']
 
         super(PublicTemplateHandler, self).render(template, template_data)
@@ -51,6 +56,14 @@ class EventsHandler(PublicTemplateHandler):
     def get(self, *args, **kwargs):
         self.render('events', 'events.html', {
             'events': Event.fetch_cached_dataset()
+        })
+
+
+class WorkshopsHandler(PublicTemplateHandler):
+
+    def get(self, *args, **kwargs):
+        self.render('workshops', 'workshops.html', {
+            'workshops': Workshop.fetch_cached_dataset()
         })
 
 

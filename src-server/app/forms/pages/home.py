@@ -89,11 +89,6 @@ class HomePageForm(PageForm):
         model = MetaData
         fieldsets = [
             {
-                'fields': (
-                    'visible',
-                ),
-            },
-            {
                 'title': 'Page Content',
                 'fields': (
                     'page__title',
