@@ -371,3 +371,21 @@ footer {
         }
     }
 }
+
+// gallery
+#imageDialog {
+    border-radius: 0;
+    .md-dialog-content{
+        padding: 0;
+        img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        span {
+            padding: 24px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}

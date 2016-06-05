@@ -26,25 +26,23 @@ app.controller('GalleryCtrl', function($scope, $mdDialog) {
             controller: DialogController,
             template: `
                 <md-dialog id="imageDialog" aria-label="Image Details" ng-cloak>
-                    <form>
-                        <md-toolbar>
-                            <div class="md-toolbar-tools">
-                                <h2>{[ activeEl.title ]}</h2>
-                                <span flex></span>
-                                <md-button class="md-icon-button" ng-click="cancel()">
-                                    <md-icon md-svg-src="/static/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
-                                </md-button>
+                    <md-dialog-content>
+                        <div class="md-dialog-content">
+                            <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.image_bucket_url ]}">
+                            <div class="previous_image" ng-click="updateActiveImage(index - 1)">
+                                <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_left_black_24px.svg"></md-icon>
                             </div>
-                        </md-toolbar>
-                        <md-dialog-content>
-                            <div class="md-dialog-content">
-                                <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.image_bucket_url ]}">
+                            <div class="next_image" ng-click="updateActiveImage(index + 1)">
+                                <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_right_black_24px.svg"></md-icon>
+                            </div>
+                            <span>
+                                <h2>{[ activeEl.title ]}</h2>
                                 <p>
                                     {[ activeEl.description ]}
                                 </p>
-                            </div>
-                        </md-dialog-content>
-                    </form>
+                            </span>
+                        </div>
+                    </md-dialog-content>
                 </md-dialog>`,
             parent: angular.element(document.body),
             scope: $scope,
@@ -57,16 +55,38 @@ app.controller('GalleryCtrl', function($scope, $mdDialog) {
             // Dialog was closed
         });
     };
+
+    $scope.updateActiveImage = function(index) {
+        console.log(index);
+        $scope.activeEl = $scope.images[index];
+    }
+
+    function DialogController($scope, $mdDialog) {
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function(answer) {
+            $mdDialog.hide(answer);
+        };
+    };
+});
+
+// Workshops controller
+app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
+
     $scope.openEventForm = function(event, index) {
         $scope.activeEl = $scope.events[index];
         $mdDialog.show({
             controller: DialogController,
             template: `
-                <md-dialog id="eventDialog" aria-label="Image Details" ng-cloak>
-                    <form name="eventForm" novalidate class="event-form" ng-controller="EventFormCtrl">
+                <md-dialog id="workshopDialog" aria-label="Image Details" ng-cloak>
+                    <form name="workshopForm" novalidate class="workshop-form">
                         <md-card>
                             <md-card-content>
-                                <h1 class="md-subhead event-form-header-copy">Please fill in the form to sign up for the event</h1>
+                                <h1 class="md-subhead workshop-form-header-copy">Please fill in the form to sign up for the workshop</h1>
                                 <md-input-container class="md-block">
                                     <label for="name">Name</label>
                                     <input required id="name" name="name" type="text" ng-model="formData.name">
