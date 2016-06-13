@@ -73,7 +73,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     // Set query options for pagination
     $scope.query = {
         order: 'order',
-        limit: 10,
+        limit: 50,
         page: 1
     };
 

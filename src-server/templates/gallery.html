@@ -11,13 +11,11 @@
 
 <div class="strip default-strip" ng-init="images = {{ json_images }}">
     <div id="gallery" class="strip-content">
-        <md-card>
-            <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
-                <md-grid-tile class="thumbnail" ng-repeat="imageData in images" md-colspan-gt-sm="1" md-rowspan-gt-sm="1" ng-style="{'background-image':'url({[imageData.thumbnail_image_bucket_url]})'}">
-                <a href="{[imageData.image_bucket_url]}" data-lightbox="thumbnails" data-title="{[imageData.title]}" class="lightbox_link"></a>
-                </md-grid-tile>
-            </md-grid-list>
-        </md-card>
+        <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
+            <md-grid-tile class="thumbnail" ng-repeat="imageData in images" md-colspan-gt-sm="1" md-rowspan-gt-sm="1" ng-style="{'background-image':'url({[imageData.thumbnail_image_bucket_url]})'}">
+            <a href="{[imageData.image_bucket_url]}" data-lightbox="thumbnails" data-title="{[imageData.title]}" class="lightbox_link"></a>
+            </md-grid-tile>
+        </md-grid-list>
     </div>
 </div>
 
@@ -31,8 +29,9 @@
     <script src="/static/libs/lightbox-2.8.2/js/lightbox.js"></script>
     <script>
         lightbox.option({
-          'resizeDuration': 100,
-          'wrapAround': true
+            'fitImagesInViewport': true,
+            'resizeDuration': 100,
+            'wrapAround': true
         })
     </script>
 {% endblock %}
