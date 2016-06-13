@@ -36,27 +36,6 @@
 </div>
 {% endif %}
 
-{% if page.events_enabled %}
-<div class="strip default-strip">
-    <div class="strip-content">
-        <md-card class="hp-card" layout="row">
-            <md-card-title flex>
-                <md-card-title-text>
-                    <span class="md-headline">{{ page.events_title }}</span>
-                    <span class="md-subhead">{{ page.events_copy|nl2br }}</span>
-                </md-card-title-text>
-                <div class="hp-card-actions">
-                    <md-button target="_blank" href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
-                </div>
-            </md-card-title>
-            <div hide show-gt-xs flex class="hp-card-img">
-                <img src="{{ page.events_image_bucket_url }}">
-            </div>
-        </md-card>
-    </div>
-</div>
-{% endif %}
-
 {% if page.workshops_enabled %}
 <div class="strip default-strip">
     <div class="strip-content">
@@ -72,6 +51,27 @@
             </md-card-title>
             <div hide show-gt-xs flex class="hp-card-img">
                 <img src="{{ page.workshops_image_bucket_url }}">
+            </div>
+        </md-card>
+    </div>
+</div>
+{% endif %}
+
+{% if page.events_enabled %}
+<div class="strip default-strip">
+    <div class="strip-content">
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.events_title }}</span>
+                    <span class="md-subhead">{{ page.events_copy|nl2br }}</span>
+                </md-card-title-text>
+                <div class="hp-card-actions">
+                    <md-button target="_blank" href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
+                </div>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="{{ page.events_image_bucket_url }}">
             </div>
         </md-card>
     </div>
