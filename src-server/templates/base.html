@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="/static/css/public.css">
         <meta name="viewport" content="initial-scale=1" />
         <link href="/static/img/favicon.png" rel="shortcut icon" />
+
+        {% block extra_styles %}{% endblock %}
     </head>
     <body layout="column">
         <md-content flex id="main">
@@ -53,5 +55,7 @@
         <script src="/static/libs/material-1.1.0-rc.5/angular-material.min.js"></script>
 
         <script src="/static/js/public.js"></script>
+
+        {% block extra_scripts %}{% endblock %}
     </body>
 </html>

@@ -17,63 +17,6 @@ app.controller('NavCtrl', function($scope, $mdSidenav) {
     };
 });
 
-// Gallery controller
-app.controller('GalleryCtrl', function($scope, $mdDialog) {
-
-    $scope.showDialog = function(event, index) {
-        $scope.activeEl = $scope.images[index];
-        $mdDialog.show({
-            controller: DialogController,
-            template: `
-                <md-dialog id="imageDialog" aria-label="Image Details" ng-cloak>
-                    <md-dialog-content>
-                        <div class="md-dialog-content">
-                            <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.image_bucket_url ]}">
-                            <div class="previous_image" ng-click="updateActiveImage(index - 1)">
-                                <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_left_black_24px.svg"></md-icon>
-                            </div>
-                            <div class="next_image" ng-click="updateActiveImage(index + 1)">
-                                <md-icon md-svg-icon="/static/img/icons/ic_keyboard_arrow_right_black_24px.svg"></md-icon>
-                            </div>
-                            <span>
-                                <h2>{[ activeEl.title ]}</h2>
-                                <p>
-                                    {[ activeEl.description ]}
-                                </p>
-                            </span>
-                        </div>
-                    </md-dialog-content>
-                </md-dialog>`,
-            parent: angular.element(document.body),
-            scope: $scope,
-            preserveScope: true,
-            targetEvent: event,
-            clickOutsideToClose:true
-        }).then(function(answer) {
-            // User chose an answer
-        }, function() {
-            // Dialog was closed
-        });
-    };
-
-    $scope.updateActiveImage = function(index) {
-        console.log(index);
-        $scope.activeEl = $scope.images[index];
-    }
-
-    function DialogController($scope, $mdDialog) {
-        $scope.hide = function() {
-            $mdDialog.hide();
-        };
-        $scope.cancel = function() {
-            $mdDialog.cancel();
-        };
-        $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
-        };
-    };
-});
-
 // Workshops controller
 app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
 
