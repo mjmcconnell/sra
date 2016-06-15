@@ -206,7 +206,7 @@ md-sidenav.md-sidenav-right {
             }
             .hp-card-actions {
                 padding: 30px;
-                a {
+                a, button {
                     background: $primary-color;
                     color: #ffffff;
                     margin: 10px 0;
@@ -219,14 +219,14 @@ md-sidenav.md-sidenav-right {
                     }
                 }
                 @media screen and (min-width: 600px) {
-                    a {
+                    a, button {
                         position: absolute;
                         bottom: 0;
                         right: 0;
                     }
                 }
                 @media screen and (max-width: 600px) {
-                    a {
+                    a, button {
                         width: 100%;
                     }
                 }
