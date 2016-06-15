@@ -30,7 +30,7 @@ class ContactHandler(BaseAjaxHandler):
                 to=config.EMAIL_TO,
                 subject=self.jinja2.from_string(
                     '{{ form.subject.data }}').render({'form': form}),
-                body=self.render_to_string('emails/contact.html', {'form': form})
+                body=self.render_to_string('emails/form.html', {'form': form})
             )
             return_data['status'] = 'success'
         else:

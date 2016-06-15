@@ -4,6 +4,7 @@
 from __future__ import absolute_import
 
 # third-party imports
+from wtforms import Form
 from wtforms import DateField
 from wtforms import FileField
 from wtforms import StringField
@@ -14,8 +15,26 @@ from wtforms import validators
 from app.forms.base import SerialiserForm
 from app.forms.utils.serialisers import ModelSerialiser
 from app.forms.utils.validators import validate_image_format
+from app.forms.utils.validators import validate_email_address
 # from app.forms.utils.validators import validate_image_size
 from app.models.images import Image
+
+
+class WorkshopContactForm(Form):
+
+    name = StringField(
+        'Name',
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+    email = StringField(
+        'Email',
+        validators=[
+            validators.DataRequired(),
+            validate_email_address,
+        ],
+    )
 
 
 class WorkshopForm(SerialiserForm):

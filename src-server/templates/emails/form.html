@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{{ title }}</title>
+<style>
+* {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  width: 100% !important;
+}
+
+table.body-wrap {
+  padding: 20px;
+  width: 100%;
+}
+
+table.body-wrap .container {
+  border: 1px solid #f0f0f0;
+}
+
+h1 {
+  color: #111111;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  line-height: 1.2em;
+  margin: 40px 0 10px;
+  font-size: 36px;
+}
+
+.container {
+  padding: 20px;
+  clear: both !important;
+  display: block !important;
+  Margin: 0 auto !important;
+  max-width: 600px !important;
+}
+
+.content {
+  display: block;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.content table {
+  width: 100%;
+}
+
+</style>
+</head>
+
+<body bgcolor="#f6f6f6">
+
+<!-- body -->
+<table class="body-wrap" bgcolor="#f6f6f6">
+  <tr>
+    <td></td>
+    <td class="container" bgcolor="#FFFFFF">
+
+      <!-- content -->
+      <div class="content">
+      <table>
+        <tr>
+          <td>
+            <h1>{{title}}</h1>
+            <hr>
+            {% for field in form %}
+                <p>{{ field.label.text }}: {{ field.data }}</p>
+            {% endfor %}
+          </td>
+        </tr>
+      </table>
+      </div>
+      <!-- /content -->
+
+    </td>
+    <td></td>
+  </tr>
+</table>
+<!-- /body -->
+
+</body>
+</html>

@@ -18,7 +18,7 @@ app.controller('NavCtrl', function($scope, $mdSidenav) {
 });
 
 // Workshops controller
-app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
+app.controller('WorkshopsCtrl', function($scope, $mdDialog, $http, $mdToast) {
 
     $scope.showEventPrompt = function(event) {
         $mdDialog.show({
@@ -27,7 +27,7 @@ app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
                 <md-dialog id="workshopDialog" ng-cloak>
                     <md-toolbar>
                       <div class="md-toolbar-tools">
-                            <h2>Sign up now</h2>
+                            <h2>Book your place</h2>
                         </div>
                     </md-toolbar>
                     <md-dialog-content style="max-width:800px;max-height:810px; ">
@@ -88,9 +88,9 @@ app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
             })
             .success(function(result){
                 $mdDialog.hide();
-                $scope.showSimpleToast('Message Sent');
+                $scope.showSimpleToast('Enqury sent');
             }).error(function(error, status){
-                var error_message = 'Something went wrong, please check your form.'
+                var error_message = 'Something went wrong, please try again.'
                 if (error['message']) {
                     error_message = error['message'];
                 } else if (error['error']) {
@@ -102,7 +102,14 @@ app.controller('WorkshopsCtrl', function($scope, $mdDialog) {
                 $scope.showSimpleToast(error_message);
             });
         };
-        };
+    };
+
+    $scope.showSimpleToast = function(text) {
+        $mdToast.show(
+            $mdToast.simple()
+                .textContent(text)
+                .hideDelay(3000)
+        );
     };
 });
 
