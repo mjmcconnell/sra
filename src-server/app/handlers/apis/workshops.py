@@ -61,11 +61,17 @@ class ContactHandler(BaseAjaxHandler):
         if form.validate():
             # Render the user generated content using jinja2,
             # to enable auto-escaping
+            template_data = {
+                'title': 'Someone has made an enquiry about the workshops.',
+                'form': form
+            }
+
             mail.send_mail(
                 sender='workshops@{}.appspotmail.com'.format(config.APP_ID),
                 to=config.EMAIL_TO,
                 subject='Workshops enquiry',
-                body=self.render_to_string('emails/form.html', {'form': form})
+                body=self.render_to_string('emails/form.txt', template_data),
+                html=self.render_to_string('emails/form.html', template_data)
             )
             return_data['status'] = 'success'
         else:
