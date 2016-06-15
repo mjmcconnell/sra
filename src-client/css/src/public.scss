@@ -367,6 +367,23 @@ footer {
     }
 }
 
+#workshopDialog {
+    width: 50%;
+    .md-toolbar-tools {
+        background: $primary-color;
+        font-weight: bold;
+    }
+    form {
+        overflow: hidden;
+        margin: 0;
+        padding: 0 15px;
+        button {
+            float: right;
+            margin: -10px 0px 10px;
+        }
+    }
+}
+
 // gallery
 .lightbox_link {
     height: 100%;

@@ -38,7 +38,7 @@
 
 {% if page.workshops_enabled %}
 <div class="strip default-strip">
-    <div class="strip-content">
+    <div class="strip-content" ng-controller="WorkshopsCtrl" >
         <md-card class="hp-card" layout="row">
             <md-card-title flex>
                 <md-card-title-text>
@@ -46,7 +46,7 @@
                     <span class="md-subhead">{{ page.workshops_copy|nl2br }}</span>
                 </md-card-title-text>
                 <div class="hp-card-actions">
-                    <md-button href="{{ page.workshops_cta_url }}">{{ page.workshops_cta_label }}</md-button>
+                    <md-button ng-click="showEventPrompt($event)" >{{ page.workshops_cta_label }}</md-button>
                 </div>
             </md-card-title>
             <div hide show-gt-xs flex class="hp-card-img">
