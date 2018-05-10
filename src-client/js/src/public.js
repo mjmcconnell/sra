@@ -10,83 +10,118 @@ app.run(['$anchorScroll', function($anchorScroll) {
     $anchorScroll.yOffset = 60;
 }])
 
-// List controller
-app.controller('AppCtrl', function($scope, $mdMedia, $mdDialog, $http, $mdToast, $mdSidenav, $location, $anchorScroll, $window) {
-
-    $scope.images = [];
-
+// Site Nav controller
+app.controller('NavCtrl', function($scope, $mdSidenav) {
     $scope.toggleNav = function(el) {
         $mdSidenav(el).toggle();
     };
+});
 
-    $scope.scrollToEl = function(el) {
-        $location.hash(el);
-        $anchorScroll();
-        $mdSidenav('right').close();
-    }
+// Workshops controller
+app.controller('WorkshopsCtrl', function($scope, $mdDialog, $http, $mdToast) {
 
-    $scope.fetchImages = function() {
-        // Fetch all active records
-        $http.get('/api/images').
-            success(function(results) {
-                $scope.images = results['data'];
-            }).
-            error(function(error) {
-                $log.log(error);
-            });
-    };
-
-    $scope.fetchImages()
-
-    $scope.showDialog = function(event, index) {
-        return
-        $scope.activeEl = $scope.images[index];
+    $scope.showEventPrompt = function(event) {
         $mdDialog.show({
             controller: DialogController,
             template: `
-                <md-dialog id="imageDialog" aria-label="Image Details" ng-cloak>
-                    <form>
-                        <md-toolbar>
-                            <div class="md-toolbar-tools">
-                                <h2>{[ activeEl.title ]}</h2>
-                                <span flex></span>
-                                <md-button class="md-icon-button" ng-click="cancel()">
-                                    <md-icon md-svg-src="/static/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
-                                </md-button>
-                            </div>
-                        </md-toolbar>
-                        <md-dialog-content>
-                            <div class="md-dialog-content">
-                                <img style="margin: auto; max-width: 100%;" alt="Image alt" ng-src="{[ activeEl.image_bucket_url ]}">
-                                <p>
-                                    {[ activeEl.description ]}
-                                </p>
-                            </div>
-                        </md-dialog-content>
-                    </form>
+                <md-dialog id="workshopDialog" ng-cloak>
+                    <md-toolbar>
+                      <div class="md-toolbar-tools">
+                            <h2>Book your place</h2>
+                        </div>
+                    </md-toolbar>
+                    <md-dialog-content style="max-width:800px;max-height:810px; ">
+                        <form name="workshopForm" novalidate class="workshop-form" ng-submit="submitForm()">
+                            <md-input-container class="md-block">
+                                <label for="name">Name</label>
+                                <input required id="name" name="name" type="text" ng-model="formData.name">
+                                <div ng-messages="formData.name.$error" role="alert" class="md-input-message-animation">
+                                    <div ng-message="server" ng-repeat="error in serverErrors.name track by $index">{[error]}</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label for="email">Email Address</label>
+                                <input required type="email" name="email" ng-model="formData.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                                <div ng-messages="formData.email.$error" role="alert" class="md-input-message-animation">
+                                    <div ng-message="server" ng-repeat="error in serverErrors.email track by $index">{[error]}</div>
+                                </div>
+                            </md-input-container>
+                            <md-button class="contact-form-btn" type="submit">Sumbit</md-button>
+                        </form>
+                    </md-dialog-content>
                 </md-dialog>`,
             parent: angular.element(document.body),
             scope: $scope,
             preserveScope: true,
             targetEvent: event,
             clickOutsideToClose:true
-        }).then(function(answer) {
-            // User chose an answer
-        }, function() {
-            // Dialog was closed
         });
     };
     function DialogController($scope, $mdDialog) {
+        $scope.formData = {};
+
         $scope.hide = function() {
             $mdDialog.hide();
         };
         $scope.cancel = function() {
             $mdDialog.cancel();
         };
-        $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
+        $scope.submitForm = function(){
+            $scope.toastMessage = false;
+            $scope.serverErrors = {};
+            var uploadUrl = '/api/workshops/signup';
+
+            // Create an empty FormData object to store all form fields
+            var fd = new FormData();
+
+            // Loop through all other fields, and append them to the FormData object
+            for (var key in $scope.formData) {
+                if ($scope.formData[key]) {
+                    fd.append(key, $scope.formData[key]);
+                }
+            }
+
+            // Send the data of to the api, to be stored by the server
+            $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            .success(function(result){
+                $mdDialog.hide();
+                $scope.showSimpleToast('Enqury sent');
+            }).error(function(error, status){
+                var error_message = 'Something went wrong, please try again.'
+                if (error['message']) {
+                    error_message = error['message'];
+                } else if (error['error']) {
+                    error_message = error['error'];
+                }
+                for (var key in error['data']) {
+                    $scope.serverErrors[key] = error['data'][key];
+                }
+                $scope.showSimpleToast(error_message);
+            });
         };
     };
+
+    $scope.showSimpleToast = function(text) {
+        $mdToast.show(
+            $mdToast.simple()
+                .textContent(text)
+                .hideDelay(3000)
+        );
+    };
+});
+
+// Contact controller
+app.controller('ContactCtrl', function($scope, $http, $mdToast) {
+
+    $scope.populateForm = function(json_record) {
+        console.log(json_record);
+        for (var key in json_record) {
+            $scope.formData[key] = json_record[key];
+        }
+    }
 
     $scope.formData = {};
     $scope.submitForm = function(){

@@ -2,6 +2,11 @@
 
     {% if field.type == 'HiddenField' %}
         {{ field() }}
+    {% elif field.type == 'DateField' %}
+        <md-datepicker ng-model="formData.{{ field.label.field_id }}" name="{{ field.label.field_id }}" md-placeholder="{{ field.label.text }}"></md-datepicker>
+        <div ng-messages="form.{{ field.label.field_id }}.$error" class="form-validation-messages md-datepicker-validation-messages">
+            <div ng-message="server" ng-repeat="error in serverErrors.{{ field.label.field_id }} track by $index">{[error]}</div>
+        </div>
     {% else %}
 
         <md-input-container flex>

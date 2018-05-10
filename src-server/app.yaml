@@ -3,7 +3,7 @@
 ###########################################################################
 
 application: sharon-regan-art
-version: development
+version: dev
 runtime: python27
 api_version: 1
 threadsafe: true

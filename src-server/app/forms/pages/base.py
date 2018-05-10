@@ -18,10 +18,7 @@ from app.models.pages import MetaData
 class PageForm(SerialiserForm):
     """Stores meta data for each page.
     """
-    visible = BooleanField(
-        'Page is visible',
-        description='This decides if the page will be viewable on the public facing site.',
-    )
+    visible = BooleanField('Public')
     title = StringField(
         'Meta Title',
         validators=[validators.Optional()],
@@ -31,12 +28,16 @@ class PageForm(SerialiserForm):
         'Meta Tags',
         description='This should be a comma seperated list of tags.',
     )
+    nav = StringField(
+        'Label for sidebar link',
+        validators=[validators.Optional()],
+    )
     description = TextAreaField('Meta Description')
     page__title = StringField(
         'Page Title',
         validators=[validators.Optional()],
     )
-    page__copy = TextAreaField(
+    page__sub_title = TextAreaField(
         'Page Copy',
         validators=[validators.Optional()],
     )
@@ -45,14 +46,12 @@ class PageForm(SerialiserForm):
         model = MetaData
         list_fields = [
             ('visible', {
-                'label': 'Public',
-                'type': 'icon',
-                'icon': 'visible'
+                'type': 'visible',
             }),
             ('title', {
                 'label': 'Meta Title'
             }),
-            ('page__title', {
+            ('page.title', {
                 'label': 'Page Title',
             }),
             ('order', {
@@ -60,10 +59,23 @@ class PageForm(SerialiserForm):
                 'type': 'ordering',
             }),
         ]
-        field_sets = [
+        fieldsets = [
             {
                 'fields': (
                     'visible',
+                ),
+            },
+            {
+                'title': 'Page Content',
+                'fields': (
+                    'page__title',
+                    'page__sub_title',
+                ),
+            },
+            {
+                'title': 'Sidebar',
+                'fields': (
+                    'nav',
                 ),
             },
             {
@@ -72,13 +84,6 @@ class PageForm(SerialiserForm):
                     'title',
                     'tags',
                     'description',
-                ),
-            },
-            {
-                'title': 'Page Content',
-                'fields': (
-                    'page__title',
-                    'page__copy',
                 ),
             },
         ]

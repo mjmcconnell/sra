@@ -1,0 +1,22 @@
+{% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as cms_macros %}
+{% set cancel_url = '/'.join(request.url.split('/')[:-1]) %}
+
+{% block content %}
+
+<div ng-init="populateForm({{ json_record }})"></div>
+<div ng-init="cancel_url = '{{ cancel_url }}'"></div>
+<form enctype="multipart/form-data">
+
+    {% for fieldset in form.fieldsets %}
+        {% include "admin/form-card.html" %}
+    {% endfor %}
+
+    <div>
+        <md-button href="{{ cancel_url }}">Cancel</md-button>
+        <md-button class="md-raised md-warn" ng-click="submitForm()" ng-disabled="isProcessing">Submit</md-button>
+    </div>
+
+</form>
+
+{% endblock %}

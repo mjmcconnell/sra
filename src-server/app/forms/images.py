@@ -52,9 +52,6 @@ class ImageForm(SerialiserForm):
             ('title', {
                 'label': 'Title'
             }),
-            ('order', {
-                'label': 'Order'
-            }),
             ('image_filename', {
                 'label': 'Image',
                 'type': 'link',

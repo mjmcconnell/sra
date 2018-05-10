@@ -1,0 +1,5 @@
+{{title}}
+
+{% for field in form %}
+    {{ field.label.text }}: {{ field.data }}
+{% endfor %}

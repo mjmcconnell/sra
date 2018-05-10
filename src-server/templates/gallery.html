@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero_strip primary-strip">
+    <div class="strip-content">
+        <h1 class="md-display-1">{{ page.title }}</h1>
+        <p class="md-subhead">{{ page.sub_title|nl2br }}</p>
+    </div>
+</div>
+
+<div class="strip default-strip" ng-init="images = {{ json_images }}">
+    <div id="gallery" class="strip-content">
+        <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
+            <md-grid-tile class="thumbnail" ng-repeat="imageData in images" md-colspan-gt-sm="1" md-rowspan-gt-sm="1" ng-style="{'background-image':'url({[imageData.thumbnail_image_bucket_url]})'}">
+            <a href="{[imageData.image_bucket_url]}" data-lightbox="thumbnails" data-title="{[imageData.title]}" class="lightbox_link"></a>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_styles %}
+    <link href="/static/libs/lightbox-2.8.2/css/lightbox.css" rel="stylesheet">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="/static/libs/lightbox-2.8.2/js/lightbox.js"></script>
+    <script>
+        lightbox.option({
+            'fitImagesInViewport': true,
+            'resizeDuration': 100,
+            'wrapAround': true
+        })
+    </script>
+{% endblock %}

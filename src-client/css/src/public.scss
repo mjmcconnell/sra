@@ -1,8 +1,25 @@
 $primary-color: #79d3c6;
 
-html, body {
-    min-height:100%;
-    height:auto;
+.left {
+    text-align: left;
+}
+
+md-backdrop {
+    position: fixed;
+}
+
+p, span {
+    line-height: 1.4em;
+    word-spacing: 1px;
+}
+
+md-content.md-default-theme {
+    background: #F5F5F5;
+}
+
+#content {
+    margin-top: 60px;
+    background: #F5F5F5;
 }
 
 .header-background {
@@ -21,6 +38,7 @@ md-toolbar.global-header {
 
     .md-toolbar-tools {
         min-height: 70;
+        padding-right: 0;
 
         a.logo {
             img {
@@ -36,34 +54,47 @@ md-toolbar.global-header {
             margin-right: 6px;
         }
     }
+
+    .global-header-nav-button {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: -5px;
+        button {
+            height: 100%;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            width: 70px;
+        }
+    }
 }
 
 /* SIDE NAV */
 md-sidenav.md-sidenav-right {
-    width: 200px;
-    max-width: 200px;
-    min-width: 200px;
+    width: 250px;
     position: fixed;
 
     md-list {
         width: 100%;
 
         md-item {
+            width: 100%;
             display: inline-flex;
-
-            md-item-content button {
-                text-align: left;
-                width: 200px;
-                margin: 0px 0;
-                padding: 4px 0 4px 20px;
-                border-radius: 0;
+            md-item-content {
+                width: 100%;
+                a {
+                    text-align: left;
+                    margin: 0;
+                    width: 100%;
+                    border-radius: 0;
+                    padding: 3px 0 3px 15px;
+                    font-size: 1.1em;
+                }
             }
         }
     }
 }
 
 .hero {
-    margin-top: 60px;
     width: 100%;
     min-height: 600px;
     background-image: url("/static/img/hero.jpg");
@@ -94,12 +125,122 @@ md-sidenav.md-sidenav-right {
 }
 
 .strip {
-    padding: 2.4rem 1.9rem 2.8rem 1.9rem;
+    padding: 2em 1.9rem 0 1.9rem;
     text-align: center;
+
+    label {
+        text-align: left;
+    }
 
     .strip-content {
         max-width: 822px;
-        min-height: 60px;
+        margin: 0 auto;
+
+        md-card {
+            padding: 20px;
+        }
+
+        .event-card {
+            padding: 10px;
+
+            .event-date-time {
+                margin: 10px -10px;
+                background: rgba(0, 0, 0, 0.1);
+                color: rgba(0, 0, 0, 0.4);
+                font-size: 0.9em;
+                padding: 5px 10px;
+
+                svg {
+                    fill: rgba(0,0,0,0.3);
+                    max-height: 90%;
+                }
+
+                .date {
+                    float: left;
+                }
+                .time {
+                    float: right;
+                }
+            }
+
+            md-card-title {
+                padding: 5px 0 10px;
+                display: inline;
+            }
+            md-card-content {
+                text-align: left;
+                padding: 10px 2px;
+            }
+            md-card-actions {
+                margin: 0;
+            }
+            a, button {
+                background: $primary-color;
+                color: #ffffff;
+                margin: 10px 0;
+                padding: 0 15px;
+
+                span {
+                    line-height: 2.4em;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
+            }
+        }
+
+        .hp-card {
+            text-align: left;
+            margin: 0 -15px;
+
+            md-card-title {
+                position: relative;
+                display: inline;
+                padding: 0;
+            }
+
+            .hp-card-img {
+                padding-left: 20px;
+                img {
+                    height: inherit !important;
+                }
+            }
+            .hp-card-actions {
+                padding: 30px;
+                a, button {
+                    background: $primary-color;
+                    color: #ffffff;
+                    margin: 10px 0;
+                    padding: 0 15px;
+
+                    span {
+                        line-height: 2.4em;
+                        font-weight: bold;
+                        font-size: 1.1em;
+                    }
+                }
+                @media screen and (min-width: 600px) {
+                    a, button {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+                @media screen and (max-width: 600px) {
+                    a, button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hero_strip {
+    padding: 2rem 1.9rem 3rem 1.9rem;
+    min-height: 100px;
+
+    .strip-content {
+        max-width: 822px;
         margin: 0 auto;
     }
 }
@@ -116,6 +257,7 @@ md-sidenav.md-sidenav-right {
 
 .primary-strip {
     background: $primary-color;
+    padding-bottom: 2em;
 
     h1 {
         color: #FFF;
@@ -146,7 +288,7 @@ md-sidenav.md-sidenav-right {
 }
 
 form.contact-form {
-    margin-top: -95px;
+    margin-top: -80px;
 
     .contact-form-header-copy {
         text-align: left;
@@ -154,6 +296,7 @@ form.contact-form {
         padding-bottom: 20px;
         font-size: 1.2rem;
         font-weight: 300;
+        margin: -10px 0 5px;
     }
     .md-input-message-animation {
         text-align: right;
@@ -173,6 +316,8 @@ md-toast {
 footer {
     clear: both;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    margin-top: 2em;
 
     .strip {
         .strip-content {
@@ -220,4 +365,27 @@ footer {
             }
         }
     }
+}
+
+#workshopDialog {
+    width: 50%;
+    .md-toolbar-tools {
+        background: $primary-color;
+        font-weight: bold;
+    }
+    form {
+        overflow: hidden;
+        margin: 0;
+        padding: 0 15px;
+        button {
+            float: right;
+            margin: -10px 0px 10px;
+        }
+    }
+}
+
+// gallery
+.lightbox_link {
+    height: 100%;
+    width: 100%;
 }

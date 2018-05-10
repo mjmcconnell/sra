@@ -1,16 +1,15 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
     <md-content layout="row" flex>
         <md-list class="nav-list">
-            <md-item>
-                <md-item-content>
-                    <md-button ng-click="scrollToEl('gallery')">Gallery</md-button>
-                </md-item-content>
-            </md-item>
-            <md-item>
-                <md-item-content>
-                    <md-button ng-click="scrollToEl('contact')">Contact</md-button>
-                </md-item-content>
-            </md-item>
+            {% for tag, page_meta in pages.iteritems() %}
+                {% if page_meta['visible'] %}
+                    <md-item>
+                        <md-item-content>
+                            <md-button href="{{ uri_for(tag) }}">{{ page_meta['nav'] }}</md-button>
+                        </md-item-content>
+                    </md-item>
+                {% endif %}
+            {% endfor %}
         </md-list>
     </md-content>
 </md-sidenav>

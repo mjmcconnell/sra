@@ -29,7 +29,7 @@ class SerialiserForm(Form):
         if hasattr(self.serialiser, 'fieldsets'):
             self.fieldsets = self.serialiser.fieldsets
         else:
-            self.field_sets = [{
+            self.fieldsets = [{
                 'title': self.serialiser.model.__name__,
                 'fields': fieldnames
             }]

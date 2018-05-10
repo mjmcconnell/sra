@@ -4,74 +4,78 @@
 
 <div class="hero">
     <div hide hide show-gt-sm class="hero_text">
-        <h1>{{ pages.home.page.title|upper }}</h1>
+        <h1>{{ page.title|upper }}</h1>
     </div>
 </div>
 
 <div class="strip primary-strip">
     <div class="strip-content">
-        <h1 hide-gt-sm class="md-headline">{{ pages.home.page.title }}</h1>
-        <p class="md-subhead">{{ pages.home.page['copy'] }}</p>
+        <h1 hide-gt-sm class="md-headline">{{ page.title }}</h1>
+        <p class="md-subhead">{{ page.sub_title|nl2br }}</p>
     </div>
 </div>
 
-<div class="strip default-strip">
-    <div id="gallery" class="strip-content">
-        <h1 class="md-display-1">{{ pages.gallery.page.title }}</h1>
-        <p class="md-subhead">{{ pages.gallery.page['copy'] }}</p>
-        <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px">
-            <md-grid-tile class="thumbnail" ng-click="showDialog($event, $index)" ng-repeat="imageData in images" ng-style="{'background-image':'url({[imageData.thumbnail_image_bucket_url]})'}" md-colspan-gt-sm="1" md-rowspan-gt-sm="1">
-            </md-grid-tile>
-        </md-grid-list>
-    </div>
-</div>
-
-<div id="contact" class="strip primary-strip">
-    <div class="strip-content">
-        <h1 class="md-headline">{{ pages.contact.page.title }}</h1>
-    </div>
-</div>
-
+{% if page.gallery_enabled %}
 <div class="strip default-strip">
     <div class="strip-content">
-        <form name="recordForm" novalidate class="contact-form">
-
-            <md-card>
-                <md-card-content>
-                    <h1 class="md-subhead contact-form-header-copy">{{ pages.contact.page['copy'] }}</h1>
-                    <md-input-container class="md-block">
-                        <label for="name">Name</label>
-                        <input required id="name" name="name" type="text" ng-model="formData.name">
-                        <div ng-messages="formData.name.$error" role="alert" class="md-input-message-animation">
-                            <div ng-message="server" ng-repeat="error in serverErrors.name track by $index">{[error]}</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label for="email">Email Address</label>
-                        <input required type="email" name="email" ng-model="formData.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                        <div ng-messages="formData.email.$error" role="alert" class="md-input-message-animation">
-                            <div ng-message="server" ng-repeat="error in serverErrors.email track by $index">{[error]}</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label for="subject">Subject</label>
-                        <input id="subject" name="subject" type="text" ng-model="formData.subject">
-                        <div ng-messages="formData.subject.$error" role="alert" class="md-input-message-animation">
-                            <div ng-message="server" ng-repeat="error in serverErrors.subject track by $index">{[error]}</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label for="message">Message</label>
-                        <textarea required id="message" name="message" ng-model="formData.message"></textarea>
-                        <div ng-messages="formData.message.$error" role="alert" class="md-input-message-animation">
-                            <div ng-message="server" ng-repeat="error in serverErrors.message track by $index">{[error]}</div>
-                        </div>
-                    </md-input-container>
-                    <md-button class="contact-form-btn" ng-click="submitForm()">Send Message</md-button>
-                </md-card-content>
-            </md-card>
-
-        </form>
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.gallery_title }}</span>
+                    <span class="md-subhead">{{ page.gallery_copy|nl2br }}</span>
+                </md-card-title-text>
+                <div class="hp-card-actions">
+                    <md-button href="{{ page.gallery_cta_url }}">{{ page.gallery_cta_label }}</md-button>
+                </div>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="{{ page.gallery_image_bucket_url }}">
+            </div>
+        </md-card>
     </div>
 </div>
+{% endif %}
+
+{% if page.workshops_enabled %}
+<div class="strip default-strip">
+    <div class="strip-content" ng-controller="WorkshopsCtrl" >
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.workshops_title }}</span>
+                    <span class="md-subhead">{{ page.workshops_copy|nl2br }}</span>
+                </md-card-title-text>
+                <div class="hp-card-actions">
+                    <md-button ng-click="showEventPrompt($event)" >{{ page.workshops_cta_label }}</md-button>
+                </div>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="{{ page.workshops_image_bucket_url }}">
+            </div>
+        </md-card>
+    </div>
+</div>
+{% endif %}
+
+{% if page.events_enabled %}
+<div class="strip default-strip">
+    <div class="strip-content">
+        <md-card class="hp-card" layout="row">
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">{{ page.events_title }}</span>
+                    <span class="md-subhead">{{ page.events_copy|nl2br }}</span>
+                </md-card-title-text>
+                <div class="hp-card-actions">
+                    <md-button target="_blank" href="{{ page.events_cta_url }}">{{ page.events_cta_label }}</md-button>
+                </div>
+            </md-card-title>
+            <div hide show-gt-xs flex class="hp-card-img">
+                <img src="{{ page.events_image_bucket_url }}">
+            </div>
+        </md-card>
+    </div>
+</div>
+{% endif %}
+
 {% endblock %}

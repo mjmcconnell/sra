@@ -13,32 +13,20 @@ from google.appengine.ext import ndb
 # local imports
 from app.models.base import BaseModel
 from app.models.base import OrderMixin
-
-
-PAGE_MAP = OrderedDict([
-    ('home', {
-        'title': 'Home',
-        'visible': True
-    }),
-    ('gallery', {
-        'title': 'Gallery',
-        'visible': True
-    }),
-    ('contact', {
-        'title': 'Contact',
-        'visible': True
-    }),
-])
+from app.utils import storage
 
 
 class MetaData(OrderMixin, BaseModel):
 
     tag = ndb.StringProperty(required=True, indexed=True)
     title = ndb.StringProperty(required=True, indexed=False)
+    nav = ndb.StringProperty(required=True, indexed=False)
     description = ndb.StringProperty(required=False, indexed=False)
     tags = ndb.StringProperty(required=False, repeated=True, indexed=False)
     visible = ndb.BooleanProperty(default=False)
-    page = ndb.KeyProperty(kind='Page')
+    page = ndb.KeyProperty()
+
+    cache_keys = ['MetaData-group_by-tag']
 
     @classmethod
     def fetch_or_create(cls):
@@ -55,13 +43,20 @@ class MetaData(OrderMixin, BaseModel):
             if record is None:
                 record = cls(tag=tag)
                 for key, value in defaults.iteritems():
-                    setattr(record, key, value)
-                record.page = Page().put()
+                    if key == 'page':
+                        page_record = value.query().get()
+                        if page_record:
+                            p_key = page_record.key()
+                        else:
+                            p_key = value().put()
+                        record.page = p_key
+                    else:
+                        setattr(record, key, value)
                 record.put()
 
             records.append(record.to_dict())
 
-        return records
+        return sorted(records, key=lambda k: k['order'])
 
     @classmethod
     def fetch_cached_dataset(cls):
@@ -95,7 +90,121 @@ class MetaData(OrderMixin, BaseModel):
         return super(MetaData, self).update(form)
 
 
-class Page(BaseModel):
+class BasePage(BaseModel):
 
     title = ndb.StringProperty(required=False, indexed=False)
-    copy = ndb.StringProperty(required=False, indexed=False)
+    sub_title = ndb.StringProperty(required=False, indexed=False)
+
+
+class HomePage(BasePage):
+
+    # Gallery Banner
+    gallery_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
+    gallery_title = ndb.StringProperty(required=False, indexed=False)
+    gallery_copy = ndb.TextProperty(required=False, indexed=False)
+    gallery_image = ndb.StringProperty(required=False, indexed=False)
+    gallery_image_filename = ndb.ComputedProperty(
+        lambda self: self._get_filename(self.gallery_image))
+    gallery_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.gallery_image))
+    gallery_cta_label = ndb.StringProperty(required=False, indexed=False)
+    gallery_cta_url = ndb.StringProperty(required=False, indexed=False)
+    # Events banner
+    events_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
+    events_title = ndb.StringProperty(required=False, indexed=False)
+    events_copy = ndb.TextProperty(required=False, indexed=False)
+    events_image = ndb.StringProperty(required=False, indexed=False)
+    events_image_filename = ndb.ComputedProperty(
+        lambda self: self._get_filename(self.events_image))
+    events_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.events_image))
+    events_cta_label = ndb.StringProperty(required=False, indexed=False)
+    events_cta_url = ndb.StringProperty(required=False, indexed=False)
+    # Workshops banner
+    workshops_enabled = ndb.BooleanProperty(
+        required=False,
+        indexed=False,
+        default=False,
+    )
+    workshops_title = ndb.StringProperty(required=False, indexed=False)
+    workshops_copy = ndb.TextProperty(required=False, indexed=False)
+    workshops_image = ndb.StringProperty(required=False, indexed=False)
+    workshops_image_filename = ndb.ComputedProperty(
+        lambda self: self._get_filename(self.workshops_image))
+    workshops_image_bucket_url = ndb.ComputedProperty(
+        lambda self: storage.get_public_serving_url(self.workshops_image))
+    workshops_cta_label = ndb.StringProperty(required=False, indexed=False)
+    workshops_cta_url = ndb.StringProperty(required=False, indexed=False)
+
+
+class AboutPage(BasePage):
+
+    pass
+
+
+class EventsPage(BasePage):
+
+    pass
+
+
+class WorkshopsPage(BasePage):
+
+    pass
+
+
+class GalleryPage(BasePage):
+
+    pass
+
+
+class ContactPage(BasePage):
+
+    pass
+
+
+PAGE_MAP = OrderedDict([
+    ('home', {
+        'title': 'Home',
+        'nav': 'Home',
+        'visible': True,
+        'page': HomePage,
+    }),
+    ('gallery', {
+        'title': 'Gallery',
+        'nav': 'Gallery',
+        'visible': True,
+        'page': GalleryPage,
+    }),
+    ('events', {
+        'title': 'Events',
+        'nav': 'Events',
+        'visible': True,
+        'page': EventsPage,
+    }),
+    ('workshops', {
+        'title': 'Workshops',
+        'nav': 'Workshops',
+        'visible': True,
+        'page': WorkshopsPage,
+    }),
+    ('about', {
+        'title': 'About',
+        'nav': 'About',
+        'visible': True,
+        'page': AboutPage,
+    }),
+    ('contact', {
+        'title': 'Contact',
+        'nav': 'Contact',
+        'visible': True,
+        'page': ContactPage,
+    }),
+])

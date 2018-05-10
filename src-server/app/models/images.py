@@ -9,11 +9,10 @@ from google.appengine.ext import ndb
 # local imports
 from app.models.base import BaseModel
 from app.models.base import OrderMixin
-from app.models.base import UploadMixin
 from app.utils import storage
 
 
-class Image(OrderMixin, UploadMixin, BaseModel):
+class Image(OrderMixin, BaseModel):
 
     title = ndb.StringProperty(required=True, indexed=False)
     description = ndb.StringProperty(required=False, indexed=False)

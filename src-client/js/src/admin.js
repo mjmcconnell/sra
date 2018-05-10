@@ -51,6 +51,16 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.records = [];
     $scope.selected = [];
 
+    $scope.populateForm = function(json_record) {
+        for (var key in json_record) {
+            if (key == 'start' || key == 'end') {
+                $scope.formData[key] = new Date(json_record[key]);
+            } else {
+                $scope.formData[key] = json_record[key];
+            }
+        }
+    }
+
     // Set options for pagination
     $scope.options = {
         autoSelect: true,
@@ -63,7 +73,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     // Set query options for pagination
     $scope.query = {
         order: 'order',
-        limit: 10,
+        limit: 50,
         page: 1
     };
 
@@ -75,46 +85,6 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
     $scope.openNav = function() {
         $mdSidenav('left').toggle();
     };
-
-    $scope.openForm = function(event, index) {
-        console.log(index);
-        event.stopPropagation();
-
-        $scope.imageFields = {};
-        $scope.formData = {};
-
-        if (index !== undefined) {
-            $scope.activeRecordIndex = index
-            $scope.formData = angular.copy($scope.records.data[index]);
-            angular.forEach($scope.records.data[index], function(value, key) {
-                if (typeof value === 'object') {
-                    angular.forEach(value, function(v, k) {
-                        $scope.formData[key + '__' + k] = v;
-                    });
-                }
-            });
-        }
-        $mdSidenav('right').toggle();
-    };
-
-    $scope.closeForm = function() {
-        $mdSidenav('right').toggle();
-    };
-
-    $scope.fetchItems = function() {
-        $scope.records = [];
-        // Fetch all active records
-        $http.get(base_url).
-            success(function(results) {
-                $scope.records = results;
-            }).
-            error(function(error) {
-                $log.log(error);
-            });
-    };
-
-    // Fetch all items for given model
-    $scope.fetchItems();
 
     $scope.deleteSelected = function() {
         $scope.flashMessages = [];
@@ -188,17 +158,7 @@ app.controller('AppCtrl', function($scope, $log, $http, $filter, $mdSidenav, $md
             headers: {'Content-Type': undefined}
         })
         .success(function(result){
-            $scope.isProcessing = false;
-            $scope.flashMessages.push(['Form Saved', 'success']);
-            if (_id) {
-                // Update record
-                $scope.records.data[$scope.activeRecordIndex] = result['data'];
-            } else {
-                // Append new record to list
-                $scope.records.data.push(result['data']);
-                $scope.records.count = $scope.records.count + 1;
-            }
-            $scope.closeForm();
+            window.location.href = $scope.cancel_url;
         })
         .error(function(error, status){
             $scope.isProcessing = false;

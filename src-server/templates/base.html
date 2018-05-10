@@ -1,74 +1,61 @@
 <html lang="en" ng-app="App">
     <head>
-        <title>Sharon Regan Art - {{ pages.home.title }}</title>
-        <meta property="og:title" content="{{ pages.home.title }}" />
-        <meta itemprop="name" content="{{ pages.home.title }}">
-        <meta name="description" content="{{ pages.home.description }}">
-        <meta property="og:description" content="{{ pages.home.description }}" />
-        <meta itemprop="description" content="{{ pages.home.description }}">
-        <meta name="keywords" content="{{ pages.home.tags }}">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <title>Sharon Regan Art - {{ meta_data.title }}</title>
+        <meta property="og:title" content="{{ meta_data.title }}" />
+        <meta itemprop="name" content="{{ meta_data.title }}">
+        <meta name="description" content="{{ meta_data.description }}">
+        <meta property="og:description" content="{{ meta_data.description }}" />
+        <meta itemprop="description" content="{{ meta_data.description }}">
+        <meta name="keywords" content="{{ meta_data.tags }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <link rel="stylesheet" href="/static/libs/material-1.1.0-rc.5/angular-material.min.css">
         <link rel="stylesheet" href="/static/css/public.css">
         <meta name="viewport" content="initial-scale=1" />
         <link href="/static/img/favicon.png" rel="shortcut icon" />
-    </head>
-    <body layout="column" ng-controller="AppCtrl" ng-cloak>
-        <md-content flex id="main">
-            {% include 'includes/sidebar.html' %}
 
-            <md-toolbar class="global-header">
-                <div class="md-toolbar-tools">
-                    <a class="logo" ng-click="scrollToEl('home')" href="">
-                        <img src="/static/img/logo.png">
-                    </a>
-                    <span flex></span>
-                    <div hide-xs>
-                        <md-button ng-click="scrollToEl('gallery')" href="" class="global-header-link">Gallery</md-button>
-                        <md-button ng-click="scrollToEl('contact')" href="" class="global-header-link">Contact</md-button>
+        {% block extra_styles %}{% endblock %}
+    </head>
+    <body layout="column">
+        <md-content flex id="main">
+            <div ng-controller="NavCtrl" >
+
+                {% include 'includes/sidebar.html' %}
+
+                <md-toolbar class="global-header">
+                    <div class="md-toolbar-tools">
+                        <a class="logo" href="/">
+                            <img src="/static/img/logo.png">
+                        </a>
+                        <span flex></span>
+                        <div class="global-header-nav-button">
+                            <md-button class="toggle_menu md-icon-button" aria-label="Toggle Menu" ng-click="toggleNav('right')">
+                                <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
+                            </md-button>
+                        </div>
                     </div>
-                    <md-button class="toggle_menu md-icon-button" aria-label="Toggle Menu" hide show-xs ng-click="toggleNav('right')">
-                        <md-icon md-svg-icon="/static/img/icons/ic_menu_black_24px.svg"></md-icon>
-                    </md-button>
-                </div>
-            </md-toolbar>
+                </md-toolbar>
+            </div>
 
             <div layout="column" flex id="content">
-                <div id="home"></div>
 
                 {% block content %}{% endblock %}
 
-                <footer flex="none">
-                    <div class="strip default-strip">
-                        <div class="strip-content">
-                            <div class="share_logos">
-                                <span>Share:</span>
-                                <a href="http://www.facebook.com/sharer/sharer.php?u=sharonreganart.com" target="_blank">
-                                    <img src="/static/img/fb.png" alt="Facebook">
-                                </a>
-
-                                <a href="https://twitter.com/share?url=http://sharonreganart.co.uk&amp;text=Check out some of the fantastic work by Sharon Regan Art" target="_blank">
-                                    <img src="/static/img/twitter.png" alt="Twitter">
-                                </a>
-                            </div>
-                            <div class="craft_ni_logo" >
-                                <img src="/static/img/craft_ni.png" alt="Craft NI Directory">
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                {% include 'includes/footer.html' %}
 
             </div>
         </md-content>
 
-        <!-- Angular Material Dependencies -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="/static/libs/angularjs-1.5.6/angular.min.js"></script>
+        <script src="/static/libs/angularjs-1.5.6/angular-animate.min.js"></script>
+        <script src="/static/libs/angularjs-1.5.6/angular-aria.min.js"></script>
+        <script src="/static/libs/angularjs-1.5.6/angular-messages.min.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+        <!-- Angular Material Library -->
+        <script src="/static/libs/material-1.1.0-rc.5/angular-material.min.js"></script>
 
         <script src="/static/js/public.js"></script>
+
+        {% block extra_scripts %}{% endblock %}
     </body>
 </html>
