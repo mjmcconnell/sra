@@ -1,20 +1,7 @@
-###########################################################################
-# DO NOT MODIFY THIS FILE WITHOUT UNDERSTANDING THE SECURITY IMPLICATIONS #
-###########################################################################
-
-application: sharon-regan-art
-version: dev
 runtime: python27
 api_version: 1
 threadsafe: true
 
-# enable the remote api so we can launch a python shell to interact with our
-# application, whether locally or remote
-builtins:
-- remote_api: on
-
-# warmup requests are commonly enabled to help ensure applications begin
-# serving data as quickly as possible without hitting cold caches etc.
 inbound_services:
   - warmup
 
@@ -26,11 +13,6 @@ handlers:
       Strict-Transport-Security: "max-age=2592000; includeSubdomains"
       X-Content-Type-Options: "nosniff"
       X-XSS-Protection: "1; mode=block"
-
-# All URLs should be mapped via the *_ROUTES variables in the app/routes.py file.
-# See https://webapp-improved.appspot.com/guide/routing.html for information on
-# how URLs are routed in the webapp2 framework. Do not add additional handlers
-# directly here.
 
   - url: /.*
     script: app.wsgi.app
