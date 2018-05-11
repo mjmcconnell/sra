@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  backend:
+    image: python:2.7
+    ports:
+      - 8080:8080
+      - 8000:8000
+    volumes:
+      - ./src-server:/root/app
+      - ./ops/scripts/gae_sdk_download.sh:/root/gae_sdk_download.sh
+      - appengine:/opt
+    working_dir: /root/app
+    command: make run
+
+  # frontend:
+  #   image: node:latest
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./src-client:/usr/src
+  #   working_dir: /usr/src
+  #   command: make run
+
+volumes:
+  appengine:
+    driver: local

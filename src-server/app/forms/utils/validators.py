@@ -8,7 +8,6 @@ import re
 from StringIO import StringIO
 
 # third-party imports
-from PIL import Image
 from wtforms import ValidationError
 from wtforms import validators
 
@@ -33,50 +32,13 @@ def validate_email_address(form, field):
 def validate_image_format(form, field):
     """Use PIL to inspect an image, to see its format type.
     """
-    valid_formats = ['JPG', 'JPEG', 'PNG']
-
-    if len(field.raw_data):
-        if hasattr(field.raw_data[0], 'filename'):
-            try:
-                i = Image.open(StringIO(field.raw_data[0].value))
-                if i.format not in valid_formats:
-                    raise ValidationError('Invalid image provided.')
-            except IOError:
-                raise ValidationError('Invalid image format found.')
+    pass
 
 
 def validate_image_size(width=None, height=None):
 
     def _validate_image_size(form, field):
-        if len(field.raw_data):
-            if hasattr(field.raw_data[0], 'filename'):
-                try:
-                    i = Image.open(StringIO(field.raw_data[0].value))
-                    if (width and height) and ((width, height) != i.size):
-                        raise ValidationError(
-                            'Image must be {}x{}, found {}x{}.'.format(
-                                width,
-                                height,
-                                i.size[0],
-                                i.size[1]
-                            )
-                        )
-                    elif width and width != i.size[0]:
-                        raise ValidationError(
-                            'Image must be {}px in width, found {}px.'.format(
-                                width,
-                                i.size[0]
-                            )
-                        )
-                    elif height and height != i.size[1]:
-                        raise ValidationError(
-                            'Image must be {}px in height, found {}px.'.format(
-                                height,
-                                i.size[1]
-                            )
-                        )
-                except IOError:
-                    raise ValidationError('Invalid image format found.')
+        pass
 
     return _validate_image_size
 
