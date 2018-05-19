@@ -1,8 +1,8 @@
 import React from "react";
 
-import Grid from 'material-ui/Grid';
-import Hidden from 'material-ui/Hidden';
-import { withStyles } from "material-ui/styles";
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import { withStyles } from "@material-ui/core/styles";
 
 import NavBar from "../components/NavBar";
 

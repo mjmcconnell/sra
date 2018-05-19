@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import theme from "./theme";
 import * as Pages from "./Pages";
