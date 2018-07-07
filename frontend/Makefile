@@ -6,5 +6,5 @@ install:
 build: install
 	npm run build
 
-run: install
+run:
 	npm run start

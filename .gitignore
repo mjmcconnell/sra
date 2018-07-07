@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Mac desktop service store files
+.DS_Store
+
+# Docker secrets
+.env
+
+# Coverage files
+.coverage
+htmlcov/
