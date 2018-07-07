@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  gcloud:
+    image: google/cloud-sdk:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app:/usr/src
+    command: dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 /usr/src/app.yaml
+
+  frontend:
+    image: node:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/usr/src
+    working_dir: /usr/src
+    command: make run
+
+volumes:
+  pypackages:
+    driver: local
