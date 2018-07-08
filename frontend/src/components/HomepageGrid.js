@@ -46,25 +46,28 @@ class HomepageGrid extends React.Component {
     return (
       <div className={classes.root}>
         <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2} container={true}>
-          <GridListTile cols={1} rows={2}>
-            <img src="mum.jpg" alt="test"/>
-            <GridListTileBar title="Project 1" />
-          </GridListTile>
-          <GridListTile cols={1} rows={2}>
-            <span className={classes.gridListProjectsTile}></span>
-            <GridListTileBar title="View all projects" />
-          </GridListTile>
+
           <GridListTile cols={2} rows={1}>
             <span className={classes.gridListEtsyTile}></span>
             <GridListTileBar title="Esty site" />
           </GridListTile>
+
+          <GridListTile cols={1} rows={2}>
+            <img src="mum.jpg" alt="test"/>
+            <GridListTileBar title="Events" />
+          </GridListTile>
+          <GridListTile cols={1} rows={2}>
+            <span className={classes.gridListProjectsTile}></span>
+            <GridListTileBar title="Workshops" />
+          </GridListTile>
+
           <GridListTile cols={1} rows={2}>
             <span className={classes.gridListContactTile}></span>
-            <GridListTileBar title="Get in touch" />
+            <GridListTileBar title="About" />
           </GridListTile>
           <GridListTile cols={1} rows={2}>
             <img src="mum.jpg" alt="test"/>
-            <GridListTileBar title="Project 2" />
+            <GridListTileBar title="Stockists" />
           </GridListTile>
         </GridList>
       </div>

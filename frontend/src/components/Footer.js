@@ -10,6 +10,9 @@ function Footer(props) {
     <Grid container spacing={24}>
       <Grid item xs={3}>
         <List component="nav">
+          <ListItem>
+            <ListItemText primary="Say Hello" />
+          </ListItem>
           <ListItem component="a" href="#">
             <ListItemText primary="Item 1" />
           </ListItem>
@@ -20,26 +23,29 @@ function Footer(props) {
       </Grid>
       <Grid item xs={3}>
         <List component="nav">
-          <ListItem component="a" href="#">
-            <ListItemText primary="Item 1" />
+          <ListItem>
+            <ListItemText primary="Meet Me" />
           </ListItem>
           <ListItem component="a" href="#">
-            <ListItemText primary="Item 2" />
-          </ListItem>
-        </List>
-      </Grid>
-      <Grid item xs={3}>
-        <List component="nav">
-          <ListItem component="a" href="#">
-            <ListItemText primary="Item 1" />
-          </ListItem>
-          <ListItem component="a" href="#">
-            <ListItemText primary="Item 2" />
+            <ListItemText primary="Project 24, Queens Paraded, Bangor" />
           </ListItem>
         </List>
       </Grid>
       <Grid item xs={3}>
         <List component="nav">
+          <ListItem>
+            <ListItemText primary="Follow Me" />
+          </ListItem>
+          <ListItem component="a" href="https://www.facebook.com/sharonreganart/">
+            <ListItemText primary="FB" />
+          </ListItem>
+        </List>
+      </Grid>
+      <Grid item xs={3}>
+        <List component="nav">
+          <ListItem>
+            <ListItemText primary="Find me" />
+          </ListItem>
           <ListItem component="a" href="#">
             <ListItemText primary="Item 1" />
           </ListItem>
