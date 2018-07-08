@@ -12,14 +12,15 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    marginBottom: 4
   },
   gridList: {
-    width: '100%',
+    width: '100%'
   },
   gridListEtsyTile: {
     width: '100%',
     display: 'flex',
-    height: '100%',
+    height: '100%'
   },
 });
 
