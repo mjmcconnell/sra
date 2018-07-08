@@ -34,10 +34,13 @@ function Navigation(props) {
             About
           </Typography>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Projects
+            Gallery
           </Typography>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Etsy
+            Events
+          </Typography>
+          <Typography variant="title" color="inherit" className={classes.flex}>
+            Workshops
           </Typography>
           <Typography variant="title" color="inherit" className={classes.flex}>
             Stockists
