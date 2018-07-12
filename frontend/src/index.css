@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+nav li .primary-title span {
+    color: #79d3c6;
+    border-bottom: 3px solid;
+    font-weight: bold;
+}

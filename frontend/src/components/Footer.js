@@ -7,9 +7,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
-  footerTitle: {
-    fontWeight: 'bold',
-  },
+  root: {flexGrow: 1},
+  listItem: {textAlign: 'center'},
 });
 
 
@@ -17,49 +16,49 @@ class Footer extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container spacing={24}>
+      <Grid container spacing={24} className={classes.root}>
         <Grid item xs={3}>
           <List component="nav">
-            <ListItem>
-              <ListItemText className={classes.footerTitle} primary="Say Hello" />
+            <ListItem className={classes.listItem}>
+              <ListItemText className="primary-title" primary="Say Hello" />
             </ListItem>
-            <ListItem component="a" href="#">
+            <ListItem component="a" href="#" dense>
               <ListItemText primary="Item 1" />
             </ListItem>
-            <ListItem component="a" href="#">
+            <ListItem component="a" href="#" dense>
               <ListItemText primary="Item 2" />
             </ListItem>
           </List>
         </Grid>
         <Grid item xs={3}>
           <List component="nav">
-            <ListItem>
-              <ListItemText className={classes.footerTitle} primary="Meet Me" />
+            <ListItem className={classes.listItem}>
+              <ListItemText className="primary-title" primary="Meet Me" />
             </ListItem>
-            <ListItem component="a" href="#">
+            <ListItem dense>
               <ListItemText primary="Project 24, Queens Paraded, Bangor" />
             </ListItem>
           </List>
         </Grid>
         <Grid item xs={3}>
           <List component="nav">
-            <ListItem>
-              <ListItemText className={classes.footerTitle} primary="Follow Me" />
+            <ListItem className={classes.listItem}>
+              <ListItemText className="primary-title" primary="Follow Me" />
             </ListItem>
-            <ListItem component="a" href="https://www.facebook.com/sharonreganart/">
+            <ListItem component="a" href="https://www.facebook.com/sharonreganart/" dense>
               <ListItemText primary="FB" />
             </ListItem>
           </List>
         </Grid>
         <Grid item xs={3}>
           <List component="nav">
-            <ListItem>
-              <ListItemText className={classes.FooterTitle} primary="Find me" />
+            <ListItem className={classes.listItem}>
+              <ListItemText className="primary-title" primary="Find me" />
             </ListItem>
-            <ListItem component="a" href="#">
+            <ListItem component="a" href="#" dense>
               <ListItemText primary="Item 1" />
             </ListItem>
-            <ListItem component="a" href="#">
+            <ListItem component="a" href="#" dense>
               <ListItemText primary="Item 2" />
             </ListItem>
           </List>
