@@ -24,9 +24,8 @@ const styles = theme => ({
   smTile: {},
   smTileImg: {maxWidth: '100%', maxHeight: '100%'},
   lrgTile: {},
-  lrgTileImg: {
-    width: '100%'
-  }
+  lrgTileImg: {width: '100%'},
+  gridListTitle: {marginTop: 0}
 });
 
 const gallerySmGrid = (classes, tileData) => {
@@ -34,7 +33,7 @@ const gallerySmGrid = (classes, tileData) => {
     <Grid item sm={4} xs={12} className={classes.smTile}>
       <GridList className={classes.gridList} cols={2} spacing={16}>
         <GridListTile cols={2}>
-          <h1>{tileData.title}</h1>
+          <h1 className={classes.gridListTitle}>{tileData.title}</h1>
           <p>{tileData.desc}</p>
         </GridListTile>
         {tileData.images.map(image => (
