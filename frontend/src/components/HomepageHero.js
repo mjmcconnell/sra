@@ -22,7 +22,7 @@ const styles = theme => ({
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
-        opacity: 0.15,
+        opacity: 0,
       },
       '& $imageMarked': {
         opacity: 0,
@@ -60,21 +60,12 @@ const styles = theme => ({
     top: 0,
     bottom: 0,
     backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
+    opacity: 0.3,
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
-  },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
   },
 });
 
@@ -114,7 +105,6 @@ class HomepageHero extends React.Component {
               className={classes.imageTitle}
             >
               {image.title}
-              <span className={classes.imageMarked} />
             </Typography>
           </span>
         </ButtonBase>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 
@@ -49,7 +48,7 @@ const styles = theme => ({
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
-        opacity: 0.15,
+        opacity: 0.1,
       },
       '& $imageMarked': {
         opacity: 0,
@@ -87,23 +86,47 @@ const styles = theme => ({
     top: 0,
     bottom: 0,
     backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
+    opacity: 0.35,
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
   },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
-  },
 });
+
+const tiles = [
+  {
+    rows: 1,
+    cols: 2,
+    image: 'grass_field.png',
+    title: 'Etsy Shop',
+  },
+  {
+    rows: 2,
+    cols: 1,
+    image: 'blue_leaf.jpg',
+    title: 'About',
+  },
+  {
+    rows: 2,
+    cols: 1,
+    image: 'sra_workshop.jpg',
+    title: 'Workshops',
+  },
+  {
+    rows: 2,
+    cols: 1,
+    image: 'hares.jpg',
+    title: 'Events',
+  },
+  {
+    rows: 2,
+    cols: 1,
+    image: 'map.png',
+    title: 'Stockists',
+  },
+]
 
 class HomepageGrid extends React.Component {
   render() {
@@ -112,81 +135,37 @@ class HomepageGrid extends React.Component {
     return (
       <div className={classes.root}>
         <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2} container={true}>
-
-          <GridListTile cols={2} rows={1}>
-            <ButtonBase
-              focusRipple
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: '100%',
-                height: '160px',
-              }}
-            >
-              <span
-                className={classes.imageSrc}
+          {tiles.map(tile => (
+            <GridListTile cols={tile.cols} rows={tile.rows} key={tile.title}>
+              <ButtonBase
+                focusRipple
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
                 style={{
-                  backgroundImage: `url(grass_field.png)`,
+                  width: '100%',
+                  height: `${tile.rows * 160}px`,
                 }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subheading"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  Etsy shop
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-            </ButtonBase>
-          </GridListTile>
-
-          <GridListTile cols={1} rows={2}>
-            <ButtonBase
-              focusRipple
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: '100%',
-                height: '320px',
-              }}
-            >
-              <span
-                className={classes.imageSrc}
-                style={{
-                  backgroundImage: `url(blue_leaf.jpg)`,
-                }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subheading"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  About
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-            </ButtonBase>
-          </GridListTile>
-          <GridListTile cols={1} rows={2}>
-            <img src="sra_workshop.jpg" alt="workshops"/>
-            <GridListTileBar title="Workshops" />
-          </GridListTile>
-
-          <GridListTile cols={1} rows={2}>
-            <img src="hares.jpg" alt="events"/>
-            <GridListTileBar title="Events" />
-          </GridListTile>
-          <GridListTile cols={1} rows={2}>
-            <img src="map.png" alt="stockists"/>
-            <GridListTileBar title="Stockists" />
-          </GridListTile>
+              >
+                <span
+                  className={classes.imageSrc}
+                  style={{
+                    backgroundImage: `url(${tile.image})`,
+                  }}
+                />
+                <span className={classes.imageBackdrop} />
+                <span className={classes.imageButton}>
+                  <Typography
+                    component="span"
+                    variant="subheading"
+                    color="inherit"
+                    className={classes.imageTitle}
+                  >
+                    {tile.title}
+                  </Typography>
+                </span>
+              </ButtonBase>
+            </GridListTile>
+          ))}
         </GridList>
       </div>
     );
