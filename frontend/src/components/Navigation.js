@@ -25,7 +25,7 @@ function Navigation(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar>
           <Typography variant="title" color="inherit" className={classes.flex}>
             Home

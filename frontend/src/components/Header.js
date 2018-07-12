@@ -18,7 +18,7 @@ function Header(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="inherit">
+      <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar className={classes.toolbar} disableGutters={true}>
           <img className={classes.logoImg} src="logo.png" alt="logo"/>
           <Typography className={classes.logoText} variant="title" color="inherit">
