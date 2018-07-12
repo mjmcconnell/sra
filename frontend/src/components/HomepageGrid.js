@@ -94,6 +94,13 @@ const styles = theme => ({
 
 const tiles = [
   {
+    rows: 4,
+    cols: 2,
+    image: 'hero.jpg',
+    title: 'Gallery',
+    link: '/gallery',
+  },
+  {
     rows: 1,
     cols: 2,
     image: 'grass_field.png',
