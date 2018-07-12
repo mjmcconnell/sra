@@ -50,9 +50,6 @@ const styles = theme => ({
       '& $imageBackdrop': {
         opacity: 0.1,
       },
-      '& $imageMarked': {
-        opacity: 0,
-      },
       '& $imageTitle': {
         border: '4px solid currentColor',
       },
@@ -101,42 +98,60 @@ const tiles = [
     cols: 2,
     image: 'grass_field.png',
     title: 'Etsy Shop',
+    link: 'https://www.etsy.com/uk/shop/SharonReganArt',
+    tabbed: true,
   },
   {
     rows: 2,
     cols: 1,
     image: 'blue_leaf.jpg',
     title: 'About',
+    link: '/about',
   },
   {
     rows: 2,
     cols: 1,
     image: 'sra_workshop.jpg',
     title: 'Workshops',
+    link: '/workshops',
   },
   {
     rows: 2,
     cols: 1,
     image: 'hares.jpg',
     title: 'Events',
+    link: '/events',
   },
   {
     rows: 2,
     cols: 1,
     image: 'map.png',
     title: 'Stockists',
+    link: '/stockists',
   },
 ]
 
 class HomepageGrid extends React.Component {
+  tileNavLink = (link, tabbed) => {
+    if (tabbed) {
+      window.open(link, '_blank');
+    } else {
+      window.location.href = link;
+    }
+  };
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2} container={true}>
+        <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2}>
           {tiles.map(tile => (
-            <GridListTile cols={tile.cols} rows={tile.rows} key={tile.title}>
+            <GridListTile
+              cols={tile.cols}
+              rows={tile.rows}
+              key={tile.title}
+              onClick={() => this.tileNavLink(tile.link, tile.tabbed)}
+            >
               <ButtonBase
                 focusRipple
                 className={classes.image}

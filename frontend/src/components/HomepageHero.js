@@ -24,9 +24,6 @@ const styles = theme => ({
       '& $imageBackdrop': {
         opacity: 0,
       },
-      '& $imageMarked': {
-        opacity: 0,
-      },
       '& $imageTitle': {
         border: '4px solid currentColor',
       },
@@ -77,6 +74,13 @@ const image = {
 
 
 class HomepageHero extends React.Component {
+  tileNavLink = (link, tabbed) => {
+    if (tabbed) {
+      window.open(link, '_blank');
+    } else {
+      window.location.href = link;
+    }
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -89,6 +93,7 @@ class HomepageHero extends React.Component {
           style={{
             width: image.width,
           }}
+          onClick={() => this.tileNavLink('asdfasdf')}
         >
           <span
             className={classes.imageSrc}
