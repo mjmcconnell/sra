@@ -29,7 +29,7 @@ class HomepageHero extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2} container={true}>
+        <GridList cellHeight={160} className={classes.gridList}>
 
           <GridListTile cols={2} rows={4}>
             <img src="hero.jpg" alt="gallery"/>

@@ -48,25 +48,25 @@ class HomepageGrid extends React.Component {
         <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2} container={true}>
 
           <GridListTile cols={2} rows={1}>
-            <span className={classes.gridListEtsyTile}></span>
+            <img src="grass_field.png" alt="etsy shop"/>
             <GridListTileBar title="Esty site" />
           </GridListTile>
 
           <GridListTile cols={1} rows={2}>
-            <img src="mum.jpg" alt="test"/>
-            <GridListTileBar title="Events" />
+            <img src="blue_leaf.jpg" alt="about"/>
+            <GridListTileBar title="About" />
           </GridListTile>
           <GridListTile cols={1} rows={2}>
-            <span className={classes.gridListProjectsTile}></span>
+            <img src="sra_workshop.jpg" alt="workshops"/>
             <GridListTileBar title="Workshops" />
           </GridListTile>
 
           <GridListTile cols={1} rows={2}>
-            <span className={classes.gridListContactTile}></span>
-            <GridListTileBar title="About" />
+            <img src="hares.jpg" alt="events"/>
+            <GridListTileBar title="Events" />
           </GridListTile>
           <GridListTile cols={1} rows={2}>
-            <img src="mum.jpg" alt="test"/>
+            <img src="map.png" alt="stockists"/>
             <GridListTileBar title="Stockists" />
           </GridListTile>
         </GridList>
