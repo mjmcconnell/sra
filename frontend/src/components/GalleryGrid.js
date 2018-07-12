@@ -14,10 +14,12 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    padding: '0 8px'
   },
   galleryGrid: {
-    padding: '12px'
+    padding: '12px',
+    marginBottom: '18px'
   },
   smTile: {},
   smTileImg: {maxWidth: '100%', maxHeight: '100%'},
@@ -30,7 +32,7 @@ const styles = theme => ({
 const gallerySmGrid = (classes, tileData) => {
   return (
     <Grid item sm={4} xs={12} className={classes.smTile}>
-      <GridList className={classes.gridList} cols={2} spacing={8}>
+      <GridList className={classes.gridList} cols={2} spacing={16}>
         <GridListTile cols={2}>
           <h1>{tileData.title}</h1>
           <p>{tileData.desc}</p>
@@ -62,7 +64,7 @@ class GalleryGrid extends React.Component {
     return (
       <div className={classes.root}>
         {galleryData.map((tileData,i,a) => (
-          <Grid container spacing={24} className={classes.galleryGrid} key={tileData.title}>
+          <Grid container spacing={16} className={classes.galleryGrid} key={tileData.title}>
             {i % 2 === 0 && gallerySmGrid(classes, tileData)}
             {galleryLgGrid(classes, tileData)}
             {i % 2 === 1 && gallerySmGrid(classes, tileData)}

@@ -10,7 +10,9 @@ const styles = {
     flexGrow: 1,
   },
   appBar: {
-    background: '#FFF'
+    background: '#FFF',
+    borderTop: '1px solid #AAA',
+    borderBottom: '1px solid #AAA'
   },
   flex: {
     flex: 1,

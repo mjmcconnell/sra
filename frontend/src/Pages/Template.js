@@ -8,7 +8,8 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 const styles = {
-  root: {},
+  root: {maxWidth: '1600px', margin: '0 auto'},
+  body: {},
 };
 
 class Template extends React.Component {
@@ -19,15 +20,12 @@ class Template extends React.Component {
         <Grid item xs={12}>
           <Header />
         </Grid>
-        <Grid item xs={12}>
-            {this.props.hero}
-        </Grid>
         {this.props.displayNavigation ?
         <Grid item xs={12}>
           <Navigation />
         </Grid>
         : ''}
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.body}>
             {this.props.body}
         </Grid>
         <Grid item xs={12}>
