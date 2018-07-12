@@ -145,8 +145,34 @@ class HomepageGrid extends React.Component {
           </GridListTile>
 
           <GridListTile cols={1} rows={2}>
-            <img src="blue_leaf.jpg" alt="about"/>
-            <GridListTileBar title="About" />
+            <ButtonBase
+              focusRipple
+              className={classes.image}
+              focusVisibleClassName={classes.focusVisible}
+              style={{
+                width: '100%',
+                height: '320px',
+              }}
+            >
+              <span
+                className={classes.imageSrc}
+                style={{
+                  backgroundImage: `url(blue_leaf.jpg)`,
+                }}
+              />
+              <span className={classes.imageBackdrop} />
+              <span className={classes.imageButton}>
+                <Typography
+                  component="span"
+                  variant="subheading"
+                  color="inherit"
+                  className={classes.imageTitle}
+                >
+                  About
+                  <span className={classes.imageMarked} />
+                </Typography>
+              </span>
+            </ButtonBase>
           </GridListTile>
           <GridListTile cols={1} rows={2}>
             <img src="sra_workshop.jpg" alt="workshops"/>
