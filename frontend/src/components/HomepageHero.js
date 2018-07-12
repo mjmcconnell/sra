@@ -16,7 +16,7 @@ const styles = theme => ({
     position: 'relative',
     height: 600,
     [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
+      width: '100% !important',
       height: 100,
     },
     '&:hover, &$focusVisible': {
