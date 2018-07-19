@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   root: {flexGrow: 1},
   logoImg: {width: 50, padding: '0 10px 0 10px'},
-  toolbar: {minHeight: 60, borderBottom: '1px solid #AAA'},
+  toolbar: {minHeight: 60, borderBottom: '1px solid #000'},
   logoText: {flexGrow: 1},
   hpLink: {
     display: 'contents',
@@ -51,7 +51,7 @@ class Header extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" color="inherit" elevation={0}>
           <Toolbar className={classes.toolbar} disableGutters={true}>
-            <a href="/about" className={classes.hpLink}>
+            <a href="/" className={classes.hpLink}>
               <img className={classes.logoImg} src="logo.png" alt="logo"/>
               <Typography className={classes.logoText} variant="title" color="inherit">
                 Sharon Regan Art

@@ -10,11 +10,15 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   root: {
     flexGrow: 1,
-    marginBottom: '30px'
+    background: '#79d3c6',
+    marginBottom: '30px',
+    marginTop: '-1px',
+    borderBottom: '1px solid #59b4a6',
+    borderTop: '1px solid #59b4a6',
+    position: 'relative'
   },
   appBar: {
-    background: '#FFF',
-    borderBottom: '1px solid #AAA'
+    color: '#FFF',
   },
   flex: {
     flex: 1,
@@ -34,12 +38,12 @@ const styles = {
     textAlign: 'center',
     padding: '15px 0',
     '&:hover': {
-      background: '#EEE'
+      background: '#69c4b6'
     }
   },
   link: {
     textDecoration: 'none',
-    color: '#000',
+    color: '#FFF',
   }
 };
 
