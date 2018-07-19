@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
@@ -21,9 +22,11 @@ class Template extends React.Component {
           <Header />
         </Grid>
         {this.props.displayNavigation ?
-        <Grid item xs={12}>
-          <Navigation />
-        </Grid>
+          <Hidden smDown>
+            <Grid item xs={12}>
+              <Navigation />
+            </Grid>
+          </Hidden>
         : ''}
         <Grid item xs={12} className={classes.body}>
             {this.props.body}

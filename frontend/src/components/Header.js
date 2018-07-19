@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -9,8 +12,8 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   root: {flexGrow: 1},
   logoImg: {width: 50, padding: '0 10px 0 10px'},
-  toolbar: {minHeight: 50},
-  logoText: {float: 'right'}
+  toolbar: {minHeight: 50, borderBottom: '1px solid #AAA'},
+  logoText: {flexGrow: 1},
 };
 
 
@@ -24,6 +27,11 @@ function Header(props) {
           <Typography className={classes.logoText} variant="title" color="inherit">
             Sharon Regan Art
           </Typography>
+          <Hidden mdUp>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
         </Toolbar>
       </AppBar>
     </div>
