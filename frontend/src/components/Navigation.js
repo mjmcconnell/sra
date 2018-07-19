@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   root: {
     flexGrow: 1,
+    marginBottom: '30px'
   },
   appBar: {
     background: '#FFF',
@@ -18,13 +19,27 @@ const styles = {
   flex: {
     flex: 1,
   },
+  gridContainer: {
+    height: '100%'
+  },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 15,
+  },
+  gridItem: {
+    display: 'inline-grid'
+  },
+  button: {
+    display: 'block',
+    textAlign: 'center',
+    padding: '20px 0',
+    '&:hover': {
+      background: '#EEE'
+    }
   },
   link: {
-    display: 'block',
-    textAlign: 'center'
+    textDecoration: 'none',
+    color: '#000',
   }
 };
 
@@ -33,61 +48,61 @@ function Navigation(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar} elevation={0}>
-        <Toolbar>
-          <Grid container spacing={8}>
-            <Grid item xs={2}>
-              <a href="/about" className={classes.link}>
-                <ButtonBase focusRipple>
+        <Toolbar disableGutters={true} variant="dense">
+          <Grid container spacing={8} className={classes.gridContainer}>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/about" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     About
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
-            <Grid item xs={2}>
-              <a href="/gallery" className={classes.link}>
-                <ButtonBase focusRipple>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/gallery" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Gallery
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
-            <Grid item xs={2}>
-              <a href="/events" className={classes.link}>
-                <ButtonBase focusRipple>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/events" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Events
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
-            <Grid item xs={2}>
-              <a href="/workshops" className={classes.link}>
-                <ButtonBase focusRipple>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/workshops" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Workshops
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
-            <Grid item xs={2}>
-              <a href="/stockists" className={classes.link}>
-                <ButtonBase focusRipple>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/stockists" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Stockists
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
-            <Grid item xs={2}>
-              <a href="/contact" className={classes.link}>
-                <ButtonBase focusRipple>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
+                <a href="/contact" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Contact
                   </Typography>
-                </ButtonBase>
-              </a>
+                </a>
+              </ButtonBase>
             </Grid>
           </Grid>
         </Toolbar>
