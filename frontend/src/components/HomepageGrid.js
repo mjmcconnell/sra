@@ -52,6 +52,8 @@ const styles = theme => ({
       },
       '& $imageTitle': {
         border: '4px solid currentColor',
+        background: '#333',
+        opacity: 0.8,
       },
     },
   },
@@ -89,6 +91,7 @@ const styles = theme => ({
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
+    fontSize: '2em'
   },
 });
 
