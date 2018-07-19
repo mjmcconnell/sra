@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
-    marginTop: '-1px',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
