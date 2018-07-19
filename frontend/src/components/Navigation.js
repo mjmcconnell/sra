@@ -32,7 +32,7 @@ const styles = {
   button: {
     display: 'block',
     textAlign: 'center',
-    padding: '20px 0',
+    padding: '15px 0',
     '&:hover': {
       background: '#EEE'
     }
