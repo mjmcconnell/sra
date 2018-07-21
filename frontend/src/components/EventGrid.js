@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,24 +20,19 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '0 8px'
+    padding: '10px 8px'
   },
-  eventGrid: {
-    padding: '12px',
-    marginBottom: '18px'
-  },
-  lrgTile: {},
-  lrgTileImg: {maxWidth: '100%', maxHeight: '400px'},
-  gridList: {padding: '10px 0'},
-  contentContainer: {padding: '0 20px 10px !important'},
-  contentContainerTitle: {marginTop: 0},
+  eventGrid: {},
+  eventImage: {width: '100%'},
+  gridList: {maxHeight: '400px', overflow: 'hidden'},
+  contentContainerTitle: {},
   contentContainerDesc: {},
   contentContainerDetails: {
     bottom: '0',
     position: 'absolute'
   },
-  contentContainerDateTime: {padding: '10px 0'},
   contentContainerLocation: {padding: '10px 0'},
+  contentContainerDateTime: {padding: '10px 0'},
   contentContainerDivider: {margin: '10px 0'}
 });
 
@@ -50,14 +44,14 @@ class EventGrid extends React.Component {
       <div className={classes.root}>
         {eventData.map((tileData,i,a) => (
           <div key={tileData.title}>
-            <GridList className={classes.gridList} cols={2} cellHeight={400} spacing={4} >
-              <GridListTile cols={1}>
-                <img src={tileData.image.src} alt={tileData.image.title} className={classes.lrgTileImg}/>
-              </GridListTile>
-              <GridListTile cols={1} className={classes.contentContainer}>
-                <h1 className={classes.contentContainerTitle}>{tileData.title}</h1>
+            <Grid container spacing={24} className={classes.eventGrid}>
+              <Grid item xs={12} sm={6} className={classes.gridList}>
+                <img src={tileData.image.src} alt={tileData.image.title} className={classes.eventImage}/>
+              </Grid>
+              <Grid item xs={12} sm={6} className={classes.gridList}>
+                <h1 className={classes.contentContainerTitle} >{tileData.title}</h1>
                 <p className={classes.contentContainerDesc}>{tileData.desc}</p>
-                <List component="nav" className={classes.contentContainerDetails}>
+                <List component="nav">
                   <ListItem className={classes.contentContainerLocation}>
                     <ListItemIcon>
                       <PlaceIcon />
@@ -75,8 +69,8 @@ class EventGrid extends React.Component {
                     <ListItemText primary={tileData.time} />
                   </ListItem>
                 </List>
-              </GridListTile>
-            </GridList>
+              </Grid>
+            </Grid>
             <Divider className={classes.contentContainerDivider} />
           </div>
         ))}
