@@ -41,7 +41,7 @@ const eventData = [
     location: 'Project 24, Bangor',
     locationLink: 'https://www.google.co.uk/maps/place/Project+24/@54.6619647,-5.6761178,17z/data=!3m1!4b1!4m5!3m4!1s0x48619e22e99b32fd:0xd9841c736b09c6ef!8m2!3d54.6619616!4d-5.6739291',
     actionLabel: 'Get in touch',
-    actionLink: 'https://www.visitardsandnorthdown.com/events/creative-peninsula',
+    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Open%20Art%20-%20Art%20on%20the%20Railings%20Application',
     actionLinkTarget: ''
   },
 ];
