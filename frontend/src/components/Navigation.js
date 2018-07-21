@@ -59,6 +59,15 @@ function Navigation(props) {
           <Grid container spacing={8} className={classes.gridContainer}>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
+                <a href="/" className={classes.link}>
+                  <Typography variant="title" color="inherit" className={classes.flex}>
+                    Home
+                  </Typography>
+                </a>
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={2} className={classes.gridItem}>
+              <ButtonBase disableRipple className={classes.button}>
                 <a href="/about" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     About
@@ -98,15 +107,6 @@ function Navigation(props) {
                 <a href="/stockists" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
                     Stockists
-                  </Typography>
-                </a>
-              </ButtonBase>
-            </Grid>
-            <Grid item xs={2} className={classes.gridItem}>
-              <ButtonBase disableRipple className={classes.button}>
-                <a href="/contact" className={classes.link}>
-                  <Typography variant="title" color="inherit" className={classes.flex}>
-                    Contact
                   </Typography>
                 </a>
               </ButtonBase>
