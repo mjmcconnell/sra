@@ -22,18 +22,18 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     padding: '10px 8px'
   },
-  eventGrid: {},
+  eventGrid: { padding: '0 15px'},
   eventImage: {width: '100%'},
-  gridList: {maxHeight: '400px', overflow: 'hidden'},
-  contentContainerTitle: {},
-  contentContainerDesc: {},
-  contentContainerDetails: {
-    bottom: '0',
-    position: 'absolute'
+  gridList: {
+    maxHeight: '550px',
+    overflow: 'hidden'
   },
+  contentContainerTitle: {},
+  contentContainerDesc: {margin: '10px 0'},
+  contentContainerDetails: {},
   contentContainerLocation: {padding: '10px 0'},
   contentContainerDateTime: {padding: '10px 0'},
-  contentContainerDivider: {margin: '10px 0'}
+  contentContainerDivider: {margin: '30px 0'}
 });
 
 class EventGrid extends React.Component {
@@ -50,7 +50,9 @@ class EventGrid extends React.Component {
               </Grid>
               <Grid item xs={12} sm={6} className={classes.gridList}>
                 <h1 className={classes.contentContainerTitle} >{tileData.title}</h1>
-                <p className={classes.contentContainerDesc}>{tileData.desc}</p>
+                {tileData.desc.map((paragraph, i) => (
+                  <p key={i} className={classes.contentContainerDesc}>{paragraph}</p>
+                ))}
                 <List component="nav">
                   <ListItem className={classes.contentContainerLocation}>
                     <ListItemIcon>

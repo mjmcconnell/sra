@@ -44,6 +44,9 @@ const styles = {
   link: {
     textDecoration: 'none',
     color: '#FFF',
+    padding: '20px 0',
+    margin: '-20px 0',
+    display: 'block'
   }
 };
 
