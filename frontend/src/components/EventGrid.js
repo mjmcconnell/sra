@@ -49,8 +49,8 @@ class EventGrid extends React.Component {
     return (
       <div className={classes.root}>
         {eventData.map((tileData,i,a) => (
-          <div>
-            <GridList className={classes.gridList} cols={2} key={tileData.title} cellHeight={400} spacing={4} >
+          <div key={tileData.title}>
+            <GridList className={classes.gridList} cols={2} cellHeight={400} spacing={4} >
               <GridListTile cols={1}>
                 <img src={tileData.image.src} alt={tileData.image.title} className={classes.lrgTileImg}/>
               </GridListTile>
