@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
@@ -28,12 +29,13 @@ const styles = theme => ({
     maxHeight: '550px',
     overflow: 'hidden'
   },
-  contentContainerTitle: {},
+  contentContainerTitle: {marginTop: 0},
   contentContainerDesc: {margin: '10px 0'},
   contentContainerDetails: {},
-  contentContainerLocation: {padding: '10px 0'},
-  contentContainerDateTime: {padding: '10px 0'},
-  contentContainerDivider: {margin: '30px 0'}
+  contentContainerLocation: {padding: '4px 0'},
+  contentContainerDateTime: {padding: '4px 0'},
+  contentContainerDivider: {margin: '30px 0'},
+  actionLink: {textDecoration: 'none'}
 });
 
 class EventGrid extends React.Component {
@@ -53,23 +55,35 @@ class EventGrid extends React.Component {
                 {tileData.desc.map((paragraph, i) => (
                   <p key={i} className={classes.contentContainerDesc}>{paragraph}</p>
                 ))}
-                <List component="nav">
+                <List component="nav" className={classes.contentContainerDetails}>
                   <ListItem className={classes.contentContainerLocation}>
                     <ListItemIcon>
                       <PlaceIcon />
                     </ListItemIcon>
-                    <ListItemText primary={tileData.location} />
+                    <a href={tileData.locationLink} target="_blank">
+                      <ListItemText primary={tileData.location}/>
+                    </a>
                   </ListItem>
                   <ListItem className={classes.contentContainerDateTime}>
                     <ListItemIcon>
                       <DateRangeIcon />
                     </ListItemIcon>
                     <ListItemText primary={tileData.date} />
+                  </ListItem>
+                  <ListItem className={classes.contentContainerDateTime}>
                     <ListItemIcon>
                       <AccessTimeIcon />
                     </ListItemIcon>
                     <ListItemText primary={tileData.time} />
                   </ListItem>
+                  <ListItem className={classes.contentContainerDateTime}>
+                    <a href={tileData.actionLink} target={tileData.actionLinkTarget} className={classes.actionLink}>
+                      <Button variant="contained" color="secondary" className={classes.button}>
+                        {tileData.actionLabel}
+                      </Button>
+                    </a>
+                  </ListItem>
+
                 </List>
               </Grid>
             </Grid>

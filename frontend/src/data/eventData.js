@@ -11,7 +11,11 @@ const eventData = [
     },
     date: 'Aug 3rd - 12th',
     time: '10:00-16:00',
-    location: 'Ards Arts Centre, Town Hall, Conway Square, Newtownards, County Down'
+    location: 'Ards Arts Centre, Newtownards',
+    locationLink: 'https://www.google.co.uk/maps/place/Ards+Arts+Centre/@54.5937002,-5.6959102,15z/data=!4m5!3m4!1s0x0:0x3038053dcd2ff502!8m2!3d54.5937002!4d-5.6959102',
+    actionLabel: 'Book now',
+    actionLink: 'https://www.visitardsandnorthdown.com/events/creative-peninsula',
+    actionLinkTarget: '_blank'
   },
   {
     title: 'Open Art - Art on the Railings',
@@ -34,7 +38,11 @@ const eventData = [
     },
     date: 'Sept 9th',
     time: '14:00–18:00',
-    location: 'Project 24, Queen\'s Parade, Bangor, County Down'
+    location: 'Project 24, Bangor',
+    locationLink: 'https://www.google.co.uk/maps/place/Project+24/@54.6619647,-5.6761178,17z/data=!3m1!4b1!4m5!3m4!1s0x48619e22e99b32fd:0xd9841c736b09c6ef!8m2!3d54.6619616!4d-5.6739291',
+    actionLabel: 'Get in touch',
+    actionLink: 'https://www.visitardsandnorthdown.com/events/creative-peninsula',
+    actionLinkTarget: ''
   },
 ];
 
