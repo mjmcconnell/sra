@@ -6,7 +6,7 @@ const eventData = [
         Pet Portraits workshop Wednesday 8th August 6-9pm. Bookable through Ards Art Centre
     `],
     image: {
-      src: 'event1.jpg',
+      src: '/images/events/event1.jpg',
       tilte: 'Creative Peninsula'
     },
     date: 'Aug 3rd - 12th',
@@ -33,7 +33,7 @@ const eventData = [
       `
     ],
     image: {
-      src: 'event2.jpg',
+      src: '/images/events/event2.jpg',
       tilte: 'Open Art - Art on the Railings'
     },
     date: 'Sept 9th',

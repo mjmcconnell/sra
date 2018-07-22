@@ -52,7 +52,7 @@ class Header extends React.Component {
         <AppBar position="static" color="inherit" elevation={0}>
           <Toolbar className={classes.toolbar} disableGutters={true}>
             <a href="/" className={classes.hpLink}>
-              <img className={classes.logoImg} src="logo.png" alt="logo"/>
+              <img className={classes.logoImg} src="/logo.png" alt="logo"/>
               <Typography className={classes.logoText} variant="title" color="inherit">
                 Sharon Regan Art
               </Typography>

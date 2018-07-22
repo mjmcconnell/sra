@@ -6,6 +6,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 
+import homepageData from '../data/homepageData';
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -95,52 +97,6 @@ const styles = theme => ({
   },
 });
 
-const tiles = [
-  {
-    rows: 4,
-    cols: 2,
-    image: 'hero.jpg',
-    title: 'Gallery',
-    link: '/gallery',
-  },
-  {
-    rows: 1,
-    cols: 2,
-    image: 'grass_field.png',
-    title: 'Etsy Shop',
-    link: 'https://www.etsy.com/uk/shop/SharonReganArt',
-    tabbed: true,
-  },
-  {
-    rows: 2,
-    cols: 1,
-    image: 'blue_leaf.jpg',
-    title: 'About',
-    link: '/about',
-  },
-  {
-    rows: 2,
-    cols: 1,
-    image: 'sra_workshop.jpg',
-    title: 'Workshops',
-    link: '/workshops',
-  },
-  {
-    rows: 2,
-    cols: 1,
-    image: 'hares.jpg',
-    title: 'Events',
-    link: '/events',
-  },
-  {
-    rows: 2,
-    cols: 1,
-    image: 'map.png',
-    title: 'Stockists',
-    link: '/stockists',
-  },
-]
-
 class HomepageGrid extends React.Component {
   tileNavLink = (link, tabbed) => {
     if (tabbed) {
@@ -155,7 +111,7 @@ class HomepageGrid extends React.Component {
     return (
       <div className={classes.root}>
         <GridList spacing={4} cellHeight={160} className={classes.gridList} cols={2}>
-          {tiles.map(tile => (
+          {homepageData.map(tile => (
             <GridListTile
               cols={tile.cols}
               rows={tile.rows}
