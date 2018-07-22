@@ -21,7 +21,7 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '10px 8px'
+    padding: '10px 23px 30px',
   },
   eventGrid: { padding: '0 15px'},
   eventImage: {width: '100%'},

@@ -12,8 +12,11 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '10px 23px 30px',
+    padding: '4px 23px 30px',
   },
+  title: {
+    marginTop: 0
+  }
 });
 
 
@@ -52,8 +55,8 @@ function WorkshopGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={24}>
         {workshopData.map(tile => (
-          <Grid item xs={12} sm={6} md={4} key={tile.title}>
-            <h1>{tile.title}</h1>
+          <Grid item xs={12} sm={6} lg={4} key={tile.title}>
+            <h1 className={classes.title}>{tile.title}</h1>
             <Video url={tile.url} />
           </Grid>
         ))}

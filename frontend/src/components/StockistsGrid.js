@@ -17,7 +17,7 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '10px 23px 30px'
+    padding: '10px 23px 30px',
   },
   gridListTile: {
     border: '1px solid #DDD',

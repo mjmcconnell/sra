@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList';
@@ -15,16 +16,19 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '0 8px'
+    padding: '10px 23px 30px',
   },
   galleryGrid: {
-    padding: '12px',
-    marginBottom: '18px'
+    padding: '0 12px',
   },
-  smTileDetails: {height: '80px !important'},
+  smTileDetails: {
+    height: '47px !important',
+    padding: '0 8px !important'
+  },
   smTile: {cursor: 'pointer'},
   lrgTileImg: {width: '100%'},
-  gridListTitle: {marginTop: 0}
+  gridListTitle: {marginTop: 0},
+  contentContainerDivider: {margin: '30px 0'}
 });
 
 const gallerySmGrid = (classes, tileData, updateMainImage) => {
@@ -33,7 +37,6 @@ const gallerySmGrid = (classes, tileData, updateMainImage) => {
       <GridList cols={2} spacing={16}>
         <GridListTile cols={2} className={classes.smTileDetails}>
           <h1 className={classes.gridListTitle}>{tileData.title}</h1>
-          <p>{tileData.desc}</p>
         </GridListTile>
         {tileData.images.map(image => (
           <GridListTile key={image.src} cols={1} onClick={() => updateMainImage(image)} className={classes.smTile}>
@@ -95,7 +98,10 @@ class GalleryGrid extends React.Component {
     return (
       <div className={classes.root}>
         {this.state.tiles.map((tile,i,a) => (
-          <AlbumGrid tile={tile} key={i} i={i} classes={classes}/>
+          <div key={i}>
+            <AlbumGrid tile={tile} i={i} classes={classes}/>
+            <Divider className={classes.contentContainerDivider} />
+          </div>
         ))}
       </div>
     );

@@ -9,7 +9,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    padding: '10px 8px',
+    padding: '10px 23px 30px',
     maxWidth: '800px',
     margin: '0 auto 20px'
   },

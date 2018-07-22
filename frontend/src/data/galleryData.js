@@ -1,8 +1,23 @@
 const galleryData = [
   {
-    title: 'What\'s That fox',
-    desc: '',
-    active: 0,
+    title: 'Horses',
+    images: [
+      {
+        src: '/images/gallery/horse1.jpg',
+        tilte: 'horse1.jpg'
+      },
+      {
+        src: '/images/gallery/horse2.jpg',
+        tilte: 'horse2.jpg'
+      },
+      {
+        src: '/images/gallery/horse3.jpg',
+        tilte: 'horse3.jpg'
+      },
+    ]
+  },
+  {
+    title: 'Foxes',
     images: [
       {
         src: '/images/gallery/fox1.jpg',
@@ -28,8 +43,6 @@ const galleryData = [
   },
   {
     title: 'Seals',
-    desc: '',
-    active: 0,
     images: [
       {
         src: '/images/gallery/seal1.jpg',
