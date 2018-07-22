@@ -1,7 +1,24 @@
 runtime: python27
 api_version: 1
-threadsafe: true
+threadsafe: false
 
 handlers:
+- url: /static
+  static_dir: app/static
+- url: /images
+  static_dir: app/images
+- url: /asset-manifest.json
+  static_files: app/asset-manifest.json
+  upload: app/asset-manifest.json
+- url: /logo.png
+  static_files: app/logo.png
+  upload: app/logo.png
+- url: /manifest.json
+  static_files: app/manifest.json
+  upload: app/manifest.json
+- url: /service-worker.js
+  static_files: app/service-worker.js
+  upload: app/service-worker.js
 - url: /.*
-  script: main.app
+  static_files: app/index.html
+  upload: app/index.html

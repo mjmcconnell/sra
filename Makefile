@@ -10,5 +10,8 @@ be-bash:
 fe-run:
 	docker-compose run --rm --service-ports frontend
 
+fe-build:
+	docker-compose run --rm frontend make build
+
 fe-bash:
 	docker-compose run --rm --service-ports frontend bash
