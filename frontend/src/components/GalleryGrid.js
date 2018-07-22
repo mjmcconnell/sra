@@ -22,6 +22,7 @@ const styles = theme => ({
     marginBottom: '18px'
   },
   smTileDetails: {height: '80px !important'},
+  smTile: {cursor: 'pointer'},
   lrgTileImg: {width: '100%'},
   gridListTitle: {marginTop: 0}
 });
@@ -35,7 +36,7 @@ const gallerySmGrid = (classes, tileData, updateMainImage) => {
           <p>{tileData.desc}</p>
         </GridListTile>
         {tileData.images.map(image => (
-          <GridListTile key={image.src} cols={1} onClick={() => updateMainImage(image)}>
+          <GridListTile key={image.src} cols={1} onClick={() => updateMainImage(image)} className={classes.smTile}>
             <img src={image.src} alt={image.title}/>
           </GridListTile>
         ))}
