@@ -17,12 +17,18 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '10px 23px'
+    padding: '10px 23px 30px'
   },
-  gridList: {},
+  gridListTile: {
+    border: '1px solid #DDD',
+    padding: '0 !important'
+  },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+  img: {
+    width: '100%'
+  }
 });
 
 function StockistsGrid(props) {
@@ -33,22 +39,24 @@ function StockistsGrid(props) {
       <Grid container spacing={24}>
         {stockistsData.map(tile => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={tile.name}>
-            <GridList cellHeight={320} className={classes.gridList} cols={1}>
-              <GridListTile>
-                <img src={tile.image} alt={tile.name} />
-                <GridListTileBar
-                  title={tile.name}
-                  subtitle={tile.address}
-                  actionIcon={
-                    <a href={tile.mapLink} target="_blank">
-                      <IconButton className={classes.icon}>
-                        <PlaceIcon />
-                      </IconButton>
-                    </a>
-                  }
-                />
-              </GridListTile>
-            </GridList>
+              <GridList cellHeight={320} cols={1}>
+                <GridListTile className={classes.gridListTile}>
+                  <a href={tile.link} target="_blank">
+                    <img src={tile.image} alt={tile.name} className={classes.img}/>
+                  </a>
+                  <GridListTileBar
+                    title={tile.name}
+                    subtitle={tile.address}
+                    actionIcon={
+                      <a href={tile.mapLink} target="_blank">
+                        <IconButton className={classes.icon}>
+                          <PlaceIcon />
+                        </IconButton>
+                      </a>
+                    }
+                  />
+                </GridListTile>
+              </GridList>
           </Grid>
         ))}
       </Grid>
