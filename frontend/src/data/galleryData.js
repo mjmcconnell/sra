@@ -2,6 +2,7 @@ const galleryData = [
   {
     title: 'What\'s That fox',
     desc: '',
+    active: 0,
     images: [
       {
         src: '/images/gallery/fox1.jpg',
@@ -28,6 +29,7 @@ const galleryData = [
   {
     title: 'Seals',
     desc: '',
+    active: 0,
     images: [
       {
         src: '/images/gallery/seal1.jpg',
