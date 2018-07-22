@@ -25,8 +25,8 @@ const homepageData = [
     rows: 2,
     cols: 1,
     image: '/images/homepage/sra_workshop.jpg',
-    title: 'Workshops',
-    link: '/workshops',
+    title: 'Videos',
+    link: '/videos',
   },
   {
     rows: 2,

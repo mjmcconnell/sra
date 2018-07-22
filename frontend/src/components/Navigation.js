@@ -95,9 +95,9 @@ function Navigation(props) {
             </Grid>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
-                <a href="/workshops" className={classes.link}>
+                <a href="/videos" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
-                    Workshops
+                    Videos
                   </Typography>
                 </a>
               </ButtonBase>

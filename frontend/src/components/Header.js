@@ -84,7 +84,7 @@ class Header extends React.Component {
                 <a href="/about" className={classes.link}><MenuItem>About</MenuItem></a>
                 <a href="/gallery" className={classes.link}><MenuItem>Gallery</MenuItem></a>
                 <a href="/events" className={classes.link}><MenuItem>Events</MenuItem></a>
-                <a href="/workshops" className={classes.link}><MenuItem>Workshops</MenuItem></a>
+                <a href="/videos" className={classes.link}><MenuItem>Videos</MenuItem></a>
                 <a href="/stockists" className={classes.link}><MenuItem>Stockists</MenuItem></a>
               </Menu>
             </Hidden>
