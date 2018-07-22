@@ -21,7 +21,7 @@ const styles = theme => ({
     padding: '12px',
     marginBottom: '18px'
   },
-  smTile: {},
+  smTileDetails: {height: '80px !important'},
   smTileImg: {maxWidth: '100%', maxHeight: '100%'},
   lrgTile: {},
   lrgTileImg: {width: '100%'},
@@ -30,9 +30,9 @@ const styles = theme => ({
 
 const gallerySmGrid = (classes, tileData) => {
   return (
-    <Grid item sm={4} xs={12} className={classes.smTile}>
+    <Grid item sm={4} xs={12}>
       <GridList className={classes.gridList} cols={2} spacing={16}>
-        <GridListTile cols={2}>
+        <GridListTile cols={2} className={classes.smTileDetails}>
           <h1 className={classes.gridListTitle}>{tileData.title}</h1>
           <p>{tileData.desc}</p>
         </GridListTile>

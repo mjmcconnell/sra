@@ -1,11 +1,7 @@
 const galleryData = [
   {
     title: 'What\'s That fox',
-    desc: `
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-        Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
-        Nulla quis sem at nibh elementum imperdiet.
-    `,
+    desc: '',
     images: [
       {
         src: '/images/gallery/fox1.jpg',
@@ -31,9 +27,7 @@ const galleryData = [
   },
   {
     title: 'Seals',
-    desc: `
-        tummy up and tummy down seals
-    `,
+    desc: '',
     images: [
       {
         src: '/images/gallery/seal1.jpg',
