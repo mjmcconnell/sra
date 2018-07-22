@@ -7,6 +7,7 @@ services:
       - 8080:8080
     volumes:
       - ./app:/usr/src
+    working_dir: /usr/src
     command: dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 /usr/src/app.yaml
 
   frontend:
