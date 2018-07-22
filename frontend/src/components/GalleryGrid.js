@@ -22,8 +22,6 @@ const styles = theme => ({
     marginBottom: '18px'
   },
   smTileDetails: {height: '80px !important'},
-  smTileImg: {maxWidth: '100%', maxHeight: '100%'},
-  lrgTile: {},
   lrgTileImg: {width: '100%'},
   gridListTitle: {marginTop: 0}
 });
@@ -31,14 +29,14 @@ const styles = theme => ({
 const gallerySmGrid = (classes, tileData, updateMainImage) => {
   return (
     <Grid item sm={4} xs={12}>
-      <GridList className={classes.gridList} cols={2} spacing={16}>
+      <GridList cols={2} spacing={16}>
         <GridListTile cols={2} className={classes.smTileDetails}>
           <h1 className={classes.gridListTitle}>{tileData.title}</h1>
           <p>{tileData.desc}</p>
         </GridListTile>
         {tileData.images.map(image => (
           <GridListTile key={image.src} cols={1} onClick={() => updateMainImage(image)}>
-            <img src={image.src} alt={image.title} className={classes.smTileImg}/>
+            <img src={image.src} alt={image.title}/>
           </GridListTile>
         ))}
       </GridList>
@@ -49,7 +47,7 @@ const gallerySmGrid = (classes, tileData, updateMainImage) => {
 const galleryLgGrid = (classes, activeImage) => {
   return (
     <Hidden xsDown>
-      <Grid item sm={8} className={classes.lrgTile}>
+      <Grid item sm={8}>
         <img src={activeImage.src} alt={activeImage.title} className={classes.lrgTileImg}/>
       </Grid>
     </Hidden>
