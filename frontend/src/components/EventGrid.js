@@ -56,26 +56,35 @@ class EventGrid extends React.Component {
                   <p key={i} className={classes.contentContainerDesc}>{paragraph}</p>
                 ))}
                 <List component="nav" className={classes.contentContainerDetails}>
-                  <ListItem className={classes.contentContainerLocation}>
-                    <ListItemIcon>
-                      <PlaceIcon />
-                    </ListItemIcon>
-                    <a href={tileData.locationLink} target="_blank">
-                      <ListItemText primary={tileData.location}/>
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.contentContainerDateTime}>
-                    <ListItemIcon>
-                      <DateRangeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={tileData.date} />
-                  </ListItem>
-                  <ListItem className={classes.contentContainerDateTime}>
-                    <ListItemIcon>
-                      <AccessTimeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={tileData.time} />
-                  </ListItem>
+                  {
+                    tileData.location &&
+                    <ListItem className={classes.contentContainerLocation}>
+                      <ListItemIcon>
+                        <PlaceIcon />
+                      </ListItemIcon>
+                      <a href={tileData.locationLink} target="_blank">
+                        <ListItemText primary={tileData.location}/>
+                      </a>
+                    </ListItem>
+                  }
+                  {
+                    tileData.date &&
+                    <ListItem className={classes.contentContainerDateTime}>
+                      <ListItemIcon>
+                        <DateRangeIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={tileData.date} />
+                    </ListItem>
+                  }
+                  {
+                    tileData.time &&
+                    <ListItem className={classes.contentContainerDateTime}>
+                      <ListItemIcon>
+                        <AccessTimeIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={tileData.time} />
+                    </ListItem>
+                  }
                   <ListItem className={classes.contentContainerDateTime}>
                     <a href={tileData.actionLink} target={tileData.actionLinkTarget} className={classes.actionLink}>
                       <Button variant="contained" color="secondary" className={classes.button}>
