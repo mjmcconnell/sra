@@ -2,7 +2,7 @@ const homepageData = [
   {
     rows: 4,
     cols: 2,
-    image: '/images/homepage/hero.jpg',
+    image: '/images/homepage/horse_head.jpg',
     title: 'Gallery',
     link: '/gallery',
   },
@@ -17,7 +17,7 @@ const homepageData = [
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/blue_leaf.jpg',
+    image: '/images/homepage/bw_profile.jpg',
     title: 'About',
     link: '/about',
   },
@@ -31,7 +31,7 @@ const homepageData = [
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/hares.jpg',
+    image: '/images/homepage/events.jpg',
     title: 'Events',
     link: '/events',
   },
