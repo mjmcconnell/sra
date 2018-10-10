@@ -7,10 +7,6 @@ const galleryData = [
         tilte: 'hrh_commission_presentation.jpg'
       },
       {
-        src: '/images/gallery/horses/hrh_commission.jpg',
-        tilte: 'hrh_commission.jpg'
-      },
-      {
         src: '/images/gallery/horses/down_textured_horse.jpg',
         tilte: 'down_textured_horse.jpg'
       },
@@ -30,15 +26,15 @@ const galleryData = [
         src: '/images/gallery/horses/close_up_horse_textured.jpg',
         tilte: 'close_up_horse_textured.jpg'
       },
-      {
-        src: '/images/gallery/horses/white_gallop.jpg',
-        tilte: 'white_gallop.jpg'
-      },
     ]
   },
   {
     title: 'Horse Heads',
     images: [
+      {
+        src: '/images/gallery/horse_heads/blue_marble_diagonal.jpg',
+        tilte: 'blue_marble_diagonal.jpg'
+      },
       {
         src: '/images/gallery/horse_heads/grey.jpg',
         tilte: 'grey.jpg'
@@ -46,10 +42,6 @@ const galleryData = [
       {
         src: '/images/gallery/horse_heads/cream_tex_glaze_head.jpg',
         tilte: 'cream_tex_glaze_head.jpg'
-      },
-      {
-        src: '/images/gallery/horse_heads/blue_marble_diagonal.jpg',
-        tilte: 'blue_marble_diagonal.jpg'
       },
       {
         src: '/images/gallery/horse_heads/mini_cream_head.jpg',
@@ -125,24 +117,7 @@ const galleryData = [
     ]
   },
   {
-    title: 'Wire work',
-    images: [
-      {
-        src: '/images/gallery/wire/wire_1.jpg',
-        tilte: 'wire_1.jpg'
-      },
-      {
-        src: '/images/gallery/wire/wire_2.jpg',
-        tilte: 'wire_2.jpg'
-      },
-      {
-        src: '/images/gallery/wire/outdoor_wire_weeding.jpg',
-        tilte: 'outdoor_wire_weeding.jpg'
-      },
-    ]
-  },
-  {
-    title: 'Ceramics',
+    title: 'Figurative',
     images: [
       {
         src: '/images/gallery/ceramic/disconnected1.jpg',
@@ -159,6 +134,23 @@ const galleryData = [
       {
         src: '/images/gallery/ceramic/pigeons.jpg',
         tilte: 'pigeons.jpg'
+      },
+    ]
+  },
+  {
+    title: 'Wire work',
+    images: [
+      {
+        src: '/images/gallery/wire/wire_1.jpg',
+        tilte: 'wire_1.jpg'
+      },
+      {
+        src: '/images/gallery/wire/wire_2.jpg',
+        tilte: 'wire_2.jpg'
+      },
+      {
+        src: '/images/gallery/wire/outdoor_wire_weeding.jpg',
+        tilte: 'outdoor_wire_weeding.jpg'
       },
     ]
   },

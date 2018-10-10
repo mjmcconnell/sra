@@ -54,7 +54,7 @@ const eventData = [
       'Classes are currently available',
       'Sharon is currently holding workshop classes on Tuesday & Thursday evenings and Saturday mornings.',
       `
-        These workshops are designed to allow you to get stuck in creating your own master works, with
+        These workshops are designed to allow you to get stuck in creating your own master piece, with
         the help and guidance for a well practiced artist.
       `,
       'Expect to get messy.',
@@ -74,7 +74,7 @@ const eventData = [
   {
     title: 'Free online Step by Step Sculpting',
     desc: [
-      'If you don\t have the time to come along to one of the classes, why not join Sharon online',
+      'If you don\'t have the time to come along to one of the classes, why not join Sharon online',
       'Sharon has posted a number of tutorial videos that you can follow along to, on her Facebook group.',
       `
         These tutorials are aimed at absolute beginner's and improver's, and comprises of
