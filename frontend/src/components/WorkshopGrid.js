@@ -89,9 +89,8 @@ function WorkshopGrid(props) {
         </Hidden>
       </div>
       <Grid container spacing={24}>
-        {workshopData.map(tile => (
-          <Grid item xs={12} sm={6} lg={4} key={tile.title}>
-            <h1 className={classes.title}>{tile.title}</h1>
+        {workshopData.map((tile, i) => (
+          <Grid item xs={12} sm={6} lg={4} key={i}>
             <Video url={tile.url} />
           </Grid>
         ))}

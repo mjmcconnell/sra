@@ -37,8 +37,8 @@ function StockistsGrid(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        {stockistsData.map(tile => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={tile.name}>
+        {stockistsData.map((tile, i) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
               <GridList cellHeight={320} cols={1}>
                 <GridListTile className={classes.gridListTile}>
                   <a href={tile.link} target="_blank">
