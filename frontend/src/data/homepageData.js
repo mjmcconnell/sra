@@ -31,7 +31,7 @@ const homepageData = [
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/events.jpg',
+    image: '/images/homepage/project_24.jpg',
     title: 'Events',
     link: '/events',
   },

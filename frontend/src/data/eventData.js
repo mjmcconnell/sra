@@ -1,51 +1,25 @@
 const eventData = [
   {
-    title: 'Love Your Home Show',
+    title: 'Art on the Rails',
     desc: [
-      'Sharon will have a stall setup in the Artists & Makers Village (C40).',
+      'Applications now open for Art on the Rails',
       `
-        Come along and say hello, and see some of the latest work, as well as the chance to see how the pieces are made
-        with live demos throughout the exhibition.
+        Art on the Rails is a curated, open air art fair/festival. Exhibiting Artists have been selected by the
+        panel or invited to take part. There will be live music and refreshments available. Visit our facebook
+        page to find out more about the next upcoming event.
       `,
-      `
-        Love Your Home Show is fast becoming Irelands number one event in all things interior,
-        design, home improvement, food, Arts, talks, cooking and alot more…all under one roof.
-      `,
-      'Get your free ticket to the event, by following the link below/'
+      'Check out the facebook page at https://www.facebook.com/ArtOnTheRails/'
     ],
     image: {
-      src: '/images/events/love_your_home.png',
-      tilte: 'Love Your Home Show'
+      src: '/images/events/rails.jpg',
+      tilte: 'Art of the rails'
     },
-    date: 'Oct 12th - 14th',
-    time: '10:00–18:00',
-    location: 'Titanic Exhibition Centre, Belfast',
-    locationLink: 'https://www.google.co.uk/maps/place/Titanic+Exhibition+Centre/@54.610159,-5.9030659,15z/data=!4m2!3m1!1s0x0:0xeeb82842d25a6af6?sa=X&ved=2ahUKEwi1qbviqPrdAhUKQ8AKHVg9DecQ_BIwFXoECAkQCw',
-    actionLabel: 'Free tickets',
-    actionLink: 'https://show.loveyourhome.ie',
-    actionLinkTarget: '_blank'
-  },
-  {
-    title: 'Sculpture in Context',
-    desc: [`
-      Sharon has a number of pieces on display at the "Sculpture in Context" until 19th October
-      in the National Botanic Gardens, Dublin.
-    `,
-    `
-      Sculpture in Context was established in 1985 to raise the profile of sculpture and provide
-      a platform for artists outside the normal gallery context.
-    `,
-    ],
-    image: {
-      src: '/images/events/botanic-gardens-dublin.jpg',
-      tilte: 'Sculpture in Context'
-    },
-    date: 'Sept 6th - 19th Oct 2018',
-    time: '09:00-16:30',
-    location: 'National Botanic Gardens, Dublin',
-    locationLink: 'https://www.google.co.uk/maps/place/National+Botanic+Gardens/@53.3725493,-6.271907,15z/data=!4m2!3m1!1s0x0:0x143c97059efea7a7?sa=X&ved=2ahUKEwje18SypPrdAhXOgVwKHaF0DkgQ_BIwDnoECAoQCw',
-    actionLabel: 'About',
-    actionLink: 'http://www.sculptureincontext.com',
+    date: 'Last Sunday of the month, April to September',
+    time: '11:00–15:00',
+    location: 'Project 24, Queens Parade, Bangor',
+    locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
+    actionLabel: 'Download application form',
+    actionLink: '/images/events/rails.pdf',
     actionLinkTarget: '_blank'
   },
   {
