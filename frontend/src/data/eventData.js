@@ -8,7 +8,7 @@ const eventData = [
         panel or invited to take part. There will be live music and refreshments available. Visit our facebook
         page to find out more about the next upcoming event.
       `,
-      'Check out the facebook page at https://www.facebook.com/ArtOnTheRails/'
+      'Check out the facebook page at '
     ],
     image: {
       src: '/images/events/rails.jpg',
@@ -20,7 +20,10 @@ const eventData = [
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
     actionLabel: 'Download application form',
     actionLink: '/images/events/rails.pdf',
-    actionLinkTarget: '_blank'
+    actionLinkTarget: '_blank',
+    secondardActionLinkLabel: 'Facebook page',
+    secondardActionLink: 'https://www.facebook.com/ArtOnTheRails/',
+    secondardActionLinkTarget: '_blank'
   },
   {
     title: 'Classes',

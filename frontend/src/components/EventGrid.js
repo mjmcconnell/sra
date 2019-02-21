@@ -92,6 +92,16 @@ class EventGrid extends React.Component {
                       </Button>
                     </a>
                   </ListItem>
+                  {
+                    tileData.secondardActionLink &&
+                    <ListItem className={classes.contentContainerDateTime}>
+                    <a href={tileData.secondardActionLink} target={tileData.secondardActionLinkTarget} className={classes.actionLink}>
+                      <Button variant="contained" color="secondary" className={classes.button}>
+                        {tileData.secondardActionLinkLabel}
+                      </Button>
+                    </a>
+                  </ListItem>
+                  }
 
                 </List>
               </Grid>
