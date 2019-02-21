@@ -19,7 +19,14 @@ handlers:
 - url: /service-worker.js
   static_files: app/service-worker.js
   upload: app/service-worker.js
-- url: /.*
+- url: /(.*\.pdf)$
+  static_files: app/pdf/\1
+  upload: app/pdf/.*\.pdf$
+- url: /(about|gallery|events|stockists|videos)
+  static_files: app/index.html
+  upload: app/index.html
+  expiration: 1m
+- url: /
   static_files: app/index.html
   upload: app/index.html
   expiration: 1m

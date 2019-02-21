@@ -19,7 +19,7 @@ const eventData = [
     location: 'Project 24, Queens Parade, Bangor',
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
     actionLabel: 'Download application form',
-    actionLink: '/images/events/rails.pdf',
+    actionLink: '/rails.pdf',
     actionLinkTarget: '_blank',
     secondardActionLinkLabel: 'Facebook page',
     secondardActionLink: 'https://www.facebook.com/ArtOnTheRails/',
