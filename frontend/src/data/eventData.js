@@ -21,9 +21,12 @@ const eventData = [
     time: '10:00–15:00',
     location: 'Project 24, Queens Parade, Bangor',
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
-    actionLabel: 'Facebook page',
-    actionLink: 'https://www.facebook.com/events/258063038411581/',
-    actionLinkTarget: '_blank'
+    actionLabel: 'Apply now',
+    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
+    actionLinkTarget: ''
+    secondardActionLinkLabel: 'Facebook page',
+    secondardActionLink: 'https://www.facebook.com/events/258063038411581/',
+    secondardActionLinkTarget: '_blank'
   },
   {
     title: 'Create Your Dragon',
@@ -48,9 +51,12 @@ const eventData = [
     time: '10:00–15:00',
     location: 'Project 24, Queens Parade, Bangor',
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
-    actionLabel: 'Facebook page',
-    actionLink: 'https://www.facebook.com/events/409343713166086/',
-    actionLinkTarget: '_blank'
+    actionLabel: 'Apply now',
+    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
+    actionLinkTarget: ''
+    secondardActionLinkLabel: 'Facebook page',
+    secondardActionLink: 'https://www.facebook.com/events/409343713166086/',
+    secondardActionLinkTarget: '_blank'
   },
   {
     title: 'Art on the Rails',
