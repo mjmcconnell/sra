@@ -6,7 +6,7 @@ const eventData = [
         Using air drying clay, Sharon will take the group step by step through
         illustrated instructions, that will be provided to each pair.
       `,
-      'This is a mother and child workshop, with the parent helping child or child helping parent.',
+      'This is a parent and child workshop, with the parent helping child or child helping parent.',
       'Please bring photos of your pet\'s head, a hand towel and a small box to bring your sculpture home.',
       `
         Basic refreshments will be provided (juice, tea and coffee), but we ask you
@@ -36,7 +36,7 @@ const eventData = [
         Sharon will be hosting a workshop, taking a group step by step through illustrated instructions
         to make their very own dragon, using air drying clay and a wire armature.
       `,
-      'This is a mother and child workshop, with the parent helping child or child helping parent.',
+      'This is a parent and child workshop, with the parent helping child or child helping parent.',
       'Please bring a hand towel and a small box to bring your sculpture home.',
       `
         Basic refreshments will be provided (juice, tea and coffee), but we ask you
