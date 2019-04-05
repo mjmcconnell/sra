@@ -23,7 +23,7 @@ const eventData = [
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
     actionLabel: 'Apply now',
     actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
-    actionLinkTarget: ''
+    actionLinkTarget: '',
     secondardActionLinkLabel: 'Facebook page',
     secondardActionLink: 'https://www.facebook.com/events/258063038411581/',
     secondardActionLinkTarget: '_blank'
@@ -53,7 +53,7 @@ const eventData = [
     locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
     actionLabel: 'Apply now',
     actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
-    actionLinkTarget: ''
+    actionLinkTarget: '',
     secondardActionLinkLabel: 'Facebook page',
     secondardActionLink: 'https://www.facebook.com/events/409343713166086/',
     secondardActionLinkTarget: '_blank'
