@@ -10,6 +10,9 @@ be-bash:
 fe-run:
 	docker-compose run --rm --service-ports frontend
 
+fe-move:
+	mv frontend/build/ app/app/
+
 fe-build:
 	docker-compose run --rm frontend make build
 
