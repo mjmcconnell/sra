@@ -16,12 +16,13 @@ import classData from '../data/classData';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    padding: '10px 23px 30px',
+    maxWidth: '800px',
+    margin: '0 auto 20px',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    padding: '10px 23px 30px',
   },
   classGrid: { padding: '0 15px'},
   classImage: {width: '100%'},
@@ -44,6 +45,20 @@ class ClassGrid extends React.Component {
 
     return (
       <div className={classes.root}>
+      <Grid container spacing={24} className={classes.classGrid}>
+          <Grid item xs={24} sm={12} className={classes.gridList}>
+            <p>
+              Sharon Regan Art loves to share her techniques and offers a range of classes in person, to groups and organisations as well as providing online tutorials where you can watch in real time how sculptures are created.
+            </p>
+            <p>
+              During August a range of one off taster sessions, are offered in Donaghadee, which last 2 or 3 hours. These include;
+            </p>
+            <p>
+              Checkout <a href="https://www.youtube.com/@stepbystepsculptingwithsha7238" target="_blank" rel="noopener noreferrer"> step by step sculpting with Sharon Regan</a> on YouTube.
+            </p>
+          </Grid>
+        </Grid>
+        <Divider className={classes.contentContainerDivider} />
         {classData.map((tileData,i,a) => (
           <div key={tileData.title}>
             <Grid container spacing={24} className={classes.classGrid}>
@@ -102,7 +117,6 @@ class ClassGrid extends React.Component {
                     </a>
                   </ListItem>
                   }
-
                 </List>
               </Grid>
             </Grid>

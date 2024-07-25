@@ -1,133 +1,133 @@
 const classData = [
   {
-    title: 'Family Pet Portraits',
-    desc: [
-      `
-        Using air drying clay, Sharon will take the group step by step through
-        illustrated instructions, that will be provided to each pair.
-      `,
-      'This is a parent and child workshop, with the parent helping child or child helping parent.',
-      'Please bring photos of your pet\'s head, a hand towel and a small box to bring your sculpture home.',
-      `
-        Basic refreshments will be provided (juice, tea and coffee), but we ask you
-        to please bring a packed lunch with you, as it will be a long day.
-      `,
-    ],
     image: {
-      src: '/images/events/class.jpg',
-      title: 'Family Pet Portraits'
-    },
-    date: '13th April 2019',
-    time: '10:00–15:00',
-    location: 'Project 24, Queens Parade, Bangor',
-    locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
-    actionLabel: 'Apply now',
-    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
-    actionLinkTarget: '',
-    secondardActionLinkLabel: 'Facebook page',
-    secondardActionLink: 'https://www.facebook.com/events/258063038411581/',
-    secondardActionLinkTarget: '_blank'
-  },
-  {
-    title: 'Create Your Dragon',
-    desc: [
-      `
-        With the touring Game of Thrones Exhibition coming to the Titanic Exhibition Centre mid April,
-        Sharon will be hosting a workshop, taking a group step by step through illustrated instructions
-        to make their very own dragon, using air drying clay and a wire armature.
-      `,
-      'This is a parent and child workshop, with the parent helping child or child helping parent.',
-      'Please bring a hand towel and a small box to bring your sculpture home.',
-      `
-        Basic refreshments will be provided (juice, tea and coffee), but we ask you
-        to please bring a packed lunch with you, as it will be a long day.
-      `,
-    ],
-    image: {
-      src: '/images/events/dragon.jpg',
+      src: '/images/classes/glass.jpg',
       title: 'Art of the rails'
     },
-    date: '4th May 2019',
-    time: '10:00–15:00',
-    location: 'Project 24, Queens Parade, Bangor',
-    locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
+    title: 'Fused glass',
+    desc: ['FULLY BOOKED'],
+    date: '7th August 2024',
+    time: '2-4pm',
     actionLabel: 'Apply now',
-    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
-    actionLinkTarget: '',
-    secondardActionLinkLabel: 'Facebook page',
-    secondardActionLink: 'https://www.facebook.com/events/409343713166086/',
-    secondardActionLinkTarget: '_blank'
-  },
-  {
-    title: 'Art on the Rails',
-    desc: [
-      'Applications now open for Art on the Rails',
-      `
-        Art on the Rails is a curated, open air art fair/festival. Exhibiting Artists have been selected by the
-        panel or invited to take part. There will be live music and refreshments available. Visit our facebook
-        page to find out more about the next upcoming event.
-      `,
-      'Check out the facebook page at '
-    ],
-    image: {
-      src: '/images/events/rails.jpg',
-      title: 'Art of the rails'
-    },
-    date: 'Last Sunday of the month, April to September',
-    time: '11:00–15:00',
-    location: 'Project 24, Queens Parade, Bangor',
-    locationLink: 'https://www.google.com/maps/place/Project+24/@54.6619616,-5.6739291,15z/data=!4m2!3m1!1s0x0:0xd9841c736b09c6ef?ved=2ahUKEwiK6oDWjMzgAhVFonEKHQrzDDMQ_BIwCnoECAUQCA',
-    actionLabel: 'Download application form',
-    actionLink: '/rails.pdf',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
     actionLinkTarget: '_blank',
-    secondardActionLinkLabel: 'Facebook page',
-    secondardActionLink: 'https://www.facebook.com/ArtOnTheRails/',
-    secondardActionLinkTarget: '_blank'
   },
   {
-    title: 'Classes',
-    desc: [
-      'Classes are currently available',
-      'Sharon is currently holding workshop classes on Tuesday & Thursday evenings and Saturday mornings.',
-      `
-        These workshops are designed to allow you to get stuck in creating your own masterpiece, with
-        the help and guidance for a well practiced artist.
-      `,
-      'Expect to get messy.',
-      'To apply for a space or for group bookings please email sharonreganart@gmail.com.'
-    ],
     image: {
-      src: '/images/events/event2.jpg',
-      title: 'Open Art - Art on the Railings'
+      src: '/images/classes/birds.jpg',
+      title: 'Art of the rails'
     },
-    date: 'On Going',
-    location: 'Project 24, Bangor',
-    locationLink: 'https://www.google.co.uk/maps/place/Project+24/@54.6619647,-5.6761178,17z/data=!3m1!4b1!4m5!3m4!1s0x48619e22e99b32fd:0xd9841c736b09c6ef!8m2!3d54.6619616!4d-5.6739291',
+    title: 'Ceramic birds',
+    desc: [],
+    date: '8th August 2024',
+    time: '2-4pm',
     actionLabel: 'Apply now',
-    actionLink: 'mailto:sharonreganart@gmail.com?Subject=Classes%20Enquiry',
-    actionLinkTarget: ''
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
   },
   {
-    title: 'Free online Step by Step Sculpting',
-    desc: [
-      'If you don\'t have the time to come along to one of the classes, why not join Sharon online',
-      'Sharon has posted a number of tutorial videos that you can follow along to, on her Facebook group.',
-      `
-        These tutorials are aimed at absolute beginner's and improver's, and comprises of
-        a series of video and photographs that break down the sculpting process into doable stages.
-        All the information is stored in units to make it easy to look things up, with links to
-        recommended materials and tools.
-      `,
-      'Sharon will also provide feedback on members work with tips to improve.',
-      'Join her Facebook now, and get started today.'
-    ],
     image: {
-      src: '/images/events/sra_workshop.jpg',
-      title: 'Online tutorials'
+      src: '/images/classes/glass.jpg',
+      title: 'Art of the rails'
     },
-    actionLabel: 'Join now',
-    actionLink: 'https://m.facebook.com/groups/224194158189569',
-    actionLinkTarget: '_blank'
+    title: 'Fused glass',
+    desc: ['Working with coloured glass, and coloured frits to make a coaster sized design'],
+    date: '14th August 2024',
+    time: '2-4pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/seaside.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Seaside hearts',
+    desc: ['Simple acrylic painting techniques, applying shells and sea glass, using resin to seal'],
+    date: '15th August 2024',
+    time: '2-4pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/inks.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Painting with acrylic',
+    desc: ['Painting with acrylic inks using loose techniques to create landscapes'],
+    date: '21st August 2024',
+    time: '2-4pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/pets.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Ceramic pet portraits',
+    desc: ['Session 1'],
+    date: '22nd August 2024',
+    time: '10am-1pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/storm.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Storm in a teacup',
+    desc: ['Needle felting'],
+    date: '22nd August 2024',
+    time: '2.30-4.30pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/classes.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Ceramic jewellery',
+    desc: [''],
+    date: '28th August 2024',
+    time: '2-4pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/pets.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Ceramic pet portraits',
+    desc: ['Session 2'],
+    date: '29th August 2024',
+    time: '10am-1pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/mouse.jpg',
+      title: 'Art of the rails'
+    },
+    title: 'Needle felting a mouse',
+    desc: [''],
+    date: '29th August 2024',
+    time: '2.30pm-4.30pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
   },
 ];
 
