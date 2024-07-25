@@ -23,8 +23,8 @@ const galleryData = [
         tilte: 'uphill_horse.jpg'
       },
       {
-        src: '/images/gallery/horses/close_up_horse_textured.jpg',
-        tilte: 'close_up_horse_textured.jpg'
+        src: '/images/gallery/horses/jump.jpg',
+        tilte: 'blue.jpg'
       },
     ]
   },
@@ -96,6 +96,27 @@ const galleryData = [
     ]
   },
   {
+    title: 'Figurative',
+    images: [
+      {
+        src: '/images/gallery/ceramic/disconnected1.jpg',
+        tilte: 'disconnected1.jpg'
+      },
+      {
+        src: '/images/gallery/ceramic/disconnected2.jpg',
+        tilte: 'disconnected2.jpg'
+      },
+      {
+        src: '/images/gallery/ceramic/female.jpg',
+        tilte: 'female.jpg'
+      },
+      {
+        src: '/images/gallery/ceramic/pigeons.jpg',
+        tilte: 'pigeons.jpg'
+      },
+    ]
+  },
+  {
     title: 'Paintings',
     images: [
       {
@@ -117,23 +138,27 @@ const galleryData = [
     ]
   },
   {
-    title: 'Figurative',
+    title: 'Street art',
     images: [
       {
-        src: '/images/gallery/ceramic/disconnected1.jpg',
-        tilte: 'disconnected1.jpg'
+        src: '/images/gallery/streetart/king.jpg',
+        tilte: 'king.jpg'
       },
       {
-        src: '/images/gallery/ceramic/disconnected2.jpg',
-        tilte: 'disconnected2.jpg'
+        src: '/images/gallery/streetart/dog.jpg',
+        tilte: 'dog.jpg'
       },
       {
-        src: '/images/gallery/ceramic/female.jpg',
-        tilte: 'female.jpg'
+        src: '/images/gallery/streetart/bee.jpg',
+        tilte: 'bee.jpg'
       },
       {
-        src: '/images/gallery/ceramic/pigeons.jpg',
-        tilte: 'pigeons.jpg'
+        src: '/images/gallery/streetart/puffin.jpg',
+        tilte: 'puffin.jpg'
+      },
+      {
+        src: '/images/gallery/streetart/owl.jpg',
+        tilte: 'owl.jpg'
       },
     ]
   },

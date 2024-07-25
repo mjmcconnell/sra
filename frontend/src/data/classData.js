@@ -1,4 +1,4 @@
-const eventData = [
+const classData = [
   {
     title: 'Family Pet Portraits',
     desc: [
@@ -131,4 +131,4 @@ const eventData = [
   },
 ];
 
-export default eventData;
+export default classData;

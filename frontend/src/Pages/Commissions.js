@@ -2,16 +2,16 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
 import Template from "./Template";
-import EventGrid from "../components/EventGrid";
+import CommissionsGrid from "../components/CommissionsGrid";
 
 const styles = {};
 
-const Events = props => {
+const Commissions = props => {
   return (
     <Template
-      body={<EventGrid />}
+      body={<CommissionsGrid />}
     ></Template>
   );
 };
 
-export default withStyles(styles)(Events);
+export default withStyles(styles)(Commissions);

@@ -12,7 +12,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import PlaceIcon from '@material-ui/icons/Place';
 
-import eventData from '../data/eventData';
+import classData from '../data/classData';
 
 const styles = theme => ({
   root: {
@@ -23,8 +23,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     padding: '10px 23px 30px',
   },
-  eventGrid: { padding: '0 15px'},
-  eventImage: {width: '100%'},
+  classGrid: { padding: '0 15px'},
+  classImage: {width: '100%'},
   gridList: {
     maxHeight: '550px',
     overflow: 'hidden'
@@ -38,17 +38,17 @@ const styles = theme => ({
   actionLink: {textDecoration: 'none'}
 });
 
-class EventGrid extends React.Component {
+class ClassGrid extends React.Component {
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        {eventData.map((tileData,i,a) => (
+        {classData.map((tileData,i,a) => (
           <div key={tileData.title}>
-            <Grid container spacing={24} className={classes.eventGrid}>
+            <Grid container spacing={24} className={classes.classGrid}>
               <Grid item xs={12} sm={6} className={classes.gridList}>
-                <img src={tileData.image.src} alt={tileData.image.title} className={classes.eventImage}/>
+                <img src={tileData.image.src} alt={tileData.image.title} className={classes.classImage}/>
               </Grid>
               <Grid item xs={12} sm={6} className={classes.gridList}>
                 <h1 className={classes.contentContainerTitle} >{tileData.title}</h1>
@@ -114,8 +114,8 @@ class EventGrid extends React.Component {
   }
 }
 
-EventGrid.propTypes = {
+ClassGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EventGrid);
+export default withStyles(styles)(ClassGrid);

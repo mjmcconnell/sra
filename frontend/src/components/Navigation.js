@@ -86,9 +86,9 @@ function Navigation(props) {
             </Grid>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
-                <a href="/events" className={classes.link}>
+                <a href="/classes" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
-                    Events
+                    Classes
                   </Typography>
                 </a>
               </ButtonBase>
@@ -104,9 +104,9 @@ function Navigation(props) {
             </Grid>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
-                <a href="/stockists" className={classes.link}>
+                <a href="/commissions" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
-                    Stockists
+                    Commissions
                   </Typography>
                 </a>
               </ButtonBase>
