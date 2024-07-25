@@ -11,7 +11,7 @@ const Routes = props => {
         <Route path="/about" exact component={Pages.About} />
         <Route path="/gallery" exact component={Pages.Gallery} />
         <Route path="/events" exact component={Pages.Events} />
-        <Route path="/stockists" exact component={Pages.Stockists} />
+        <Route path="/commissions" exact component={Pages.Commissions} />
         <Route path="/videos" exact component={Pages.Workshop} />
         <Route component={Pages.NotFound} />
       </Switch>
