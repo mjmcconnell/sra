@@ -23,16 +23,16 @@ const homepageData = [
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/sra_workshop.jpg',
-    title: 'Videos',
-    link: '/videos',
+    image: '/images/homepage/map.png',
+    title: 'Commissions',
+    link: '/commissions',
   },
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/map.png',
-    title: 'Commissions',
-    link: '/commissions',
+    image: '/images/homepage/sra_workshop.jpg',
+    title: 'Videos',
+    link: '/videos',
   },
 ];
 

@@ -95,18 +95,18 @@ function Navigation(props) {
             </Grid>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
-                <a href="/videos" className={classes.link}>
+                <a href="/commissions" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
-                    Videos
+                    Commissions
                   </Typography>
                 </a>
               </ButtonBase>
             </Grid>
             <Grid item xs={2} className={classes.gridItem}>
               <ButtonBase disableRipple className={classes.button}>
-                <a href="/commissions" className={classes.link}>
+                <a href="/videos" className={classes.link}>
                   <Typography variant="title" color="inherit" className={classes.flex}>
-                    Commissions
+                    Videos
                   </Typography>
                 </a>
               </ButtonBase>
