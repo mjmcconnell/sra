@@ -138,31 +138,6 @@ const galleryData = [
     ]
   },
   {
-    title: 'Street art',
-    images: [
-      {
-        src: '/images/gallery/streetart/king.jpg',
-        tilte: 'king.jpg'
-      },
-      {
-        src: '/images/gallery/streetart/dog.jpg',
-        tilte: 'dog.jpg'
-      },
-      {
-        src: '/images/gallery/streetart/bee.jpg',
-        tilte: 'bee.jpg'
-      },
-      {
-        src: '/images/gallery/streetart/puffin.jpg',
-        tilte: 'puffin.jpg'
-      },
-      {
-        src: '/images/gallery/streetart/owl.jpg',
-        tilte: 'owl.jpg'
-      },
-    ]
-  },
-  {
     title: 'Wire work',
     images: [
       {

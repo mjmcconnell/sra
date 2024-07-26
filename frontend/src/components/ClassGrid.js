@@ -51,10 +51,13 @@ class ClassGrid extends React.Component {
               Sharon Regan Art loves to share her techniques and offers a range of classes in person, to groups and organisations as well as providing online tutorials where you can watch in real time how sculptures are created.
             </p>
             <p>
-              During August a range of one off taster sessions, are offered in Donaghadee, which last 2 or 3 hours. These include;
+              Checkout <a href="https://www.youtube.com/@stepbystepsculptingwithsha7238" target="_blank" rel="noopener noreferrer"> step by step sculpting with Sharon Regan</a> on YouTube.
             </p>
             <p>
-              Checkout <a href="https://www.youtube.com/@stepbystepsculptingwithsha7238" target="_blank" rel="noopener noreferrer"> step by step sculpting with Sharon Regan</a> on YouTube.
+              Weekly ceramics class at Gransha Equestrian Centre 7-9pm beginning Monday 9th September
+            </p>
+            <p>
+              During August a range of one off taster sessions, are offered in Donaghadee, which last 2 or 3 hours. These include;
             </p>
           </Grid>
         </Grid>

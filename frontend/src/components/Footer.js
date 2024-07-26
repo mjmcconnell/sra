@@ -12,7 +12,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 const styles = theme => ({
   root: {flexGrow: 1},
   listItem: {textAlign: 'center'},
-  avatar: {borderRadius: 0, padding: 10, margin: '-10px'}
+  avatar: {borderRadius: 0, padding: 10, margin: '-10px'},
+  blurb: {paddingLeft: 20}
 });
 
 
@@ -25,40 +26,13 @@ class FooterHelloGrid extends React.Component {
           <ListItem className={classes.listItem}>
             <ListItemText className="primary-title" primary="Say Hello" />
           </ListItem>
-          <ListItem dense>
-            <ListItemText primary="A graduate of the University of Ulster with a BA Contemporary Applied Art" />
-          </ListItem>
-          <ListItem dense>
-            <ListItemText primary="Artist, Curator, Teacher" />
-          </ListItem>
-        </List>
-      </Grid>
-    );
-  }
-}
-
-
-class FooterMeetGrid extends React.Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid item xs={this.props.width}>
-        <List component="nav">
-          <ListItem className={classes.listItem}>
-            <ListItemText className="primary-title" primary="Meet Me" />
-          </ListItem>
-          <ListItem dense>
-            <ListItemText primary="The Pink Pod," />
-          </ListItem>
-          <ListItem dense>
-            <ListItemText primary="Project 24," />
-          </ListItem>
-          <ListItem dense>
-            <ListItemText primary="Queens Parade," />
-          </ListItem>
-          <ListItem dense>
-            <ListItemText primary="Bangor" />
-          </ListItem>
+          <div className={classes.blurb}>
+            <p>A graduate of the University of Ulster with a BA Contemporary Applied Art</p>
+            <p>Based in the seaside town of Donaghadee</p>
+            <p>Artist/sculptor working in various mediums including painting both small scale and large street art, ceramic sculpture, fused glass, architectural restoration.</p>
+            <p>Workshops and classes offered to small groups and large organisations. Community Art Projects  undertaken</p>
+            <p>Commissions undertaken</p>
+          </div>
         </List>
       </Grid>
     );
@@ -129,16 +103,14 @@ class Footer extends React.Component {
       <div>
         <Hidden xsDown>
           <Grid container spacing={24} className={classes.root}>
-            <FooterHelloGrid classes={classes} width={3} />
-            <FooterMeetGrid classes={classes} width={3} />
+            <FooterHelloGrid classes={classes} width={6} />
             <FooterFollowGrid classes={classes} width={3} />
             <FooterMemberGrid classes={classes} width={3} />
           </Grid>
         </Hidden>
         <Hidden smUp>
           <Grid container spacing={24} className={classes.root} direction="column">
-            <FooterHelloGrid classes={classes} width={12} />
-            <FooterMeetGrid classes={classes} width={12} />
+            <FooterHelloGrid classes={classes} width={24} />
             <FooterFollowGrid classes={classes} width={12} />
             <FooterMemberGrid classes={classes} width={12} />
           </Grid>
