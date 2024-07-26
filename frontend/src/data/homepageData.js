@@ -7,6 +7,14 @@ const homepageData = [
     link: '/gallery',
   },
   {
+    rows: 1,
+    cols: 2,
+    image: '/images/homepage/grass_field.png',
+    title: 'Subscribe to monthly newsletter, don\'t miss out on upcoming classes',
+    link: 'https://form.jotform.com/242071939341052',
+    tabbed: true
+  },
+  {
     rows: 2,
     cols: 1,
     image: '/images/homepage/bw_profile.jpg',
@@ -23,7 +31,7 @@ const homepageData = [
   {
     rows: 2,
     cols: 1,
-    image: '/images/homepage/map.png',
+    image: '/images/homepage/dog.jpg',
     title: 'Commissions',
     link: '/commissions',
   },
