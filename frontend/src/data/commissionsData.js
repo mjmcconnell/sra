@@ -28,10 +28,6 @@ const commissionsData = [
         tilte: 'hare.jpg'
       },
       {
-        src: '/images/commissions/dog.jpg',
-        tilte: 'dog.jpg'
-      },
-      {
         src: '/images/commissions/bee.jpg',
         tilte: 'bee.jpg'
       },

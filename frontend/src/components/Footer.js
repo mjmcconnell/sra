@@ -32,6 +32,7 @@ class FooterHelloGrid extends React.Component {
             <p>Artist/sculptor working in various mediums including painting both small scale and large street art, ceramic sculpture, fused glass, architectural restoration.</p>
             <p>Workshops and classes offered to small groups and large organisations. Community Art Projects  undertaken</p>
             <p>Commissions undertaken</p>
+            <p><a href="mailto:sharonreganart@gmail.com">sharonreganart@gmail.com</a></p>
           </div>
         </List>
       </Grid>

@@ -11,7 +11,7 @@ fe-run:
 	docker-compose run --rm --service-ports frontend
 
 fe-move:
-	mv frontend/build/ app/app/
+	mv ${PWD}/frontend/build ${PWD}/app/app
 
 fe-build:
 	docker-compose run --rm frontend make build

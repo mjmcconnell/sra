@@ -1,12 +1,74 @@
 const classData = [
   {
     image: {
-      src: '/images/classes/glass.jpg',
+      src: '/images/classes/weekly.jpeg',
       title: 'Art of the rails'
     },
-    title: 'Fused glass',
-    desc: ['FULLY BOOKED'],
-    date: '7th August 2024',
+    title: 'Monday night weekly ceramics class',
+    desc: [
+      'Starting during the month of September, I will be running an open ceramics class.',
+      'Projects will be chosen by the participants, to get everyone back into the swing of sculpting after the summer.',
+      'As the months go by, new skills will be introduced, and the difficulty level increased.',
+      'These classes will be supported by a WhatsApp chat,',
+      'and you will be encouraged to bring your work home to continue to work between classes.',
+      'Meeting at Gransha Equestrian Centre',
+      'Cost £25 per session includes clay and firings and underglaze'
+    ],
+    date: '9th September - 9th December',
+    time: '7-9pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/fusedglass.jpeg',
+      title: ''
+    },
+    title: 'Friday morning fused glass class',
+    desc: [
+      'Monthly fused glass class suitable for beginners and improvers',
+      'Meeting at Gransha Equestrian Centre',
+      '£35 per session'
+    ],
+    date: 'Friday 20th September , Friday 18th October & Friday 15th November',
+    time: '10-12am',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/fusedglass.jpeg',
+      title: ''
+    },
+    title: 'Friday night fused glass class',
+    desc: [
+      'Monthly fused glass class suitable for beginners and improvers',
+      'You may choose to make coaster sized designs or jewellery.',
+      'Working with coloured glass, frits and stringers.',
+      'Meeting at the Robert Wilson (Male Voice Choir) Hall, Donaghadee',
+      '£35 per session (slumping extra surcharge £10), includes firing cost (1 firing).'
+    ],
+    date: 'Friday 20th September, Friday 18th October & Friday 15th November',
+    time: '7-9pm',
+    actionLabel: 'Apply now',
+    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
+    actionLinkTarget: '_blank',
+  },
+  {
+    image: {
+      src: '/images/classes/snowflake.jpeg',
+      title: ''
+    },
+    title: 'Stained Glass snowflake project',
+    desc: [
+      'In the first session you will learn the techniques of working to a pattern, cutting glass, and using the grinder to refine edges.',
+      'Second session you will copper foil the edges, pin your design, solder joints and finally add patina',
+      'Meeting at the Robert Wilson (Male Voice Choir) Hall, Donaghadee',
+      '£50 for both sessions'
+    ],
+    date: 'Friday 11th & Friday 25th October',
     time: '2-4pm',
     actionLabel: 'Apply now',
     actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
@@ -14,117 +76,18 @@ const classData = [
   },
   {
     image: {
-      src: '/images/classes/birds.jpg',
-      title: 'Art of the rails'
+      src: '/images/classes/christmastree.jpeg',
+      title: ''
     },
-    title: 'Ceramic birds',
-    desc: [],
-    date: '8th August 2024',
+    title: 'Stained Glass Christmas Tree tealight holder project',
+    desc: [
+      'In the first session you will learn the techniques of working to a pattern, cutting glass,and using the grinder to refine edges.',
+      'Second session you will copper foil the edges, pin your design, solder joints and finally add patina',
+      'Meeting at the Robert Wilson (Male Voice Choir) Hall, Donaghadee',
+      '£50 for both sessions'
+    ],
+    date: 'Friday 8th & Friday 22nd November',
     time: '2-4pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/glass.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Fused glass',
-    desc: ['Working with coloured glass, and coloured frits to make a coaster sized design'],
-    date: '14th August 2024',
-    time: '2-4pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/seaside.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Seaside hearts',
-    desc: ['Simple acrylic painting techniques, applying shells and sea glass, using resin to seal'],
-    date: '15th August 2024',
-    time: '2-4pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/inks.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Painting with acrylic',
-    desc: ['Painting with acrylic inks using loose techniques to create landscapes'],
-    date: '21st August 2024',
-    time: '2-4pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/pets.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Ceramic pet portraits',
-    desc: ['Session 1'],
-    date: '22nd August 2024',
-    time: '10am-1pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/storm.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Storm in a teacup',
-    desc: ['Needle felting'],
-    date: '22nd August 2024',
-    time: '2.30-4.30pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/classes.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Ceramic jewellery',
-    desc: [''],
-    date: '28th August 2024',
-    time: '2-4pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/pets.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Ceramic pet portraits',
-    desc: ['Session 2'],
-    date: '29th August 2024',
-    time: '10am-1pm',
-    actionLabel: 'Apply now',
-    actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
-    actionLinkTarget: '_blank',
-  },
-  {
-    image: {
-      src: '/images/classes/mouse.jpg',
-      title: 'Art of the rails'
-    },
-    title: 'Needle felting a mouse',
-    desc: [''],
-    date: '29th August 2024',
-    time: '2.30pm-4.30pm',
     actionLabel: 'Apply now',
     actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
     actionLinkTarget: '_blank',
