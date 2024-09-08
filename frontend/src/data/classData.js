@@ -69,7 +69,7 @@ const classData = [
       '£50 for both sessions'
     ],
     date: 'Friday 11th & Friday 25th October',
-    time: '2-4pm',
+    time: '7-9pm',
     actionLabel: 'Apply now',
     actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
     actionLinkTarget: '_blank',
@@ -87,7 +87,7 @@ const classData = [
       '£50 for both sessions'
     ],
     date: 'Friday 8th & Friday 22nd November',
-    time: '2-4pm',
+    time: '7-9pm',
     actionLabel: 'Apply now',
     actionLink: 'https://form.jotform.com/242033158179355?fbclid=IwY2xjawEPoDxleHRuA2FlbQIxMAABHaX9BWUR7jmMNT7UcgsmukQXThdzeLuzSet40uCMje1b5VAHUrms-njKeA_aem_SjwqTaj723QeJJRr64q-wQ',
     actionLinkTarget: '_blank',
